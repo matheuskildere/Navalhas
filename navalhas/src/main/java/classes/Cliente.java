@@ -18,7 +18,7 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public void novoServiço(){
+    public void novoServico(){
         servicosTotal += 1;
         servicos += 1;
         servicoGratis = false;

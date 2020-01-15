@@ -65,7 +65,7 @@ public class Clientes implements ICliente{
     public Boolean addNewService(String nome){
         Cliente add = get(nome);
         if (add != null) {
-            add.novoServiço();
+            add.novoServico();
             return add.getServicoGratis();
         } else {
             throw new IllegalArgumentException("Cliente não encontrado!");

@@ -70,19 +70,6 @@ public final class App {
     private static void cliente(){
         Cliente cli = new Cliente("Matheus");
         System.out.println(cli.getNome());
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
-        cli.novoServiço();
         System.out.println(cli.getServicos());
         System.out.println(cli.getServicosGratis());
         System.out.println(cli.getServicosTotal());
