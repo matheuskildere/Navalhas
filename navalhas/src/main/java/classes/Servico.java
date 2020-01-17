@@ -1,6 +1,9 @@
 package classes;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import enumeracao.Barbeiro;
@@ -19,7 +22,7 @@ public class Servico {
     private List<ServicoUnico> servicos;
     private Barbeiro barbeiro;
     TipoPagamento tipoPagamento;
-    private Date data;
+    private static Date data;
     private Pagamento pagamento;
     private double valorTotal = 0;
 
@@ -29,10 +32,17 @@ public class Servico {
         this.barbeiro = barbeiro;
         this.tipoPagamento = tipoPagamento;
 
-        data = new Date(System.currentTimeMillis());
+        data = new Date();
         cliente.novoServico();
         somaPagamento();
         comissaoBarbeiro();
+    }
+
+    public String getData(String formato){
+        SimpleDateFormat formatador = new SimpleDateFormat(formato); //"dd/MM/yyyy"
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(data);
+        return formatador.format(calendar.getTime());
     }
 
     private void somaPagamento(){
@@ -81,5 +91,6 @@ public class Servico {
     public List<ServicoUnico> getServicos() {
         return servicos;
     }
+
 
 }

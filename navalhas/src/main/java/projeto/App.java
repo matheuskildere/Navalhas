@@ -16,11 +16,12 @@ import enumeracao.TipoPagamento;
  * Hello world!
  */
 public final class App {
-    public static String getPegaDataAtual() {
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+    public static String getPegaDataAtual(String formato) {
+        SimpleDateFormat formatador = new SimpleDateFormat(formato);
         Calendar calendar = new GregorianCalendar();
         Date date = new Date();
         calendar.setTime(date);
+        //System.out.println(calendar.getTime());
         return formatador.format( calendar.getTime());
     }
 
@@ -30,8 +31,10 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
+        String vari = 17+"/"+getPegaDataAtual("MM/yyyy");
+        System.out.println(vari.equals(getPegaDataAtual("dd/MM/yyyy")));
         //App();
-        cliente2();
+        //cliente2();
     }
 
     private static void cliente2(){
@@ -76,7 +79,7 @@ public final class App {
         System.out.println(cli.getContato1());
     }
     private static void App() {
-        System.out.println(getPegaDataAtual() );
+        //System.out.println(getPegaDataAtual() );
 
         Scanner i = new Scanner(System.in);
         Pagamento pagamento = new Pagamento();

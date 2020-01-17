@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import classes.Servico;
@@ -19,35 +20,38 @@ public interface IServico {
 
     /**
      * Soma o total recebido no cartao
-     * @return valor recebido no cartao
+     * @param listaServico
+     * @return total recebido no cartao
      */
-    public double somaValorCartao();
+    public double somaValorCartao(ArrayList<Servico> listaServico);
 
     /**
      * Soma o total recebido em dinheiro
      * @return valor recebido em dinheiro
+     * @param listaServico
      */
-    public double somaValorDinheiro();
+    public double somaValorDinheiro(ArrayList<Servico> listaServico);
 
     /**
      * Soma o total recebido
      * @return total recebido
+     * @param listaServico
      */
-    public double somaValorTotal();
+    public double somaValorTotal(ArrayList<Servico> listaServico);
 
     /**
      * Devolve o numero de servicos feito por 
      * determinado barbeiro e o valor total de seus servicos
-     * @param barbeiro
+     * @param barbeiro and listaServico
      * @return
      */
-    public Object[] nServicoBarbeiro(Barbeiro barbeiro);
+    public Object[] nServicoBarbeiro(Barbeiro barbeiro, ArrayList<Servico> listaServico);
 
     /**
      * Devolve a quantidade de vez que determinado servico
      * foi realizado e o valor total acumulado com o mesmo
-     * @param servico
+     * @param servico and listaServico
      * @return
      */
-    public Object[] nServico(Servicos tipoServico);
+    public Object[] nServico(Servicos tipoServico, ArrayList<Servico> listaServico);
 }
