@@ -6,11 +6,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-import Listas.Clientes;
-import classes.Barbeiros;
-import classes.Cliente;
-import classes.Pagamento;
-import enumeracao.TipoPagamento;
+import barbeiros.Barbeiros;
+import cliente.Cliente;
+import cliente.Clientes;
+import pagamento.Pagamento;
+import pagamento.TipoPagamento;
 
 /**
  * Hello world!

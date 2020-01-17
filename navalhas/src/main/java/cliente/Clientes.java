@@ -1,9 +1,6 @@
-package Listas;
+package cliente;
 
 import java.util.ArrayList;
-
-import classes.Cliente;
-import interfaces.ICliente;
 
 /**
  * Clientes

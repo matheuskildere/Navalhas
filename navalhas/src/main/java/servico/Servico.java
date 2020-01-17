@@ -1,4 +1,4 @@
-package classes;
+package servico;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -6,9 +6,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import enumeracao.Barbeiro;
-import enumeracao.Servicos;
-import enumeracao.TipoPagamento;
+import barbeiros.Barbeiro;
+import barbeiros.Barbeiros;
+import cliente.Cliente;
+import pagamento.Pagamento;
+import pagamento.TipoPagamento;
 
 /**
  * Servico

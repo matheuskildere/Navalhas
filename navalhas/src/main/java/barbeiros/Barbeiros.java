@@ -1,6 +1,4 @@
-package classes;
-
-import enumeracao.Barbeiro;
+package barbeiros;
 
 /**
  * Barbeiros

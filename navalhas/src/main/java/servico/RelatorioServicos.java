@@ -1,4 +1,4 @@
-package Listas;
+package servico;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -6,12 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import classes.Servico;
-import classes.ServicoUnico;
-import enumeracao.Barbeiro;
-import enumeracao.Servicos;
-import enumeracao.TipoPagamento;
-import interfaces.IServico;
+import barbeiros.Barbeiro;
+import pagamento.TipoPagamento;
 
 /**
  * RelatorioServicos

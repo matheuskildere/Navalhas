@@ -1,6 +1,4 @@
-package classes;
-
-import enumeracao.Servicos;
+package servico;
 
 /**
  * ServicoUnico

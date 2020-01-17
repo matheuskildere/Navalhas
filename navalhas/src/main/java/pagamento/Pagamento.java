@@ -1,6 +1,5 @@
-package classes;
+package pagamento;
 
-import enumeracao.TipoPagamento;
 
 /**
  * Pagamento

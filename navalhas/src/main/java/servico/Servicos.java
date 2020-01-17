@@ -1,4 +1,4 @@
-package enumeracao;
+package servico;
 
 /**
  * Servicos

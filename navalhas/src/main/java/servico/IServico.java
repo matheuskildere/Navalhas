@@ -1,11 +1,8 @@
-package interfaces;
+package servico;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import classes.Servico;
-import enumeracao.Barbeiro;
-import enumeracao.Servicos;
+import barbeiros.Barbeiro;
 
 /**
  * IServico

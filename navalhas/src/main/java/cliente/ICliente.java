@@ -1,6 +1,4 @@
-package interfaces;
-
-import classes.Cliente;
+package cliente;
 
 /**
  * ICliente
