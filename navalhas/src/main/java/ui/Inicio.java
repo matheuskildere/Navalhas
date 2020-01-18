@@ -4,6 +4,8 @@ import java.awt.*;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Start Screen
@@ -30,19 +32,16 @@ public class Inicio extends JPanel implements ActionListener {
 
     public Inicio() {
 
-        // Body start here for correctly transparency effect.
-        body = new JPanel();
-        body.setBounds(65, 290, 1790, 530);
-        body.setBackground(new Color(255, 255, 255));
-        body.setLayout(null);
+        body();
+        frame();
+        menubar();
+        footer();
+        frame.setVisible(true);
 
+    }
+
+    public void frame() {
         
-        message = new JLabel("Bom dia / Boa tarde / Boa noite. Selecione uma opção para começar");
-        message.setBounds(20,20,200,200);
-        body.add(message);
-
-        // Body end here
-
         fundo = new JLabel();
         fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/background.png")));
         fundo.setBounds(0, 0, 1920, 1080);
@@ -61,14 +60,32 @@ public class Inicio extends JPanel implements ActionListener {
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/logo.png")));
         logo.setBounds(65, 25, 246, 246);
         frame.getContentPane().add(logo);
+    }
 
-        // Menu bar start here
+    protected void body() {
 
+        body = new JPanel();
+        body.setBounds(65, 290, 1790, 530);
+        body.setBackground(new Color(255, 255, 255));
+        body.setLayout(null);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy -- hh:mm");
+
+        message = new JLabel("Olá :) , hoje é: " + dateFormat.format(new Date()));
+        message.setBounds(700, 0, 420, 500);
+        message.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
+        body.add(message);
+    }
+
+       
+
+    protected void menubar() {
+       
         menubar = new JPanel();
         menubar.setBounds(390, 109, 1465, 80);
         menubar.setBackground(new Color(34, 34, 34));
         menubar.setLayout(null);
-        
+
         bClientes = new JButton("    Clientes");
         bClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-icon.png")));
         bClientes.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
@@ -77,6 +94,7 @@ public class Inicio extends JPanel implements ActionListener {
         bClientes.setContentAreaFilled(false);
         bClientes.setBorderPainted(false);
         bClientes.setFocusable(false);
+        bClientes.addActionListener(this);
         menubar.add(bClientes);
 
         bAssinaturas = new JButton("    Assinaturas");
@@ -100,10 +118,10 @@ public class Inicio extends JPanel implements ActionListener {
         menubar.add(bRelatorios);
 
         frame.getContentPane().add(menubar);
+    }
 
-        // End menu Bar
-
-        // Footer start here
+    protected void footer() {
+       
         whatsapp = new JLabel();
         whatsapp.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/whatsapp-icon.png")));
         whatsapp.setBounds(65, 865, 500, 100);
@@ -140,23 +158,22 @@ public class Inicio extends JPanel implements ActionListener {
         footer.setBackground(new Color(34, 34, 34));
         footer.setLayout(null);
         frame.getContentPane().add(footer);
-        // End Footer
-
-        frame.setVisible(true);
 
     }
-
     public void actionPerformed(ActionEvent ae) {
 
         /*
-         * if (ae.getSource() == bGerenciamento) {
-         * 
-         * panel.setVisible(false); PanelGerenciamento pg = new PanelGerenciamento();
-         * 
-         * frame.getContentPane().add(pg); pg.setVisible(true); }
-         * 
+
+         if (ae.getSource() == bClientes) {
+         
+         body.setVisible(false); Clientes cli = new Clientes();
+         
+         frame.getContentPane().add(cli); cli.setVisible(true);
+         
+         }
          */
     }
+   
 
     public static void panelInicio(JPanel j) {
         frame.add(j);
