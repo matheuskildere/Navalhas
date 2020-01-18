@@ -5,6 +5,7 @@ package servico;
  */
 public class ServicoUnico {
 
+    private int id;
     private Servicos nome;
     private double valor;
 
@@ -13,6 +14,12 @@ public class ServicoUnico {
         this.valor = valor;
     }
 
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
     /**
      * @return the nome
      */

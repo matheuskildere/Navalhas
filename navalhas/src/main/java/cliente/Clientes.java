@@ -34,7 +34,7 @@ public class Clientes implements ICliente{
             Object[] infoCLi ={cliente.getNome(), cliente.getContato1(),cliente.getContato2(),cliente.getFoto(), cliente.getBiometria()};
             return infoCLi;
         } else {
-            throw new IllegalArgumentException("Cliente não encontrado!");
+            throw new IllegalArgumentException("Cliente nao encontrado!");
         }
     }
 
