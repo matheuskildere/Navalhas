@@ -1,3 +1,5 @@
+package banco.connection;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,23 +11,22 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory {
 
-    private final String DRIVER = "org.postgresql.Driver";
+    private static final String DRIVER = "org.postgresql.Driver";
 
-    private final String URL = "jdbc:postgresql://localhost/5432/Navalhas";
+    private static final String URL = "jdbc:postgresql://localhost/5432/Navalhas";
 
-    private final String USER = "postgres";
+    private static final String USER = "postgres";
 
-    private final String PASS = "!engenheiromoderno1";
+    private static final String PASS = "!engenheiromoderno1";
 
-    public Connection getConnection(){
+    public static Connection getConnection(){
         try {
             Class.forName("DRIVER");
 
             return DriverManager.getConnection(URL, USER, PASS);
         } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntmeException("Erro na conexao"+ e);
+            throw new RuntimeException("Erro na conexao"+ e);
         }
-        return null;
     }
 
     public static void closeConnection(Connection connection){
@@ -34,7 +35,7 @@ public class ConnectionFactory {
                 connection.close();
             } 
         } catch (Exception e) {
-            throw new RuntmeException("Falha ao fechar a conexao"+ e);
+            throw new RuntimeException("Falha ao fechar a conexao"+ e);
         }
     }
 
@@ -45,7 +46,7 @@ public class ConnectionFactory {
                 stmt.close();
             } 
         } catch (Exception e) {
-            throw new RuntmeException("Falha ao fechar a stmt"+ e);
+            throw new RuntimeException("Falha ao fechar a stmt"+ e);
         }
     }
 
@@ -56,7 +57,7 @@ public class ConnectionFactory {
                 rs.close();
             } 
         } catch (Exception e) {
-            throw new RuntmeException("Falha ao fechar o rs"+ e);
+            throw new RuntimeException("Falha ao fechar o rs"+ e);
         }
     }
 }
