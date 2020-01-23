@@ -20,10 +20,9 @@ public class servicoUnicoDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO servico_unico (valor, paga, idtrab) VALUES (?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO servico_unico (valor, idtrab) VALUES (?,?,?)");
 
             stmt.setDouble(1, servUni.getValor());
-            stmt.setBoolean(2, servUni.isPagamento());
             stmt.setInt(2, servUni.getTrabalho().getId());
             
             stmt.executeUpdate();

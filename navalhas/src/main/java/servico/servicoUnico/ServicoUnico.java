@@ -9,12 +9,10 @@ public class ServicoUnico {
 
     private int id;
     private double valor;
-    private boolean pagamento;
     private Trabalho trabalho;
 
     public ServicoUnico(double valor, boolean pagamento, Trabalho trabalho){
         this.valor = valor;
-        this.pagamento = pagamento;
         this.trabalho = trabalho;
     }
 
@@ -47,11 +45,5 @@ public class ServicoUnico {
         this.valor = valor;
     }
 
-    public boolean isPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(boolean pagamento) {
-        this.pagamento = pagamento;
-    }
+   
 }

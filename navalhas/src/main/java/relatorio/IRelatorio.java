@@ -1,40 +1,35 @@
-package servico;
+package relatorio;
 
 import java.util.ArrayList;
 
 import barbeiros.Barbeiro;
+import servico.Servico;
 
 /**
  * IServico
  */
-public interface IServico {
+public interface IRelatorio {
 
-    /**
-     * Adiciona um servico a lista de servicos
-     * @param serv
-     */
-    public void add (Servico serv);
-
+  
     /**
      * Soma o total recebido no cartao
-     * @param listaServico
-     * @return total recebido no cartao
+     * @return valor mantido em cartao
      */
-    public double somaValorCartao(ArrayList<Servico> listaServico);
+    public double somaValorCartao();
 
     /**
      * Soma o total recebido em dinheiro
      * @return valor recebido em dinheiro
      * @param listaServico
      */
-    public double somaValorDinheiro(ArrayList<Servico> listaServico);
+    public double somaValorDinheiro();
 
     /**
      * Soma o total recebido
      * @return total recebido
      * @param listaServico
      */
-    public double somaValorTotal(ArrayList<Servico> listaServico);
+    public double somaValorTotal();
 
     /**
      * Devolve o numero de servicos feito por 
@@ -42,7 +37,7 @@ public interface IServico {
      * @param barbeiro and listaServico
      * @return
      */
-    public Object[] nServicoBarbeiro(Barbeiro barbeiro, ArrayList<Servico> listaServico);
+    public Object[] nServicoBarbeiro(int idBarbeiro);
 
     /**
      * Devolve a quantidade de vez que determinado servico
@@ -50,5 +45,5 @@ public interface IServico {
      * @param servico and listaServico
      * @return
      */
-    public Object[] nServico(Servicos tipoServico, ArrayList<Servico> listaServico);
+    public Object[] nServico(int idSer);
 }

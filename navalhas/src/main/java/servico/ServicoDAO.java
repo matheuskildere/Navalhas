@@ -21,12 +21,13 @@ public class ServicoDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO servico (idcli, idbar, data, valtotal) VALUES (?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO servico (idcli, idbar, data, valtotal, paga) VALUES (?,?,?,?,?)");
 
             stmt.setInt(1, serv.getCliente().getId());
             stmt.setInt(2, serv.getBarbeiro().getId());
             stmt.setDate(3, (Date) serv.getData());
             stmt.setDouble(4, serv.getValorTotal());
+            stmt.setBoolean(4, serv.isPagamento());
             
             stmt.executeUpdate();
             

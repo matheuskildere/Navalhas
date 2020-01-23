@@ -20,11 +20,13 @@ public class Servico {
     private Barbeiro barbeiro;
     private static Date data;
     private List<ServicoUnico> servicos;
+    private boolean pagamento; // true for money, and false for cart
 
-    public Servico (Cliente cliente, Barbeiro barbeiro, List<ServicoUnico> servicos){
+    public Servico (Cliente cliente, Barbeiro barbeiro, List<ServicoUnico> servicos,boolean pagamento ){
         this.cliente = cliente;
         this.barbeiro = barbeiro;
         this.servicos = servicos;
+        this.pagamento = pagamento; 
 
         data = new Date();
         cliente.novoServico();
@@ -94,5 +96,13 @@ public class Servico {
      */
     public Cliente getCliente() {
         return cliente;
+    }
+
+    public boolean isPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(boolean pagamento) {
+        this.pagamento = pagamento;
     }
 }
