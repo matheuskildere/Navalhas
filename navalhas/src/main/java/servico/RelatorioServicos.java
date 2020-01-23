@@ -24,7 +24,7 @@ public class RelatorioServicos implements IServico {
     public double somaValorCartao(ArrayList<Servico> listaServico) {
         double valorCartao = 0;
         for (Servico servico : listaServico) {
-            if (servico.getTipoPagamento() == TipoPagamento.Cartão) {
+            if (servico.getTipoPagamento() == TipoPagamento.Cartao) {
                 valorCartao += servico.getValorTotal();
             }
         }

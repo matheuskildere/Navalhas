@@ -4,6 +4,7 @@ package cliente;
  * Cliente
  */
 public class Cliente {
+    private int id;
     private String nome;
     private String contato1;
     private String contato2;
@@ -14,11 +15,15 @@ public class Cliente {
     private int servicosTotal = 0;
     private int servicos = 0;
 
-    public Cliente (String nome){
-        this.nome = nome;
+    public Cliente (){
+        nome = "";
+        contato1 = "";
+        contato2 = "";
+        foto = "";
+        biometria = 0;
     }
 
-    public void novoServico(){
+    public boolean novoServico(){
         servicosTotal += 1;
         servicos += 1;
         servicoGratis = false;
@@ -27,8 +32,24 @@ public class Cliente {
             servicos = 0;
             servicosGratis += 1;
         }
+
+        return servicoGratis;
     }
-    
+
+    public boolean removeServico(){
+        servicosTotal -= 1;
+        servicos -= 1;
+        servicoGratis = false;
+        return servicoGratis;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
     /**
      * @return the nome
      */
@@ -89,6 +110,27 @@ public class Cliente {
      */
     public int getServicosTotal() {
         return servicosTotal;
+    }
+
+    /**
+     * @param servicos the servicos to set
+     */
+    public void setServicos(int n){
+        this.servicos = n;
+    }
+
+    /**
+     * @param servicos the servicos to set
+     */
+    public void setServicosGratis(int n){
+        this.servicosGratis = n;
+    }
+
+    /**
+     * @param servicos the servicos to set
+     */
+    public void setServicosTotal(int n){
+        this.servicosTotal = n;
     }
 
     /**

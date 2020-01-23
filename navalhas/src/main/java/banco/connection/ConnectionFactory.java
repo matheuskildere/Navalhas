@@ -13,7 +13,7 @@ public class ConnectionFactory {
 
     private static final String DRIVER = "org.postgresql.Driver";
 
-    private static final String URL = "jdbc:postgresql://localhost/5432/Navalhas";
+    private static final String URL = "jdbc:postgresql://localhost:5432/Navalhas";
 
     private static final String USER = "postgres";
 
@@ -21,7 +21,7 @@ public class ConnectionFactory {
 
     public static Connection getConnection(){
         try {
-            Class.forName("DRIVER");
+            Class.forName(DRIVER);
 
             return DriverManager.getConnection(URL, USER, PASS);
         } catch (ClassNotFoundException | SQLException e) {

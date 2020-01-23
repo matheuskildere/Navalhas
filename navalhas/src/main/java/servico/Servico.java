@@ -1,43 +1,33 @@
 package servico;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import barbeiros.Barbeiro;
-import barbeiros.Barbeiros;
 import cliente.Cliente;
-import pagamento.Pagamento;
-import pagamento.TipoPagamento;
+import servico.servicoUnico.ServicoUnico;
 
 /**
  * Servico
  */
 public class Servico {
+    private int id;
     private Cliente cliente;
-    private Barbeiros mario;
-    private Barbeiros raimundo;
-    private Barbeiros hugo;
-    private Barbeiros sergio;
-    private List<ServicoUnico> servicos;
     private Barbeiro barbeiro;
-    TipoPagamento tipoPagamento;
     private static Date data;
-    private Pagamento pagamento;
-    private double valorTotal = 0;
+    private List<ServicoUnico> servicos;
 
-    public Servico (Cliente cliente, List<ServicoUnico> servicos, Barbeiro barbeiro, TipoPagamento tipoPagamento){
+    public Servico (Cliente cliente, Barbeiro barbeiro, List<ServicoUnico> servicos){
         this.cliente = cliente;
-        this.servicos = servicos;
         this.barbeiro = barbeiro;
-        this.tipoPagamento = tipoPagamento;
+        this.servicos = servicos;
 
         data = new Date();
         cliente.novoServico();
-        somaPagamento();
-        comissaoBarbeiro();
     }
 
     public String getData(String formato){
@@ -47,13 +37,14 @@ public class Servico {
         return formatador.format(calendar.getTime());
     }
 
-    private void somaPagamento(){
+    public Double getValorTotal(){
+        double valorTotal = 0;
         for (int i = 0; i < servicos.size(); i++) {
             valorTotal += servicos.get(i).getValor();
         }
-        pagamento.pagamento(valorTotal, tipoPagamento);
+        return valorTotal;
     }
-
+    /*
     private void comissaoBarbeiro(){
         if (barbeiro == Barbeiro.Mario) {
             mario.setComissao(valorTotal*0.5);
@@ -61,16 +52,16 @@ public class Servico {
             raimundo.setComissao(valorTotal*0.5);
         } else if (barbeiro == Barbeiro.Hugo) {
             hugo.setComissao(valorTotal*0.5);
-        } else if (barbeiro == Barbeiro.Sérgio) {
+        } else if (barbeiro == Barbeiro.Sergio) {
             sergio.setComissao(valorTotal*0.5);
         } 
-    }
+    }*/
 
     /**
-     * @return the valorTotal
+     * @return the id
      */
-    public double getValorTotal() {
-        return valorTotal;
+    public int getId() {
+        return id;
     }
 
     /**
@@ -81,18 +72,27 @@ public class Servico {
     }
 
     /**
-     * @return the tipoPagamento
+     * @return the data
      */
-    public TipoPagamento getTipoPagamento() {
-        return tipoPagamento;
+    public Date getData() {
+        return data;
     }
 
     /**
      * @return the servicos
      */
     public List<ServicoUnico> getServicos() {
-        return servicos;
+        ArrayList<ServicoUnico> listId = new ArrayList<>();
+        for (ServicoUnico servicoUnico : servicos) {
+            listId.add(servicoUnico);
+        }
+        return listId;
     }
 
-
+    /**
+     * @return the cliente
+     */
+    public Cliente getCliente() {
+        return cliente;
+    }
 }

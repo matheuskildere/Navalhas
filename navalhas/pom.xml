@@ -16,6 +16,13 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.2.5</version>
+</dependency>
+
     </dependencies>
     <build>
         <pluginManagement>
@@ -35,13 +42,6 @@
                             <artifactId>checkstyle-rules</artifactId>
                             <version>1.1.0</version>
                         </dependency>
-                        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-                        <dependency>
-                            <groupId>org.postgresql</groupId>
-                            <artifactId>postgresql</artifactId>
-                            <version>42.2.9</version>
-                        </dependency>
-
                     </dependencies>
                     <configuration>
                         <configLocation>com/github/ngeor/checkstyle.xml</configLocation>

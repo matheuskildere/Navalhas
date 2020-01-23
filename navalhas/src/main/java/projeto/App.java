@@ -4,13 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Scanner;
 
-import barbeiros.Barbeiros;
 import cliente.Cliente;
-import cliente.Clientes;
-import pagamento.Pagamento;
-import pagamento.TipoPagamento;
+import cliente.ClienteDAO;
 
 /**
  * Hello world!
@@ -31,47 +27,24 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        String vari = 17+"/"+getPegaDataAtual("MM/yyyy");
-        System.out.println(vari.equals(getPegaDataAtual("dd/MM/yyyy")));
-        //App();
-        //cliente2();
+        //String vari = 17+"/"+getPegaDataAtual("MM/yyyy");
+        //System.out.println(vari.equals(getPegaDataAtual("dd/MM/yyyy")));
+        App();
+        cliente2();
     }
 
     private static void cliente2(){
-        Cliente cli = new Cliente("Matheus");
-        cli.setContato1("94992555555566");
-        Clientes lista = new Clientes();
-        lista.add(cli);
-        System.out.println("numero: "+lista.get("Matheus").getContato1());
-        
-        Cliente cli2 = new Cliente("Matheus");
-        cli2.setContato1("992552303");
-        lista.set("Matheus", cli2);
-        System.out.println("numero: "+lista.get("Matheus").getContato1());
+        Cliente cli = new Cliente();
+        ClienteDAO dao = new ClienteDAO();
 
-        lista.addNewService("Matheus");
-        lista.addNewService("Matheus");
-        lista.addNewService("Matheus");
-        lista.addNewService("Matheus");
-        lista.addNewService("Matheus");
-        lista.addNewService("Matheus");
-        lista.addNewService("Matheus");
-        lista.addNewService("Matheus");
-        
-        System.out.println(lista.addNewService("Matheus"));
-        
-        System.out.println(lista.addNewService("Matheus"));
-        lista.addNewService("Matheus");
-        System.out.println(lista.addNewService("Matheus"));
-
-        System.out.println(cli2.getServicos());
-        System.out.println(cli2.getServicosGratis());
-        System.out.println(cli2.getServicosTotal());
-        System.out.println(cli2.getContato1());
+        cli.setNome("Matheus");
+        cli.setContato1("94992552303");
+        cli.setFoto("snadjsvçhaçsld0");
+        dao.create(cli);
     }
 
     private static void cliente(){
-        Cliente cli = new Cliente("Matheus");
+        Cliente cli = new Cliente();
         System.out.println(cli.getNome());
         System.out.println(cli.getServicos());
         System.out.println(cli.getServicosGratis());
@@ -80,7 +53,7 @@ public final class App {
     }
     private static void App() {
         //System.out.println(getPegaDataAtual() );
-
+        /*
         Scanner i = new Scanner(System.in);
         Pagamento pagamento = new Pagamento();
         System.out.print("valor: ");
@@ -95,9 +68,8 @@ public final class App {
         System.out.println(pagamento.getCartão());
         System.out.println(pagamento.getDinheiro());
         double valorTotal = i.nextDouble();
-        Barbeiros mario = new Barbeiros();
         mario.setComissao(valorTotal*0.5);
         System.out.println(mario.getComissao());
-        
+        */
     }
 }
