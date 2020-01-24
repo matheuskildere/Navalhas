@@ -25,7 +25,7 @@ public class ServicoDAO {
 
             stmt.setInt(1, serv.getCliente().getId());
             stmt.setInt(2, serv.getBarbeiro().getId());
-            stmt.setDate(3, (Date) serv.getData());
+            stmt.setString(3, serv.getData("dd/MM/yyyy"));
             stmt.setDouble(4, serv.getValorTotal());
             stmt.setBoolean(4, serv.isPagamento());
             

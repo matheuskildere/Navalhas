@@ -30,7 +30,14 @@ public class Inicio extends JPanel implements ActionListener {
     public JLabel instagram;
     public JLabel facebook;
 
+    private int width;
+    private int height;
+
     public Inicio() {
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension d = tk.getScreenSize();
+        width = (int) d.getWidth();
+        height = (int) d.getHeight();
 
         body();
         frame();
@@ -44,12 +51,13 @@ public class Inicio extends JPanel implements ActionListener {
 
         fundo = new JLabel();
         fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/background.png")));
-        fundo.setBounds(0, 0, 1920, 1080);
+        fundo.setBounds(0, 0, width, height);
 
         frame = new JFrame("Barbearia Navalhas");
         frame.getContentPane().setBackground(new Color(247, 247, 247));
-        frame.setSize(1920, 1080);
+        frame.setSize(width, height);
         frame.setLayout(null);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -57,15 +65,15 @@ public class Inicio extends JPanel implements ActionListener {
         frame.getContentPane().add(fundo);
 
         logo = new JLabel("");
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/logo.png")));
-        logo.setBounds(65, 25, 246, 246);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/Logo1.png")));
+        logo.setBounds(height/17, height/43, height/3, height/4);
         frame.getContentPane().add(logo);
     }
 
     protected void body() {
 
         body = new JPanel();
-        body.setBounds(65, 290, 1790, 530);
+        body.setBounds(width/30, width/6, width/1 - 110, width/4);
         body.setBackground(new Color(255, 255, 255));
         body.setLayout(null);
 
@@ -80,15 +88,15 @@ public class Inicio extends JPanel implements ActionListener {
     protected void menubar() {
 
         menubar = new JPanel();
-        menubar.setBounds(390, 109, 1465, 80);
-        menubar.setBackground(new Color(34, 34, 34));
+        menubar.setBounds(width/5 +20, width/19 + 20, width/2 +380 , width/24);
+        menubar.setBackground(new Color(34, 34, 34)); 
         menubar.setLayout(null);
 
         bClientes = new JButton("    Clientes");
         bClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-icon.png")));
         bClientes.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         bClientes.setForeground(new Color(255, 255, 255));
-        bClientes.setBounds(0, 0, 488, 80);
+        bClientes.setBounds(-40, -10, 488, 80);
         bClientes.setContentAreaFilled(false);
         bClientes.setBorderPainted(false);
         bClientes.setFocusable(false);
@@ -99,17 +107,17 @@ public class Inicio extends JPanel implements ActionListener {
         bAssinaturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signature-icon.png")));
         bAssinaturas.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         bAssinaturas.setForeground(new Color(255, 255, 255));
-        bAssinaturas.setBounds(488, 0, 488, 80);
+        bAssinaturas.setBounds(width/4 - 40, -10, 488, 80);
         bAssinaturas.setContentAreaFilled(false);
         bAssinaturas.setBorderPainted(false);
         bAssinaturas.setFocusable(false);
         menubar.add(bAssinaturas);
 
-        bRelatorios = new JButton("    Relatórios");
+        bRelatorios = new JButton("    Relatorios");
         bRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/report-icon.png")));
         bRelatorios.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         bRelatorios.setForeground(new Color(255, 255, 255));
-        bRelatorios.setBounds(970, 0, 493, 80);
+        bRelatorios.setBounds(width/2 -40, -10, 493, 80);
         bRelatorios.setContentAreaFilled(false);
         bRelatorios.setBorderPainted(false);
         bRelatorios.setFocusable(false);
@@ -122,37 +130,37 @@ public class Inicio extends JPanel implements ActionListener {
 
         whatsapp = new JLabel();
         whatsapp.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/whatsapp-icon.png")));
-        whatsapp.setBounds(65, 865, 500, 100);
+        whatsapp.setBounds(width/30, width/2 - 15, 500, 100);
         frame.getContentPane().add(whatsapp);
 
         whatsapp = new JLabel("(94) 99129-0504");
-        whatsapp.setBounds(125, 850, 500, 100);
+        whatsapp.setBounds(125, width/2 - 25, 500, 100);
         whatsapp.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         whatsapp.setForeground(new Color(255, 255, 255));
         frame.getContentPane().add(whatsapp);
 
         whatsapp = new JLabel("(94) 98146-2634");
-        whatsapp.setBounds(125, 880, 500, 100);
+        whatsapp.setBounds(125, width/2 - 4, 500, 100);
         whatsapp.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         whatsapp.setForeground(new Color(255, 255, 255));
         frame.getContentPane().add(whatsapp);
 
         instagram = new JLabel("   Barbearia.Navalhas");
         instagram.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/instagram-icon.png")));
-        instagram.setBounds(760, 865, 500, 100);
+        instagram.setBounds(width/3 + 100, width/2 - 15, 500, 100);
         instagram.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         instagram.setForeground(new Color(255, 255, 255));
         frame.getContentPane().add(instagram);
 
         facebook = new JLabel("   @barbearianavalhasparauapebas");
         facebook.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/facebook-icon.png")));
-        facebook.setBounds(1460, 865, 500, 100);
+        facebook.setBounds(width - 420, width/2 - 15, 500, 100);
         facebook.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         facebook.setForeground(new Color(255, 255, 255));
         frame.getContentPane().add(facebook);
 
         footer = new JPanel();
-        footer.setBounds(0, 875, 1920, 80);
+        footer.setBounds(0, width/2, width , width/24 + 50);
         footer.setBackground(new Color(34, 34, 34));
         footer.setLayout(null);
         frame.getContentPane().add(footer);
@@ -178,4 +186,7 @@ public class Inicio extends JPanel implements ActionListener {
         j.setVisible(true);
     }
 
+    public static void main(String[] args) {
+        Inicio i = new Inicio();
+    }
 }
