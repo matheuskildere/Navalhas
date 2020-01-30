@@ -1,7 +1,6 @@
 package servico;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -25,7 +24,7 @@ public class ServicoDAO {
 
             stmt.setInt(1, serv.getCliente().getId());
             stmt.setInt(2, serv.getBarbeiro().getId());
-            stmt.setString(3, serv.getData("dd/MM/yyyy"));
+            stmt.setString(3, serv.getData());
             stmt.setDouble(4, serv.getValorTotal());
             stmt.setBoolean(4, serv.isPagamento());
             

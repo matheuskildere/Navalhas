@@ -18,21 +18,22 @@ public class Servico {
     private int id;
     private Cliente cliente;
     private Barbeiro barbeiro;
-    private static Date data;
+    private final String DATA_STRING = dataString("dd/MM/yyyy");
     private List<ServicoUnico> servicos;
     private boolean pagamento; // true for money, and false for cart
 
+    public Servico(){}
     public Servico (Cliente cliente, Barbeiro barbeiro, List<ServicoUnico> servicos,boolean pagamento ){
         this.cliente = cliente;
         this.barbeiro = barbeiro;
         this.servicos = servicos;
         this.pagamento = pagamento; 
 
-        data = new Date();
         cliente.novoServico();
     }
 
-    public String getData(String formato){
+    private String dataString(String formato){
+        Date data = new Date();
         SimpleDateFormat formatador = new SimpleDateFormat(formato); //"dd/MM/yyyy"
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(data);
@@ -76,8 +77,8 @@ public class Servico {
     /**
      * @return the data
      */
-    public Date getData() {
-        return data;
+    public String getData() {
+        return DATA_STRING;
     }
 
     /**

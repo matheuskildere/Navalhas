@@ -24,7 +24,7 @@ public class ClienteDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO cliente (nom, cont1, cont2, foto, bio, serGratis, serTotal, serv) VALUES (?,?,?,?,?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO cliente (nom, cont1, cont2, foto, bio, servGratis, servTotal, serv) VALUES (?,?,?,?,?,?,?,?)");
             
             stmt.setString(1, cli.getNome());
             stmt.setString(2, cli.getContato1());
@@ -65,8 +65,8 @@ public class ClienteDAO {
                 cliente.setFoto(rs.getString("foto"));
                 cliente.setBiometria(rs.getByte("bio"));
                 cliente.setServicos(rs.getInt("serv"));
-                cliente.setServicosGratis(rs.getInt("sergratis"));
-                cliente.setServicosTotal(rs.getInt("sertotal"));
+                cliente.setServicosGratis(rs.getInt("servgratis"));
+                cliente.setServicosTotal(rs.getInt("servtotal"));
 
                 lista.add(cliente);
             }
@@ -134,7 +134,7 @@ public class ClienteDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE cliente SET serGratis ?, serTotal ?, serv ? WHERE nom = ?");
+            stmt = con.prepareStatement("UPDATE cliente SET servGratis ?, servTotal ?, serv ? WHERE nom = ?");
             
             stmt.setInt(1, cli.getServicosGratis());
             stmt.setInt(2, cli.getServicosTotal());
