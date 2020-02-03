@@ -59,8 +59,9 @@ public class Janela extends JFrame implements ActionListener {
     }
 
     protected void fundo() {
-        fundo = new JLabel();
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/background.png")));
+        ImagePanel fundo = new ImagePanel(getClass().getResource("icons/background.png"));
+        //fundo = new JLabel();
+        //fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/background.png")));
         fundo.setBounds(0, 0, width, height);
         getContentPane().add(fundo);
     }

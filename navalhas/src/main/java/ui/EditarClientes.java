@@ -40,6 +40,7 @@ public class EditarClientes extends JPanel implements ActionListener {
         
         setBounds(WIDTH/30, HEIGHT/3, WIDTH - WIDTH/15, WIDTH/4);
         setBackground(new Color(255, 255, 255));
+        //setForeground(new Color(255, 255, 255));
         setLayout(null);
 
         description = new JPanel();
