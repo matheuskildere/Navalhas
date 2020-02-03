@@ -7,11 +7,9 @@ import javax.swing.*;
 /**
  * Janela
  */
-public class Janela extends JPanel implements ActionListener {
+public class Janela extends JFrame implements ActionListener {
 
-    public static JFrame frame;
-
-    public JLabel fundo;
+    public static JLabel fundo;
     public JLabel logo;
 
     public JPanel menubar;
@@ -33,34 +31,38 @@ public class Janela extends JPanel implements ActionListener {
         width = (int) d.getWidth();
         height = (int) d.getHeight();
 
+       
         frame();
+        fundo();
         menubar();
         footer();
-        frame.setVisible(true);
+        setVisible(true);
 
     }
 
-    public void frame() {
-
-        fundo = new JLabel();
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/background.png")));
-        fundo.setBounds(0, 0, width, height);
-
-        frame = new JFrame("Barbearia Navalhas");
-        frame.getContentPane().setBackground(new Color(247, 247, 247));
-        frame.setSize(width, height);
-        frame.setLayout(null);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.getContentPane().add(fundo);
-        frame.setResizable(false);
+    public void frame() {    
+        new JFrame("Barbearia Navalhas");
+        getContentPane().setBackground(new Color(247, 247, 247));
+        setSize(width, height);
+        setLayout(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         logo = new JLabel("");
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/logo.png")));
         logo.setBounds(height / 17, height / 43, height / 3, height / 4);
-        frame.getContentPane().add(logo);
+        getContentPane().add(logo);
+        
+    }
+
+    protected void fundo() {
+        fundo = new JLabel();
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/background.png")));
+        fundo.setBounds(0, 0, width, height);
+        getContentPane().add(fundo);
     }
 
     protected void menubar() {
@@ -89,6 +91,7 @@ public class Janela extends JPanel implements ActionListener {
         bAssinaturas.setContentAreaFilled(false);
         bAssinaturas.setBorderPainted(false);
         bAssinaturas.setFocusable(false);
+        bAssinaturas.addActionListener(this);
         menubar.add(bAssinaturas);
 
         bRelatorios = new JButton("    Relatórios");
@@ -99,9 +102,10 @@ public class Janela extends JPanel implements ActionListener {
         bRelatorios.setContentAreaFilled(false);
         bRelatorios.setBorderPainted(false);
         bRelatorios.setFocusable(false);
+        bRelatorios.addActionListener(this);
         menubar.add(bRelatorios);
 
-        frame.getContentPane().add(menubar);
+        getContentPane().add(menubar);
     }
 
     protected void footer() {
@@ -109,39 +113,39 @@ public class Janela extends JPanel implements ActionListener {
         whatsapp = new JLabel();
         whatsapp.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/whatsapp-icon.png")));
         whatsapp.setBounds(width / 30, width / 2 - 15, 500, 100);
-        frame.getContentPane().add(whatsapp);
+        getContentPane().add(whatsapp);
 
         whatsapp = new JLabel("(94) 99129-0504");
         whatsapp.setBounds(125, width / 2 - 25, 500, 100);
         whatsapp.setFont(new Font("Helvetica Neue", Font.PLAIN, 22));
         whatsapp.setForeground(new Color(255, 255, 255));
-        frame.getContentPane().add(whatsapp);
+        getContentPane().add(whatsapp);
 
         whatsapp = new JLabel("(94) 98146-2634");
         whatsapp.setBounds(125, width / 2 + 3, 500, 100);
         whatsapp.setFont(new Font("Helvetica Neue", Font.PLAIN, 22));
         whatsapp.setForeground(new Color(255, 255, 255));
-        frame.getContentPane().add(whatsapp);
+        getContentPane().add(whatsapp);
 
         instagram = new JLabel("   Barbearia.Navalhas");
         instagram.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/instagram-icon.png")));
         instagram.setBounds(width / 3 + 120, width / 2 - 15, 500, 100);
         instagram.setFont(new Font("Helvetica Neue", Font.PLAIN, 22));
         instagram.setForeground(new Color(255, 255, 255));
-        frame.getContentPane().add(instagram);
+        getContentPane().add(instagram);
 
         facebook = new JLabel("   @barbearianavalhasparauapebas");
         facebook.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/facebook-icon.png")));
         facebook.setBounds(width - 450, width / 2 - 15, 500, 100);
         facebook.setFont(new Font("Helvetica Neue", Font.PLAIN, 22));
         facebook.setForeground(new Color(255, 255, 255));
-        frame.getContentPane().add(facebook);
+        getContentPane().add(facebook);
 
         footer = new JPanel();
         footer.setBounds(0, width / 2, width, width / 24 + 50);
         footer.setBackground(new Color(34, 34, 34));
         footer.setLayout(null);
-        frame.getContentPane().add(footer);
+        getContentPane().add(footer);
 
     }
 
@@ -149,18 +153,27 @@ public class Janela extends JPanel implements ActionListener {
 
         if (ae.getSource() == bClientes) {
 
+            setVisible(false);
             Clientes cli = new Clientes();
 
-            frame.getContentPane().add(cli);
+            getContentPane().add(cli);
             cli.setVisible(true);
+
+        }
+
+        if (ae.getSource() == bAssinaturas) {
+            setVisible(false);
+            Assinaturas ass = new Assinaturas();
+
+            getContentPane().add(ass);
+            ass.setVisible(true);
 
         }
 
     }
 
-    public static void panelInicio(JPanel j) {
-        frame.add(j);
-        j.setVisible(true);
+    public static void add(JPanel panel){
+        System.out.println(getFrames().length);
+        getFrames()[0].add(panel);
     }
-
 }
