@@ -31,18 +31,19 @@ public class AddClientes extends JPanel implements ActionListener {
     private final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
     public AddClientes() {
-        setBounds( WIDTH/30 , WIDTH/6, WIDTH - WIDTH/15,WIDTH/ 4);
+        setBounds( WIDTH/30 , WIDTH/6, WIDTH - WIDTH/15,WIDTH/4);
         setBackground(new Color(255, 255, 255));
         setLayout(null);
 
         description = new JPanel();
         description.setBounds(0, 0, WIDTH/8, WIDTH/4);
         description.setBackground(new Color(234, 234, 234));
+        description.setLayout(null);
         add(description);
 
         customerIcon = new JLabel();
         customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-add.png")));
-        customerIcon.setBounds(WIDTH/38, HEIGHT/2, 0, 0);
+        customerIcon.setBounds(HEIGHT/12,HEIGHT/12,HEIGHT/50, HEIGHT/50);
         description.add(customerIcon);
 
         bFoto = new JButton();

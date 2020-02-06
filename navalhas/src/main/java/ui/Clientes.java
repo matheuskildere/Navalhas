@@ -17,28 +17,32 @@ public class Clientes extends JPanel implements ActionListener {
     private JButton bEditarCliente;
     private JButton bExcluirCliente;
 
+    private final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    private final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+
+
     public Clientes() { 
-        setBounds(65, 460, 1790, 400);
+        setBounds(WIDTH/29, HEIGHT/2 - HEIGHT/17, WIDTH - WIDTH/15, HEIGHT/4);
         // height de 200 originalmente
         setBackground(new Color(255, 255, 255));
         setLayout(null);
         //Janela.frame.getContentPane().add(body);
 
         description = new JPanel();
-        description.setBounds(0, 0, 246, 200);
+        description.setBounds(0, 0, WIDTH/8, HEIGHT/4);
         description.setBackground(new Color(234, 234, 234));
+        description.setLayout(null);
         add(description);
 
-        customerIcon = new JLabel();
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-users.png")));
-        customerIcon.setBounds(0, 50, 0, 0);
-        description.add(customerIcon);
+        ImagePanel icoPanel = new ImagePanel(getClass().getResource("icons/customer-users.png"));
+        icoPanel.setBounds(HEIGHT/12,HEIGHT/12,HEIGHT/50, HEIGHT/50);
+        description.add(icoPanel);
 
         bAddCliente = new JButton("\nAdicionar");
         bAddCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-add.png")));
         bAddCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         bAddCliente.setForeground(new Color(0, 0, 0));
-        bAddCliente.setBounds(350, 0, 300, 200);
+        bAddCliente.setBounds(WIDTH/6, 0, WIDTH/6, HEIGHT/4);
         bAddCliente.setContentAreaFilled(false);
         bAddCliente.setBorderPainted(false);
         bAddCliente.setFocusable(false);
@@ -49,7 +53,7 @@ public class Clientes extends JPanel implements ActionListener {
         bConsultarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-search.png")));
         bConsultarCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         bConsultarCliente.setForeground(new Color(0, 0, 0));
-        bConsultarCliente.setBounds(700, 0, 300, 200);
+        bConsultarCliente.setBounds(WIDTH/3, 0, WIDTH/6, HEIGHT/4);
         bConsultarCliente.setContentAreaFilled(false);
         bConsultarCliente.setBorderPainted(false);
         bConsultarCliente.setFocusable(false);
@@ -60,7 +64,7 @@ public class Clientes extends JPanel implements ActionListener {
         bEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-edit.png")));
         bEditarCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         bEditarCliente.setForeground(new Color(0, 0, 0));
-        bEditarCliente.setBounds(1050, 0, 300, 200);
+        bEditarCliente.setBounds(WIDTH - WIDTH/ 2, 0, WIDTH/6, HEIGHT/4);
         bEditarCliente.setContentAreaFilled(false);
         bEditarCliente.setBorderPainted(false);
         bEditarCliente.setFocusable(false);
@@ -71,7 +75,7 @@ public class Clientes extends JPanel implements ActionListener {
         bExcluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-delete.png")));
         bExcluirCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         bExcluirCliente.setForeground(new Color(0, 0, 0));
-        bExcluirCliente.setBounds(1200, 0, 300, 200);
+        bExcluirCliente.setBounds(WIDTH - WIDTH /3, 0, WIDTH/5, HEIGHT/4);
         bExcluirCliente.setContentAreaFilled(false);
         bExcluirCliente.setBorderPainted(false);
         bExcluirCliente.setFocusable(false);
@@ -86,9 +90,8 @@ public class Clientes extends JPanel implements ActionListener {
 
             setVisible(false);
             AddClientes addClientes = new AddClientes();
-
             Inicio.add(addClientes);
-            //Janela.frame.getContentPane().add(addClientes);
+            Inicio.remove(this);
             addClientes.setVisible(true);
 
         }
