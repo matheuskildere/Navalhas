@@ -2,179 +2,312 @@ package ui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.*;
 
 /**
- * Janela
+ * Classe que inicia o programa e cria a estrutura basica (Logo, menu e rodape)
  */
-public class Janela extends JFrame implements ActionListener {
+public class Janela implements ActionListener {
 
-    public static JLabel fundo;
-    public JLabel logo;
+    protected static JFrame frame;
+    protected JLabel fundo;
+    protected JLabel logo;
 
-    public JPanel menubar;
-    public JButton bClientes;
-    public JButton bAssinaturas;
-    public JButton bRelatorios;
+    protected JPanel menu;
+    protected JButton bClientes;
+    protected JButton bAssinaturas;
+    protected JButton bRelatorios;
 
-    public JPanel footer;
-    public JLabel whatsapp;
-    public JLabel instagram;
-    public JLabel facebook;
+    public AddClientes addCli = new AddClientes();
+    public ConsultarCliente conCli = new ConsultarCliente();
+    public EditarClientes ediCli = new EditarClientes();
+    public ExcluirClientes excCli = new ExcluirClientes();
+    public Clientes cli = new Clientes(addCli, conCli, ediCli, excCli);
 
-    private int width;
-    private int height;
+    public AddAssinaturas addAss = new AddAssinaturas();
+    public Assinaturas ass = new Assinaturas(addAss);// = new Assinaturas(addAss);
+
+    public RelatoriosDiarioBarbeiro relDiaBarbeiro = new RelatoriosDiarioBarbeiro();
+    public RelatoriosDiario relDia = new RelatoriosDiario(relDiaBarbeiro);
+
+    public RelatoriosSemanalBarbeiro relSemBarbeiro = new RelatoriosSemanalBarbeiro();
+    public RelatoriosSemanal relSem = new RelatoriosSemanal(relSemBarbeiro);
+    public RelatoriosMensalBarbeiro relMenBarbeiro = new RelatoriosMensalBarbeiro();
+    public RelatoriosMensal relMen = new RelatoriosMensal(relMenBarbeiro);
+    public RelatoriosMes relMes = new RelatoriosMes(relMen);
+    public RelatoriosAnual relAnu = new RelatoriosAnual();
+    public Relatorios rel = new Relatorios(relDia, relSem, relMes, relAnu);
+
+    private static JPanel panel;
+    private JLabel message;
+
+    protected JPanel rodape;
+    protected JLabel whatsapp;
+    protected JLabel instagram;
+    protected JLabel facebook;
+
+    public int width;
+    public int height;
 
     public Janela() {
+        
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension d = tk.getScreenSize();
         width = (int) d.getWidth();
         height = (int) d.getHeight();
 
-       
         frame();
-        fundo();
-        menubar();
-        footer();
-        setVisible(true);
+        frame.getContentPane().add(cli);
+        frame.getContentPane().add(addCli);
+        frame.getContentPane().add(conCli);
+        frame.getContentPane().add(ediCli);
+        frame.getContentPane().add(excCli);
 
+        frame.getContentPane().add(ass);
+        frame.getContentPane().add(addAss);
+
+        frame.getContentPane().add(rel);
+        frame.getContentPane().add(relDia);
+        frame.getContentPane().add(relDiaBarbeiro);
+        frame.getContentPane().add(relSem);
+        frame.getContentPane().add(relSemBarbeiro);
+        frame.getContentPane().add(relMes);
+        frame.getContentPane().add(relMenBarbeiro);
+        frame.getContentPane().add(relMen);
+        frame.getContentPane().add(relAnu);
+
+        cli.setVisible(false);
+        addCli.setVisible(false);
+        conCli.setVisible(false);
+        ediCli.setVisible(false);
+        excCli.setVisible(false);
+
+        ass.setVisible(false);
+        addAss.setVisible(false);
+
+        rel.setVisible(false);
+        relDia.setVisible(false);
+        relDiaBarbeiro.setVisible(false);
+        relSem.setVisible(false);
+        relSemBarbeiro.setVisible(false);
+        relMes.setVisible(false);
+        relMen.setVisible(false);
+        relMenBarbeiro.setVisible(false);
+        relAnu.setVisible(false);
+
+        panel();
+        fundo();
+        logo();
+        menu();
+        rodape();
+
+        frame.setVisible(true);
     }
 
-    public void frame() {    
-        new JFrame("Barbearia Navalhas");
-        getContentPane().setBackground(new Color(247, 247, 247));
-        setSize(width, height);
-        setLayout(null);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setResizable(false);
+    private void frame() {
+        frame = new JFrame("Barbearia Navalhas");
+        frame.setSize(1366, 768);
+        frame.setLayout(null);
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+    }
 
+    private void panel() {
+        panel = new JPanel();
+        panel.setBounds(45, 182, 1275, 460);
+        panel.setBackground(new Color(255, 255, 255));
+        panel.setLayout(null);
+        frame.getContentPane().add(panel);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); //-- hh:mm");
+
+        message = new JLabel("Bem Vindo ao Sistema da Barbearia Navalhas\n " + dateFormat.format(new Date()));
+        message.setBounds(420, 230, 600, 25);
+        message.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
+        panel.add(message);
+    }
+
+    private void fundo() {
+        fundo = new JLabel();
+        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/background.png")));
+        fundo.setBounds(0, 0, 1366, 768);
+        frame.getContentPane().add(fundo);
+    }
+
+    private void logo() {
         logo = new JLabel("");
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/logo.png")));
-        logo.setBounds(height / 17, height / 43, height / 3, height / 4);
-        getContentPane().add(logo);
-        
+        logo.setBounds(52, 5, 160, 160);
+        frame.getContentPane().add(logo);
     }
 
-    protected void fundo() {
-        ImagePanel fundo = new ImagePanel(getClass().getResource("icons/background.png"));
-        //fundo = new JLabel();
-        //fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/background.png")));
-        fundo.setBounds(0, 0, width, height);
-        getContentPane().add(fundo);
-    }
-
-    protected void menubar() {
-
-        menubar = new JPanel();
-        menubar.setBounds(width / 5 + 30, width / 19 + 20, width / 2 + 380, width / 24);
-        menubar.setBackground(new Color(34, 34, 34));
-        menubar.setLayout(null);
+    public void menu() {
+        menu = new JPanel();
+        menu.setBounds(276, 55, 1045, 56);
+        menu.setBackground(new Color(34, 34, 34));
+        menu.setLayout(null);
 
         bClientes = new JButton("    Clientes");
         bClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-icon.png")));
-        bClientes.setFont(new Font("Helvetica Neue", Font.PLAIN, 25));
+        bClientes.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bClientes.setForeground(new Color(255, 255, 255));
-        bClientes.setBounds(-40, -10, 488, 80);
+        bClientes.setBounds(0, 0, 348, 56);
         bClientes.setContentAreaFilled(false);
         bClientes.setBorderPainted(false);
         bClientes.setFocusable(false);
         bClientes.addActionListener(this);
-        menubar.add(bClientes);
+        menu.add(bClientes);
 
         bAssinaturas = new JButton("    Assinaturas");
         bAssinaturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signature-icon.png")));
-        bAssinaturas.setFont(new Font("Helvetica Neue", Font.PLAIN, 25));
+        bAssinaturas.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bAssinaturas.setForeground(new Color(255, 255, 255));
-        bAssinaturas.setBounds(width / 4 - 40, -10, 488, 80);
+        bAssinaturas.setBounds(348, 0, 348, 56);
         bAssinaturas.setContentAreaFilled(false);
         bAssinaturas.setBorderPainted(false);
         bAssinaturas.setFocusable(false);
         bAssinaturas.addActionListener(this);
-        menubar.add(bAssinaturas);
+        menu.add(bAssinaturas);
 
-        bRelatorios = new JButton("    Relatórios");
+        bRelatorios = new JButton("   Relatórios");
         bRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/report-icon.png")));
-        bRelatorios.setFont(new Font("Helvetica Neue", Font.PLAIN, 25));
+        bRelatorios.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bRelatorios.setForeground(new Color(255, 255, 255));
-        bRelatorios.setBounds(width / 2 - 40, -10, 493, 80);
+        bRelatorios.setBounds(696, 0, 348, 56);
         bRelatorios.setContentAreaFilled(false);
         bRelatorios.setBorderPainted(false);
         bRelatorios.setFocusable(false);
         bRelatorios.addActionListener(this);
-        menubar.add(bRelatorios);
-
-        getContentPane().add(menubar);
+        menu.add(bRelatorios);
+        frame.getContentPane().add(menu);
     }
 
-    protected void footer() {
-
+    public void rodape() {
         whatsapp = new JLabel();
         whatsapp.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/whatsapp-icon.png")));
-        whatsapp.setBounds(width / 30, width / 2 - 15, 500, 100);
-        getContentPane().add(whatsapp);
+        whatsapp.setBounds(47, 695, 26, 26);
+        frame.getContentPane().add(whatsapp);
 
         whatsapp = new JLabel("(94) 99129-0504");
-        whatsapp.setBounds(125, width / 2 - 25, 500, 100);
-        whatsapp.setFont(new Font("Helvetica Neue", Font.PLAIN, 22));
+        whatsapp.setBounds(88, 689, 140, 19);
+        whatsapp.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         whatsapp.setForeground(new Color(255, 255, 255));
-        getContentPane().add(whatsapp);
+        frame.getContentPane().add(whatsapp);
 
         whatsapp = new JLabel("(94) 98146-2634");
-        whatsapp.setBounds(125, width / 2 + 3, 500, 100);
-        whatsapp.setFont(new Font("Helvetica Neue", Font.PLAIN, 22));
+        whatsapp.setBounds(88, 708, 140, 19);
+        whatsapp.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         whatsapp.setForeground(new Color(255, 255, 255));
-        getContentPane().add(whatsapp);
+        frame.getContentPane().add(whatsapp);
 
         instagram = new JLabel("   Barbearia.Navalhas");
         instagram.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/instagram-icon.png")));
-        instagram.setBounds(width / 3 + 120, width / 2 - 15, 500, 100);
-        instagram.setFont(new Font("Helvetica Neue", Font.PLAIN, 22));
+        instagram.setBounds(496, 695, 220, 27);
+        instagram.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         instagram.setForeground(new Color(255, 255, 255));
-        getContentPane().add(instagram);
+        frame.getContentPane().add(instagram);
 
         facebook = new JLabel("   @barbearianavalhasparauapebas");
         facebook.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/facebook-icon.png")));
-        facebook.setBounds(width - 450, width / 2 - 15, 500, 100);
-        facebook.setFont(new Font("Helvetica Neue", Font.PLAIN, 22));
+        facebook.setBounds(1000, 695, 340, 26);
+        facebook.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         facebook.setForeground(new Color(255, 255, 255));
-        getContentPane().add(facebook);
+        frame.getContentPane().add(facebook);
 
-        footer = new JPanel();
-        footer.setBounds(0, width / 2, width, width / 24 + 50);
-        footer.setBackground(new Color(34, 34, 34));
-        footer.setLayout(null);
-        getContentPane().add(footer);
+        rodape = new JPanel();
+        rodape.setBounds(0, 678, 1366, 80);
+        rodape.setBackground(new Color(34, 34, 34));
+        rodape.setLayout(null);
+        frame.getContentPane().add(rodape);
+    }
 
+
+    // Metodo para a correta mudanca de paineis
+    public static void panelInicio(JPanel j) {
+        frame.getContentPane().add(j);
+        j.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent ae) {
 
         if (ae.getSource() == bClientes) {
 
-            setVisible(false);
-            Clientes cli = new Clientes();
+            panel.setVisible(false);
 
-            getContentPane().add(cli);
             cli.setVisible(true);
+            addCli.setVisible(false);
+            conCli.setVisible(false);
+            ediCli.setVisible(false);
+            excCli.setVisible(false);
+
+            ass.setVisible(false);
+            addAss.setVisible(false);
+
+            rel.setVisible(false);
+            relDia.setVisible(false);
+            relDiaBarbeiro.setVisible(false);
+            relSem.setVisible(false);
+            relSemBarbeiro.setVisible(false);
+            relMes.setVisible(false);
+            relMen.setVisible(false);
+            relMenBarbeiro.setVisible(false);
+            relAnu.setVisible(false);
 
         }
 
         if (ae.getSource() == bAssinaturas) {
-            setVisible(false);
-            Assinaturas ass = new Assinaturas();
 
-            getContentPane().add(ass);
+            panel.setVisible(false);
+
+            cli.setVisible(false);
+            addCli.setVisible(false);
+            conCli.setVisible(false);
+            ediCli.setVisible(false);
+            excCli.setVisible(false);
+
             ass.setVisible(true);
+            ass.inicia();
+            addAss.setVisible(false);
+
+            rel.setVisible(false);
+            relDia.setVisible(false);
+            relDiaBarbeiro.setVisible(false);
+            relSem.setVisible(false);
+            relSemBarbeiro.setVisible(false);
+            relMes.setVisible(false);
+            relMen.setVisible(false);
+            relMenBarbeiro.setVisible(false);
+            relAnu.setVisible(false);
 
         }
 
-    }
+        if (ae.getSource() == bRelatorios) {
 
-    public static void add(JPanel panel){
-        System.out.println(getFrames().length);
-        getFrames()[0].add(panel);
+            panel.setVisible(false);
+
+            cli.setVisible(false);
+            addCli.setVisible(false);
+            conCli.setVisible(false);
+            ediCli.setVisible(false);
+            excCli.setVisible(false);
+
+            ass.setVisible(false);
+            addAss.setVisible(false);
+
+            rel.setVisible(true);
+            relDia.setVisible(false);
+            relDiaBarbeiro.setVisible(false);
+            relSem.setVisible(false);
+            relSemBarbeiro.setVisible(false);
+            relMes.setVisible(false);
+            relMen.setVisible(false);
+            relMenBarbeiro.setVisible(false);
+            relAnu.setVisible(false);
+        }
+
     }
+    
 }

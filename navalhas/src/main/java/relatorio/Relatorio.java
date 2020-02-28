@@ -22,28 +22,28 @@ public class Relatorio implements IRelatorio {
 
     @Override
     public double somaValorCartao(String data) {
-        double val = 0;
         Connection con = ConnectionFactory.getConnection();
-
+        
         PreparedStatement stmt = null;
-
+        
         ResultSet rs = null;
         
         try {
-            stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE paga = false AND data LIKE "+data);
+            stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE paga = false AND data LIKE '%"+data+"%'");
             rs = stmt.executeQuery();
+            double val = 0;
             while (rs.next()) {
                 val = rs.getDouble(1);
             }
             
-            
+            return val;
         } catch (SQLException e) {
             System.err.println(e);
             JOptionPane.showConfirmDialog(null, "ERROR" );
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
-        return val;
+        return 0;
     }
     
     @Override
@@ -142,7 +142,7 @@ public class Relatorio implements IRelatorio {
         
         try {
             
-            stmt = con.prepareStatement("SELECT COUNT(*),SUM(valor) FROM servico_unico WHERE idtrab = " + idService+ " AND data LIKE '%"+data+"%'");
+            stmt = con.prepareStatement("SELECT COUNT(*),SUM(valor) FROM servico_unico INNER JOIN servico ON (idtrab = " + idService+" AND servico.id = servico_unico.idserv AND data LIKE '%"+data+"%')");//
             rs = stmt.executeQuery();
             while (rs.next()) {
                 count = rs.getInt(1);

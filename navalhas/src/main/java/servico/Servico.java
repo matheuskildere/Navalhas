@@ -16,9 +16,11 @@ import servico.servicoUnico.ServicoUnico;
  */
 public class Servico {
     private int id;
+    private int idCli;
+    private int idBar;
     private Cliente cliente;
     private Barbeiro barbeiro;
-    private final String DATA_STRING = dataString("dd/MM/yyyy");
+    private String DATA_STRING = dataString("dd/MM/yyyy");
     private List<ServicoUnico> servicos;
     private boolean pagamento; // true for money, and false for cart
 
@@ -66,7 +68,6 @@ public class Servico {
     public int getId() {
         return id;
     }
-
     /**
      * @return the barbeiro
      */
@@ -102,7 +103,27 @@ public class Servico {
     public boolean isPagamento() {
         return pagamento;
     }
+    /**
+     * @return the idCli
+     */
+    public int getIdCli() {
+        return idCli;
+    }
+    public void setIdCliente(int idCli) {
+        this.idCli = idCli;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setIdBar(int id) {
+        this.idBar = id;
+    }
+    public void setDataString(String data) {
+        DATA_STRING = data;
+    }
+    
     public void setPagamento(boolean pagamento) {
         this.pagamento = pagamento;
     }

@@ -7,7 +7,9 @@ import javax.swing.*;
 /**
  * Customer Screen
  */
+
 public class Clientes extends JPanel implements ActionListener {
+    
 
     private JPanel description;
     private JLabel customerIcon;
@@ -17,32 +19,41 @@ public class Clientes extends JPanel implements ActionListener {
     private JButton bEditarCliente;
     private JButton bExcluirCliente;
 
-    private final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-    private final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    JPanel addCli;
+    JPanel conCli;
+    JPanel ediCli;
+    JPanel excCli;
 
+   
+    public Clientes(JPanel addCli, JPanel conCli, JPanel ediCli, JPanel excCli) {
+        this.addCli = addCli;
+        this.conCli = conCli;
+        this.ediCli = ediCli;
+        this.excCli = excCli;
 
-    public Clientes() { 
-        setBounds(WIDTH/29, HEIGHT/2 - HEIGHT/17, WIDTH - WIDTH/15, HEIGHT/4);
-        // height de 200 originalmente
+        removeAll();
+
+        setBounds(46, 327, 1273, 145);
+        // setBounds(45, 182, 1275, 460);
         setBackground(new Color(255, 255, 255));
         setLayout(null);
-        //Janela.frame.getContentPane().add(body);
 
         description = new JPanel();
-        description.setBounds(0, 0, WIDTH/8, HEIGHT/4);
+        description.setBounds(0, 0, 175, 145);
         description.setBackground(new Color(234, 234, 234));
         description.setLayout(null);
         add(description);
 
-        ImagePanel icoPanel = new ImagePanel(getClass().getResource("icons/customer-users.png"));
-        icoPanel.setBounds(HEIGHT/12,HEIGHT/12,HEIGHT/50, HEIGHT/50);
-        description.add(icoPanel);
+        customerIcon = new JLabel();
+        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-users.png")));
+        customerIcon.setBounds(65, 50, 45, 42);
+        description.add(customerIcon);
 
         bAddCliente = new JButton("\nAdicionar");
         bAddCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-add.png")));
-        bAddCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
+        bAddCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bAddCliente.setForeground(new Color(0, 0, 0));
-        bAddCliente.setBounds(WIDTH/6, 0, WIDTH/6, HEIGHT/4);
+        bAddCliente.setBounds(220, 50, 300, 40);
         bAddCliente.setContentAreaFilled(false);
         bAddCliente.setBorderPainted(false);
         bAddCliente.setFocusable(false);
@@ -51,9 +62,9 @@ public class Clientes extends JPanel implements ActionListener {
 
         bConsultarCliente = new JButton("\nConsultar");
         bConsultarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-search.png")));
-        bConsultarCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
+        bConsultarCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bConsultarCliente.setForeground(new Color(0, 0, 0));
-        bConsultarCliente.setBounds(WIDTH/3, 0, WIDTH/6, HEIGHT/4);
+        bConsultarCliente.setBounds(470, 50, 300, 40);
         bConsultarCliente.setContentAreaFilled(false);
         bConsultarCliente.setBorderPainted(false);
         bConsultarCliente.setFocusable(false);
@@ -62,9 +73,9 @@ public class Clientes extends JPanel implements ActionListener {
 
         bEditarCliente = new JButton("\nEditar");
         bEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-edit.png")));
-        bEditarCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
+        bEditarCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bEditarCliente.setForeground(new Color(0, 0, 0));
-        bEditarCliente.setBounds(WIDTH - WIDTH/ 2, 0, WIDTH/6, HEIGHT/4);
+        bEditarCliente.setBounds(720, 50, 300, 40);
         bEditarCliente.setContentAreaFilled(false);
         bEditarCliente.setBorderPainted(false);
         bEditarCliente.setFocusable(false);
@@ -73,9 +84,9 @@ public class Clientes extends JPanel implements ActionListener {
 
         bExcluirCliente = new JButton("\nExcluir");
         bExcluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-delete.png")));
-        bExcluirCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
+        bExcluirCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bExcluirCliente.setForeground(new Color(0, 0, 0));
-        bExcluirCliente.setBounds(WIDTH - WIDTH /3, 0, WIDTH/5, HEIGHT/4);
+        bExcluirCliente.setBounds(970, 50, 300, 40);
         bExcluirCliente.setContentAreaFilled(false);
         bExcluirCliente.setBorderPainted(false);
         bExcluirCliente.setFocusable(false);
@@ -89,40 +100,29 @@ public class Clientes extends JPanel implements ActionListener {
         if (ae.getSource() == bAddCliente) {
 
             setVisible(false);
-            AddClientes addClientes = new AddClientes();
-            Inicio.add(addClientes);
-            Inicio.remove(this);
-            addClientes.setVisible(true);
+            addCli.setVisible(true);
 
         }
 
         if (ae.getSource() == bConsultarCliente) {
+
             setVisible(false);
-            ConsultarCliente conClientes = new ConsultarCliente();
-            Inicio.add(conClientes);
-            Inicio.remove(this);
-            conClientes.setVisible(true);
+            conCli.setVisible(true);
 
         }
 
         if (ae.getSource() == bEditarCliente) {
 
             setVisible(false);
-            EditarClientes edtClientes = new EditarClientes();
-            Inicio.add(edtClientes);
-            Inicio.remove(this);
-            edtClientes.setVisible(true);
+            ediCli.setVisible(true);
         }
 
         if (ae.getSource() == bExcluirCliente) {
 
             setVisible(false);
-            ExcluirClientes excClientes = new ExcluirClientes();
-            Inicio.add(excClientes);
-            Inicio.remove(this);
-            //Janela.frame.getContentPane().add(excClientes);
-            excClientes.setVisible(true);
+            excCli.setVisible(true);
         }
+
     }
 
 }

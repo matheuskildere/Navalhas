@@ -16,6 +16,7 @@ public class Cliente {
     private int servicos = 0;
 
     public Cliente (){
+        id = 0;
         nome = "";
         contato1 = "";
         contato2 = "";
@@ -49,7 +50,12 @@ public class Cliente {
     public int getId() {
         return id;
     }
-
+    /**
+     * @return the id
+     */
+    public void setId(int id) {
+        this.id= id;
+    }
     /**
      * @return the nome
      */

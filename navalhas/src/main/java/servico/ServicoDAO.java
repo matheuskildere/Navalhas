@@ -2,11 +2,15 @@ package servico;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import banco.connection.ConnectionFactory; 
+import banco.connection.ConnectionFactory;
+import servico.servicoUnico.ServicoUnico; 
 
 /**
  * ClienteDAO
@@ -20,17 +24,16 @@ public class ServicoDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("INSERT INTO servico (idcli, idbar, data, valtotal, paga) VALUES (?,?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO servico (valtotal, idcli, idbar, paga ,data) VALUES (?,?,?,?,?)");
 
-            stmt.setInt(1, serv.getCliente().getId());
-            stmt.setInt(2, serv.getBarbeiro().getId());
-            stmt.setString(3, serv.getData());
-            stmt.setDouble(4, serv.getValorTotal());
+            stmt.setDouble(1, serv.getValorTotal());
+            stmt.setInt(2, serv.getCliente().getId());
+            stmt.setInt(3, serv.getBarbeiro().getId());
             stmt.setBoolean(4, serv.isPagamento());
+            stmt.setString(5, serv.getData());
             
             stmt.executeUpdate();
             
-            JOptionPane.showConfirmDialog(null, "SALVO COM SUCESSO");
         } catch (SQLException e) {
             System.err.println(e);
             JOptionPane.showConfirmDialog(null, "ERROR AO SALVAR" );
@@ -59,5 +62,58 @@ public class ServicoDAO {
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
+    }
+
+    public void serv_seruni(Servico serv, ServicoUnico seruni) {
+
+        Connection con = ConnectionFactory.getConnection();
+
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("INSERT INTO serv_seruni (idserv, idservuni) VALUES (?,?)");
+
+            stmt.setInt(1, serv.getId());
+            stmt.setInt(2, seruni.getId());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showConfirmDialog(null, "SALVO COM SUCESSO");
+        } catch (SQLException e) {
+            System.err.println(e);
+            JOptionPane.showConfirmDialog(null, "ERROR AO SALVAR" );
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+
+    public List<Servico> read() {
+        Connection con = ConnectionFactory.getConnection();
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+
+        ArrayList<Servico> lista = new ArrayList<>();
+        try {
+            stmt = con.prepareStatement("SELECT * FROM servico");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Servico servico = new Servico();
+                servico.setId(rs.getInt("id"));
+                servico.setIdCliente(rs.getInt("idcli"));
+                servico.setPagamento(rs.getBoolean("paga"));
+                servico.setIdBar(rs.getInt("idbar"));
+                servico.setDataString(rs.getString("data"));
+                lista.add(servico);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return lista;
     }
 }

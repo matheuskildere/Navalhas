@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 
 import cliente.Cliente;
 import cliente.ClienteDAO;
-import ui.Inicio;
+import ui.Janela;
 
 /**
  * Hello world!
@@ -24,6 +24,6 @@ public final class App {
 
     
     public static void main(String[] args) {
-        Inicio i = new Inicio();
+        Janela i = new Janela();
     }
 }

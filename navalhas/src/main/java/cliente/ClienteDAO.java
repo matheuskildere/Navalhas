@@ -54,11 +54,12 @@ public class ClienteDAO {
 
         ArrayList<Cliente> lista = new ArrayList<>();
         try {
-            stmt = con.prepareStatement("SELECT * FROM cliente");
+            stmt = con.prepareStatement("SELECT * FROM cliente ORDER BY nom");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("id"));
                 cliente.setNome(rs.getString("nom"));
                 cliente.setContato1(rs.getString("cont1"));
                 cliente.setContato2(rs.getString("cont2"));
@@ -134,12 +135,16 @@ public class ClienteDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE cliente SET servGratis ?, servTotal ?, serv ? WHERE nom = ?");
+            String sql ="UPDATE cliente SET servgratis = "+ cli.getServicosGratis()
+                +", servtotal = "+ cli.getServicosTotal()
+                +", serv = " +cli.getServicos() 
+                +" WHERE id = "+cli.getId();
+            stmt = con.prepareStatement(sql); //"UPDATE cliente SET servtotal ?WHERE id = 5");// servgratis ?, , serv ? 
             
-            stmt.setInt(1, cli.getServicosGratis());
-            stmt.setInt(2, cli.getServicosTotal());
-            stmt.setInt(3, cli.getServicos());
-            stmt.setString(4, cli.getNome());
+            //stmt.setInt(1, cli.getServicosGratis());
+            //stmt.setInt(1, cli.getServicosTotal());
+            //stmt.setInt(3, cli.getServicos());
+            //stmt.setInt(2, cli.getId());
             
             stmt.executeUpdate();
             

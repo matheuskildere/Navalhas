@@ -11,7 +11,7 @@ public class ServicoUnico {
     private double valor;
     private Trabalho trabalho;
 
-    public ServicoUnico(double valor, boolean pagamento, Trabalho trabalho){
+    public ServicoUnico(double valor, Trabalho trabalho){
         this.valor = valor;
         this.trabalho = trabalho;
     }
