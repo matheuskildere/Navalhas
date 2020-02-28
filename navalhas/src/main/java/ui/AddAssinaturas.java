@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import barbeiros.Barbeiro;
 import cliente.Cliente;
@@ -62,6 +64,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
     private JCheckBox barb4;
 
     private JLabel lFormaPagamento;
+    private JLabel lValorTotal;
     
     private JCheckBox dinheiro;
     private JCheckBox cartao;
@@ -159,6 +162,18 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         tValorCorte.setHorizontalAlignment(JTextField.CENTER);
         tValorCorte.setFont(new Font("Helvetica Neue", Font.PLAIN, 19));
         tValorCorte.setEnabled(false);
+        tValorCorte.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+            //faz alguma coisa quando um texto for inserido.
+            valor();
+            }
+            
+            public void removeUpdate(DocumentEvent e) {
+                        //faz alguma coisa quando um texto for removido.
+            }
+            
+            public void changedUpdate(DocumentEvent e) {} //usado em style document.
+            });
         add(tValorCorte);
 
         // Barba
@@ -196,6 +211,17 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         tValorBarba.setHorizontalAlignment(JTextField.CENTER);
         tValorBarba.setFont(new Font("Helvetica Neue", Font.PLAIN, 19));
         tValorBarba.setEnabled(false);
+        tValorBarba.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+            valor();
+            }
+            
+            public void removeUpdate(DocumentEvent e) {
+                        //faz alguma coisa quando um texto for removido.
+            }
+            
+            public void changedUpdate(DocumentEvent e) {} //usado em style document.
+            });
         add(tValorBarba);
 
         // Sombrancelha
@@ -495,6 +521,13 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         cartao.addActionListener(this);
         add(cartao);
 
+        
+        lValorTotal = new JLabel("Valor total: R$ " + valor);
+        lValorTotal.setBounds(780, 350, 250, 21);
+        lValorTotal.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
+        lValorTotal.setForeground(new Color(47, 47, 47));
+        add(lValorTotal);
+
         bCancelar = new JButton();
         bCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/cancel-button.png")));
         bCancelar.setBounds(1080, 385, 58, 58);
@@ -618,6 +651,9 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         tValorRelaxamento.setText("");
         tValorLuzes.setText("");
 
+        valor = 0.0;
+        lValorTotal.setText("Valor total R$ " + valor);
+
         tValorBarba.setEnabled(false);
         tValorCorte.setEnabled(false);
         tValorSombrancelha.setEnabled(false);
@@ -651,7 +687,37 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         bAddIcon8.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
 
     }
-
+    double valor = 0;
+    private void valor(){
+        valor = 0;
+        //double valor = 0;//  +  + + ;
+        //valor +=  + + + ;
+        if (tValorBarba.isEnabled()) {
+            valor += Double.parseDouble(tValorBarba.getText());
+        }
+        if (tValorCorte.isEnabled()) {
+            valor += Double.parseDouble(tValorCorte.getText());
+        }
+        if (tValorColoracao.isEnabled()) {
+            valor+= Double.parseDouble(tValorColoracao.getText());
+        }
+        if (tValorLuzes.isEnabled()) {
+            valor+= Double.parseDouble(tValorLuzes.getText());
+        }
+        if (tValorRelaxamento.isEnabled()) {
+            valor+= Double.parseDouble(tValorRelaxamento.getText());
+        }
+        if (tValorPigmentacao.isEnabled()) {
+            valor+= Double.parseDouble(tValorPigmentacao.getText());
+        }
+        if (tValorSelagem.isEnabled()) {
+            valor+= Double.parseDouble(tValorSelagem.getText());
+        }
+        if (tValorSombrancelha.isEnabled()) {
+            valor+= Double.parseDouble(tValorSombrancelha.getText());
+        }
+        lValorTotal.setText("Valor total R$ "+ valor);
+    }
 
     private ArrayList<ServicoUnico> servicosU() {
         ArrayList<ServicoUnico> lista = new ArrayList<>();
@@ -665,7 +731,6 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         Trabalho sobrancelha = new Trabalho(7,"sobrancelha");
 
         if (tValorBarba.isEnabled()) {
-            System.out.println("bar");
             lista.add(new ServicoUnico(Double.parseDouble(tValorBarba.getText().replace(",", ".")),barba));
         }
         if (tValorCorte.isEnabled()) {
@@ -675,7 +740,6 @@ public class AddAssinaturas extends JPanel implements ActionListener {
             lista.add(new ServicoUnico(Double.parseDouble(tValorColoracao.getText().replace(",", ".")),coloracao));
         }
         if (tValorLuzes.isEnabled()) {
-            System.out.println("luz");
             lista.add(new ServicoUnico(Double.parseDouble(tValorLuzes.getText().replace(",", ".")),luzes));
             }
         if (tValorRelaxamento.isEnabled()) {
