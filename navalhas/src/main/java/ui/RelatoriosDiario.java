@@ -278,7 +278,7 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
 
         Object[] hugo = relatorioDAO.nServicoBarbeiro(0, dataString("dd/MM/yyyy"));
         bBarbeiro1 = new JButton("Hugo");
-        bBarbeiro1.setBounds(630, 70, 120, 24);
+        bBarbeiro1.setBounds(630, 190, 120, 24);
         bBarbeiro1.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bBarbeiro1.setForeground(new Color(110, 110, 110));
         bBarbeiro1.setBackground(new Color(255, 255, 255));
@@ -286,19 +286,19 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         add(bBarbeiro1);
 
         lContador = new JLabel(""+ quantServicos(0));
-        lContador.setBounds(830, 70, 100, 24);
+        lContador.setBounds(830, 190, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
 
         lContador = new JLabel("R$ " + hugo[1]);
-        lContador.setBounds(1000, 70, 100, 24);
+        lContador.setBounds(1000, 190, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
 
         lContador = new JLabel("R$ " +(double) hugo[1] *0.5);
-        lContador.setBounds(1160, 70, 100, 24);
+        lContador.setBounds(1160, 190, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
@@ -306,7 +306,7 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         // Barbeiro 02
         Object[] mario = relatorioDAO.nServicoBarbeiro(1, dataString("dd/MM/yyyy"));
         bBarbeiro2 = new JButton("Mário");
-        bBarbeiro2.setBounds(630, 110, 120, 24);
+        bBarbeiro2.setBounds(630, 70, 120, 24);
         bBarbeiro2.setBackground(new Color(255, 255, 255));
         bBarbeiro2.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bBarbeiro2.setForeground(new Color(110, 110, 110));
@@ -314,19 +314,19 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         add(bBarbeiro2);
 
         lContador = new JLabel(""+ quantServicos(1));
-        lContador.setBounds(830, 110, 100, 24);
+        lContador.setBounds(830, 70, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
 
         lContador = new JLabel("R$ " +(double) mario[1]);
-        lContador.setBounds(1000, 110, 100, 24);
+        lContador.setBounds(1000, 70, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
 
         lContador = new JLabel("R$ " +(double) mario[1] *0.5);
-        lContador.setBounds(1160, 110, 100, 24);
+        lContador.setBounds(1160, 70, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
@@ -335,26 +335,26 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         Object[] raimundo = relatorioDAO.nServicoBarbeiro(2, dataString("dd/MM/yyyy"));
         bBarbeiro3 = new JButton("Raimundo");
         bBarbeiro3.setBackground(new Color(255, 255, 255));
-        bBarbeiro3.setBounds(630, 150, 120, 24);
+        bBarbeiro3.setBounds(630, 110, 120, 24);
         bBarbeiro3.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         bBarbeiro3.setForeground(new Color(110, 110, 110));
         bBarbeiro3.addActionListener(this);
         add(bBarbeiro3);
 
         lContador = new JLabel(""+ quantServicos(2));
-        lContador.setBounds(830, 150, 100, 24);
+        lContador.setBounds(830, 110, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
 
         lContador = new JLabel("R$ " +(double) raimundo[1]);
-        lContador.setBounds(1000, 150, 100, 24);
+        lContador.setBounds(1000, 110, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
 
         lContador = new JLabel("R$ " +(double) raimundo[1] *0.5);
-        lContador.setBounds(1160, 150, 100, 24);
+        lContador.setBounds(1160, 110, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
@@ -363,7 +363,7 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
 
         Object[] sergio = relatorioDAO.nServicoBarbeiro(3, dataString("dd/MM/yyyy"));
         bBarbeiro4 = new JButton("Sérgio");
-        bBarbeiro4.setBounds(630, 190, 120, 24);
+        bBarbeiro4.setBounds(630, 150, 120, 24);
         bBarbeiro4.setBackground(new Color(255, 255, 255));
         bBarbeiro4.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bBarbeiro4.setForeground(new Color(110, 110, 110));
@@ -371,19 +371,19 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         add(bBarbeiro4);
 
         lContador = new JLabel(""+quantServicos(3));
-        lContador.setBounds(830, 190, 100, 24);
+        lContador.setBounds(830, 150, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
 
         lContador = new JLabel("R$ "+(double) sergio[1]);
-        lContador.setBounds(1000, 190, 100, 24);
+        lContador.setBounds(1000, 150, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);
 
         lContador = new JLabel("R$ "+(double) sergio[1] *0.5);
-        lContador.setBounds(1160, 190, 100, 24);
+        lContador.setBounds(1160, 150, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
         add(lContador);

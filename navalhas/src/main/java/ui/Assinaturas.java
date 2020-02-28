@@ -77,7 +77,7 @@ public class Assinaturas extends JPanel implements ActionListener {
         customerIcon.setBounds(65, 196, 50, 45);
         description.add(customerIcon);
 
-        tPesquisa = new JTextField();
+        tPesquisa = new JTextField("");
         tPesquisa.setBounds(WIDTH / 5, HEIGHT / 12, 384, 48);
         tPesquisa.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         tPesquisa.setForeground(new Color(90, 90, 90));
@@ -206,9 +206,22 @@ public class Assinaturas extends JPanel implements ActionListener {
                     
                 }
             }
-            //for (int i = 0; i < clienteCard.getServicos(); i++) {
-                
-                for (Servico servicosServico : servicosDoCli) {
+
+            int servSizer = servicosDoCli.size();
+            int cliServ = clienteCard.getServicos();
+            for (int i = 0; i < cliServ; i++) {
+                if (countX >= 440) {
+                    countY = 120;
+                    countX = 0;
+                }else{
+                    countX += 110;
+                }
+                Cards cards = new Cards();
+                pCards.add(cards.cardConfirmado(servicosDoCli.get(servSizer - 1), countX, countY));
+                servSizer--;
+            }
+            /*
+            for (Servico servicosServico : servicosDoCli) {
                     if (countX >= 440) {
                         countY = 120;
                         countX = 0;
@@ -218,9 +231,8 @@ public class Assinaturas extends JPanel implements ActionListener {
                     Cards cards = new Cards();
                     pCards.add(cards.cardConfirmado(servicosServico, countX, countY));
                     
-                }
-                
-            //}
+            }
+            */
         }
         pCards.repaint();
         

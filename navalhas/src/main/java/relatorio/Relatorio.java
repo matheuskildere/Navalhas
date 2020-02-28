@@ -45,6 +45,30 @@ public class Relatorio implements IRelatorio {
         }
         return 0;
     }
+    public double somaValorCartao(String data, String data2) {
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        
+        ResultSet rs = null;
+        
+        try {
+            stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE paga = false AND data BETWEEN '"+data+"' AND '"+data2+"'");
+            rs = stmt.executeQuery();
+            double val = 0;
+            while (rs.next()) {
+                val = rs.getDouble(1);
+            }
+            
+            return val;
+        } catch (SQLException e) {
+            System.err.println(e);
+            JOptionPane.showConfirmDialog(null, "ERROR" );
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        return 0;
+    }
     
     @Override
     public double somaValorDinheiro(String data) {
@@ -72,6 +96,31 @@ public class Relatorio implements IRelatorio {
         }
         return 0;
     }
+    public double somaValorDinheiro(String data, String data2) {
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        
+        ResultSet rs = null;
+        
+        try {
+            stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE paga = true AND data BETWEEN '"+data+"' AND '"+data2+"'");
+            rs = stmt.executeQuery();
+            double val = 0;
+            while (rs.next()) {
+                val = rs.getDouble(1);
+            }
+            
+            return val;
+            
+        } catch (SQLException e) {
+            System.err.println(e);
+            JOptionPane.showConfirmDialog(null, "ERROR" );
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        return 0;
+    }
 
     @Override
     public double somaValorTotal(String data) {
@@ -83,6 +132,31 @@ public class Relatorio implements IRelatorio {
         
         try {
             stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE data LIKE '%"+data+"%'");
+            rs = stmt.executeQuery();
+            double val = 0;
+            while (rs.next()) {
+                val = rs.getDouble(1);
+            }
+            
+            return val;
+            
+        } catch (SQLException e) {
+            System.err.println(e);
+            JOptionPane.showConfirmDialog(null, "ERROR" );
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        return 0;
+    }
+    public double somaValorTotal(String data, String data2) {
+        Connection con = ConnectionFactory.getConnection();
+
+        PreparedStatement stmt = null;
+
+        ResultSet rs = null;
+        
+        try {
+            stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE data BETWEEN '"+data+"' AND '"+data2+"'");
             rs = stmt.executeQuery();
             double val = 0;
             while (rs.next()) {
@@ -128,6 +202,33 @@ public class Relatorio implements IRelatorio {
         Object[] ob = {count, val};
         return ob; 
     }
+    public Object[] nServicoBarbeiro(int idBarbeiro, String data, String data2) {
+        double val = 0;
+        int count = 0;
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        
+        ResultSet rs = null;
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT COUNT(*),SUM(valtotal) FROM servico WHERE idbar = " + idBarbeiro+ " AND servico.data BETWEEN '"+data+"' AND '"+data2+"'");
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+                val = rs.getDouble(2);
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+            JOptionPane.showConfirmDialog(null, "ERROR" );
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        Object[] ob = {count, val};
+        return ob; 
+    }
 
     public Object[] nServiBarb(int idService, int idBarbeiro, String data) {
             double val = 0;
@@ -157,6 +258,33 @@ public class Relatorio implements IRelatorio {
             return ob; 
         }
     
+        public Object[] nServiBarb(int idService, int idBarbeiro, String data, String data2) {
+            double val = 0;
+            int count = 0;
+            
+            Connection con = ConnectionFactory.getConnection();
+            
+            PreparedStatement stmt = null;
+            
+            ResultSet rs = null;
+            
+            try {
+                
+                stmt = con.prepareStatement("SELECT COUNT(*),SUM(valor) FROM servico_unico INNER JOIN servico ON (idtrab = " + idService+" AND servico.idbar = "+idBarbeiro+" AND servico.id = servico_unico.idserv AND servico.data BETWEEN '"+data+"' AND '"+data2+"')");//
+                rs = stmt.executeQuery();
+                while (rs.next()) {
+                    count = rs.getInt(1);
+                    val = rs.getDouble(2);
+                }
+            } catch (SQLException e) {
+                System.err.println(e);
+                JOptionPane.showConfirmDialog(null, "ERROR" );
+            }finally{
+                ConnectionFactory.closeConnection(con, stmt);
+            }
+            Object[] ob = {count, val};
+            return ob; 
+        }
     @Override
     public Object[] nServico(int idService, String data) {
         double val = 0;
@@ -171,6 +299,34 @@ public class Relatorio implements IRelatorio {
         try {
             
             stmt = con.prepareStatement("SELECT COUNT(*),SUM(valor) FROM servico_unico INNER JOIN servico ON (idtrab = " + idService+" AND servico.id = servico_unico.idserv AND data LIKE '%"+data+"%')");//
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                count = rs.getInt(1);
+                val = rs.getDouble(2);
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+            JOptionPane.showConfirmDialog(null, "ERROR" );
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+        Object[] ob = {count, val};
+        return ob; 
+    }
+
+    public Object[] nServico(int idService, String data, String data2 ) {
+        double val = 0;
+        int count = 0;
+        
+        Connection con = ConnectionFactory.getConnection();
+        
+        PreparedStatement stmt = null;
+        
+        ResultSet rs = null;
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT COUNT(*),SUM(valor) FROM servico_unico INNER JOIN servico ON (idtrab = " + idService+" AND servico.id = servico_unico.idserv AND servico.data BETWEEN '"+data+"' AND '"+data2+"')");//
             rs = stmt.executeQuery();
             while (rs.next()) {
                 count = rs.getInt(1);

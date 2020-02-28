@@ -2,7 +2,14 @@ package ui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import javax.swing.*;
+
+import relatorio.Relatorio;
 
 /**
  * Relatorios
@@ -18,10 +25,15 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
     private JLabel lValor;
     private JLabel label;
 
-    private JButton bBarbeiro;
+    private Relatorio relatorioDAO = new Relatorio();
+    private int idBarbeiro = 0;
+    private String nomeBarbeiro = "Hugo";
 
     public RelatoriosSemanalBarbeiro() {
+        relatorioSemanalBarbeiro();
+    }
 
+    private void relatorioSemanalBarbeiro(){
         removeAll();
 
         setBounds(45, 182, 1275, 460);
@@ -57,7 +69,18 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         label.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         add(label);
 
-        lContador = new JLabel("00");
+        int dataInicio = Integer.parseInt(dataString("dd")) ;
+            int dataFinal = dataInicio - 6;
+            int cont = 0 ;
+            if (dataInicio - 6 < 1) {
+                for (int i = dataFinal; i <= 0; i++) {
+                    cont++;
+                }
+                dataFinal = 31 - cont;
+        }
+        String data = dataFinal +"/"+ dataString("MM/yyyy");
+        Object[] corte = relatorioDAO.nServiBarb(1,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        lContador = new JLabel(""+corte[0]);
         lContador.setBounds(210, 90, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lContador.setForeground(new Color(110, 110, 110));
@@ -69,7 +92,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         lServico.setForeground(new Color(110, 110, 110));
         add(lServico);
 
-        lValor = new JLabel("R$ 0,00");
+        lValor = new JLabel("R$ "+corte[1]);
         lValor.setBounds(465, 90, 200, 24);
         lValor.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lValor.setForeground(new Color(110, 110, 110));
@@ -77,7 +100,8 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Barba
 
-        lContador = new JLabel("00");
+        Object[] barba = relatorioDAO.nServiBarb(0,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        lContador = new JLabel(""+barba[0]);
         lContador.setBounds(210, 135, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lContador.setForeground(new Color(110, 110, 110));
@@ -89,7 +113,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         lServico.setForeground(new Color(110, 110, 110));
         add(lServico);
 
-        lValor = new JLabel("R$ 0,00");
+        lValor = new JLabel("R$ "+barba[1]);
         lValor.setBounds(465, 135, 200, 24);
         lValor.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lValor.setForeground(new Color(110, 110, 110));
@@ -97,7 +121,8 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Sombrancelha
 
-        lContador = new JLabel("00");
+        Object[] somb = relatorioDAO.nServiBarb(7,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        lContador = new JLabel(""+somb[0]);
         lContador.setBounds(210, 180, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lContador.setForeground(new Color(110, 110, 110));
@@ -109,7 +134,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         lServico.setForeground(new Color(110, 110, 110));
         add(lServico);
 
-        lValor = new JLabel("R$ 0,00");
+        lValor = new JLabel("R$ "+somb[1]);
         lValor.setBounds(465, 180, 200, 24);
         lValor.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lValor.setForeground(new Color(110, 110, 110));
@@ -117,7 +142,8 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Coloracao
 
-        lContador = new JLabel("00");
+        Object[] colo = relatorioDAO.nServiBarb(2,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        lContador = new JLabel(""+colo[0]);
         lContador.setBounds(210, 225, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lContador.setForeground(new Color(110, 110, 110));
@@ -129,7 +155,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         lServico.setForeground(new Color(110, 110, 110));
         add(lServico);
 
-        lValor = new JLabel("R$ 0,00");
+        lValor = new JLabel("R$ "+colo[1]);
         lValor.setBounds(465, 225, 200, 24);
         lValor.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lValor.setForeground(new Color(110, 110, 110));
@@ -137,7 +163,8 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Pigmentacao em barba
 
-        lContador = new JLabel("00");
+        Object[] pig = relatorioDAO.nServiBarb(5,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        lContador = new JLabel(""+pig[0]);
         lContador.setBounds(210, 270, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lContador.setForeground(new Color(110, 110, 110));
@@ -149,7 +176,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         lServico.setForeground(new Color(110, 110, 110));
         add(lServico);
 
-        lValor = new JLabel("R$ 0,00");
+        lValor = new JLabel("R$ "+pig[1]);
         lValor.setBounds(465, 270, 200, 24);
         lValor.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lValor.setForeground(new Color(110, 110, 110));
@@ -157,7 +184,8 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Selagem
 
-        lContador = new JLabel("00");
+        Object[] sela = relatorioDAO.nServiBarb(6,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        lContador = new JLabel(""+sela[0]);
         lContador.setBounds(210, 315, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lContador.setForeground(new Color(110, 110, 110));
@@ -169,7 +197,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         lServico.setForeground(new Color(110, 110, 110));
         add(lServico);
 
-        lValor = new JLabel("R$ 0,00");
+        lValor = new JLabel("R$ "+sela[1]);
         lValor.setBounds(465, 315, 200, 24);
         lValor.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lValor.setForeground(new Color(110, 110, 110));
@@ -177,7 +205,8 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Relaxamento
 
-        lContador = new JLabel("00");
+        Object[] rela = relatorioDAO.nServiBarb(4,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        lContador = new JLabel(""+rela[0]);
         lContador.setBounds(210, 360, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lContador.setForeground(new Color(110, 110, 110));
@@ -189,7 +218,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         lServico.setForeground(new Color(110, 110, 110));
         add(lServico);
 
-        lValor = new JLabel("R$ 0,00");
+        lValor = new JLabel("R$ "+rela[1]);
         lValor.setBounds(465, 360, 200, 24);
         lValor.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lValor.setForeground(new Color(110, 110, 110));
@@ -197,7 +226,8 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Luzes
 
-        lContador = new JLabel("00");
+        Object[] luz = relatorioDAO.nServiBarb(3,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        lContador = new JLabel(""+luz[0]);
         lContador.setBounds(210, 405, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lContador.setForeground(new Color(110, 110, 110));
@@ -209,7 +239,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         lServico.setForeground(new Color(110, 110, 110));
         add(lServico);
 
-        lValor = new JLabel("R$ 0,00");
+        lValor = new JLabel("R$ "+luz[1]);
         lValor.setBounds(465, 405, 200, 24);
         lValor.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lValor.setForeground(new Color(110, 110, 110));
@@ -222,116 +252,58 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         line.setBounds(600, 5, 889, 450);
         add(line);
 
-        label = new JLabel("Funcionário");
-        label.setBounds(630, 10, 150, 55);
+        label = new JLabel(nomeBarbeiro);
+        label.setBounds(630, 120, 150, 55);
         label.setForeground(new Color(47, 47, 47));
+        label.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
+        add(label);
+
+        int quantServicos = (int) corte[0] +(int) barba[0] + (int)somb[0] + (int)colo[0] + (int)pig[0]+ (int)sela[0]+ (int)rela[0]+ (int)luz[0];
+        label = new JLabel("Quantidade de serviços: "+quantServicos);
+        label.setBounds(630, 180, 300, 55);
+        label.setForeground(new Color(115, 115, 115));
         label.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         add(label);
 
-        label = new JLabel("Nº de serviços");
-        label.setBounds(780, 10, 150, 55);
-        label.setForeground(new Color(47, 47, 47));
+        double valorServicos = (double) corte[1] +(double) barba[1] + (double)somb[1] + (double)colo[1] + (double)pig[1]+ (double)sela[1]+ (double)rela[1]+ (double)luz[1];
+        label = new JLabel("Valor total: R$ "+valorServicos);
+        label.setBounds(630, 230, 300, 55);
+        label.setForeground(new Color(115, 115, 115));
         label.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         add(label);
 
-        label = new JLabel("Valor de serviço");
-        label.setBounds(950, 10, 200, 55);
+        label = new JLabel("Comissão: R$ "+ (valorServicos *0.5));
+        label.setBounds(630, 280, 300, 55);
         label.setForeground(new Color(47, 47, 47));
         label.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         add(label);
-
-        label = new JLabel("Comissão");
-        label.setBounds(1140, 10, 150, 55);
-        label.setForeground(new Color(47, 47, 47));
-        label.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
-        add(label);
-
-        // Barbeiro 01
-
-        bBarbeiro = new JButton("Hugo");
-        bBarbeiro.setBounds(630, 70, 100, 24);
-        bBarbeiro.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
-        bBarbeiro.setForeground(new Color(110, 110, 110));
-        add(bBarbeiro);
-
-        lContador = new JLabel("09");
-        lContador.setBounds(830, 70, 50, 24);
-        lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
-        lContador.setForeground(new Color(110, 110, 110));
-        add(lContador);
-
-        lContador = new JLabel("09");
-        lContador.setBounds(1010, 70, 50, 24);
-        lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
-        lContador.setForeground(new Color(110, 110, 110));
-        add(lContador);
-
-        lContador = new JLabel("09");
-        lContador.setBounds(1180, 70, 50, 24);
-        lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
-        lContador.setForeground(new Color(110, 110, 110));
-        add(lContador);
-
-    
-
-        //
-
-        line = new JLabel();
-        line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/horizontal-division-line.png")));
-        line.setBounds(600, 250, 889, 2);
-        add(line);
-
-    
-        label = new JLabel("Rendimentos");
-        label.setBounds(630, 270, 400, 55);
-        label.setForeground(new Color(47, 47, 47));
-        label.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
-        add(label);
-
-        label = new JLabel();
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/credit-card-icon.png")));
-        label.setBounds(680, 330, 400, 55);
-        add(label);
-
-        label = new JLabel("R$ 20.000,00");
-        label.setBounds(630, 370, 400, 55);
-        label.setForeground(new Color(80, 80, 80));
-        label.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
-        add(label);
-
-        label = new JLabel("+");
-        label.setBounds(780, 360, 18, 18);
-        label.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
-        label.setForeground(new Color(80, 80, 80));
-        add(label);
-
-        label = new JLabel();
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/money-icon.png")));
-        label.setBounds(880, 330, 400, 55);
-        add(label);
-
-        label = new JLabel("R$ 20.000,00");
-        label.setBounds(835, 370, 400, 55);
-        label.setForeground(new Color(80, 80, 80));
-        label.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
-        add(label);
-
-        label = new JLabel("=");
-        label.setBounds(1000, 360, 18, 18);
-        label.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
-        label.setForeground(new Color(80, 80, 80));
-        add(label);
-
-        label = new JLabel("R$ 40.000,00");
-        label.setBounds(1050, 360, 400, 22);
-        label.setForeground(new Color(47, 47, 47));
-        label.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
-        add(label);
-
+        repaint();
     }
 
     public void actionPerformed(ActionEvent ae) {
 
+    }
+
+    protected void barbeiro(int barbeiro){
+        idBarbeiro = barbeiro;
+        if (barbeiro == 0) {
+            nomeBarbeiro = "Hugo";
+        } else if(barbeiro == 1){
+            nomeBarbeiro = "Mário";
+        }else if(barbeiro == 2){
+            nomeBarbeiro = "Raimundo";
+        }else if(barbeiro == 3){
+            nomeBarbeiro = "Sérgio";
+        }
+        relatorioSemanalBarbeiro();
+    }
+
+    private String dataString(String formato){
+        Date data = new Date();
+        SimpleDateFormat formatador = new SimpleDateFormat(formato); //"dd/MM/yyyy"
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(data);
+        return formatador.format(calendar.getTime());
     }
 
 }
