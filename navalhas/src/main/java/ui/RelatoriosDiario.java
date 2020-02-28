@@ -285,7 +285,7 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         bBarbeiro1.addActionListener(this);
         add(bBarbeiro1);
 
-        lContador = new JLabel(""+ hugo[0]);
+        lContador = new JLabel(""+ quantServicos(0));
         lContador.setBounds(830, 70, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
@@ -313,7 +313,7 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         bBarbeiro2.addActionListener(this);
         add(bBarbeiro2);
 
-        lContador = new JLabel(""+ mario[0]);
+        lContador = new JLabel(""+ quantServicos(1));
         lContador.setBounds(830, 110, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
@@ -341,7 +341,7 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         bBarbeiro3.addActionListener(this);
         add(bBarbeiro3);
 
-        lContador = new JLabel(""+ raimundo[0]);
+        lContador = new JLabel(""+ quantServicos(2));
         lContador.setBounds(830, 150, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
@@ -370,7 +370,7 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         bBarbeiro4.addActionListener(this);
         add(bBarbeiro4);
 
-        lContador = new JLabel(""+sergio[0]);
+        lContador = new JLabel(""+quantServicos(3));
         lContador.setBounds(830, 190, 100, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         lContador.setForeground(new Color(110, 110, 110));
@@ -449,6 +449,7 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         if (ae.getSource() == bBarbeiro1) {
 
             setVisible(false);
+            relDiaBarbeiro.barbeiro(0);
             relDiaBarbeiro.setVisible(true);
         }
 
@@ -456,6 +457,7 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         if (ae.getSource() == bBarbeiro2) {
 
             setVisible(false);
+            relDiaBarbeiro.barbeiro(1);
             relDiaBarbeiro.setVisible(true);
         }
 
@@ -463,6 +465,7 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         if (ae.getSource() == bBarbeiro3) {
 
             setVisible(false);
+            relDiaBarbeiro.barbeiro(2);
             relDiaBarbeiro.setVisible(true);
         }
 
@@ -470,16 +473,9 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         if (ae.getSource() == bBarbeiro4) {
 
             setVisible(false);
+            relDiaBarbeiro.barbeiro(3);
             relDiaBarbeiro.setVisible(true);
         }
-    }
-    private void relatorio(){
-        Object[] corte = relatorioDAO.nServico(1, dataString("dd/MM/yyyy"));
-        Object[] barba = relatorioDAO.nServico(0, dataString("dd/MM/yyyy"));
-        Object[] sobrancelha = relatorioDAO.nServico(7, dataString("dd/MM/yyyy"));
-        Object[] coloracao = relatorioDAO.nServico(2, dataString("dd/MM/yyyy"));
-        Object[] pigmentacao = relatorioDAO.nServico(5, dataString("dd/MM/yyyy"));
-        //Object[] pigmentacao = relatorioDAO.nServico(5, dataString("dd/MM/yyyy"));
     }
 
     private String dataString(String formato){
@@ -488,5 +484,27 @@ public class RelatoriosDiario extends JPanel implements ActionListener {
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(data);
         return formatador.format(calendar.getTime());
+    }
+    private int quantServicos(int idBarbeiro){
+        Object[] corte = relatorioDAO.nServiBarb(1,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] barba = relatorioDAO.nServiBarb(0,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] somb = relatorioDAO.nServiBarb(7,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] colo = relatorioDAO.nServiBarb(2,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] pig = relatorioDAO.nServiBarb(5,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] sela = relatorioDAO.nServiBarb(6,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] rela = relatorioDAO.nServiBarb(4,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] luz = relatorioDAO.nServiBarb(3,idBarbeiro, dataString("dd/MM/yyyy"));
+        return (int) corte[0] +(int) barba[0] + (int)somb[0] + (int)colo[0] + (int)pig[0]+ (int)sela[0]+ (int)rela[0]+ (int)luz[0];
+    }
+    private double valorServicos(int idBarbeiro){
+        Object[] corte = relatorioDAO.nServiBarb(1,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] barba = relatorioDAO.nServiBarb(0,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] somb = relatorioDAO.nServiBarb(7,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] colo = relatorioDAO.nServiBarb(2,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] pig = relatorioDAO.nServiBarb(5,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] sela = relatorioDAO.nServiBarb(6,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] rela = relatorioDAO.nServiBarb(4,idBarbeiro, dataString("dd/MM/yyyy"));
+        Object[] luz = relatorioDAO.nServiBarb(3,idBarbeiro, dataString("dd/MM/yyyy"));
+        return (double) corte[1] +(double) barba[1] + (double)somb[1] + (double)colo[1] + (double)pig[1]+ (double)sela[1]+ (double)rela[1]+ (double)luz[1];
     }
 }

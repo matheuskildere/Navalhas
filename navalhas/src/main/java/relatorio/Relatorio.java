@@ -128,6 +128,34 @@ public class Relatorio implements IRelatorio {
         Object[] ob = {count, val};
         return ob; 
     }
+
+    public Object[] nServiBarb(int idService, int idBarbeiro, String data) {
+            double val = 0;
+            int count = 0;
+            
+            Connection con = ConnectionFactory.getConnection();
+            
+            PreparedStatement stmt = null;
+            
+            ResultSet rs = null;
+            
+            try {
+                
+                stmt = con.prepareStatement("SELECT COUNT(*),SUM(valor) FROM servico_unico INNER JOIN servico ON (idtrab = " + idService+" AND servico.idbar = "+idBarbeiro+" AND servico.id = servico_unico.idserv AND servico.data LIKE '%"+data+"%')");//
+                rs = stmt.executeQuery();
+                while (rs.next()) {
+                    count = rs.getInt(1);
+                    val = rs.getDouble(2);
+                }
+            } catch (SQLException e) {
+                System.err.println(e);
+                JOptionPane.showConfirmDialog(null, "ERROR" );
+            }finally{
+                ConnectionFactory.closeConnection(con, stmt);
+            }
+            Object[] ob = {count, val};
+            return ob; 
+        }
     
     @Override
     public Object[] nServico(int idService, String data) {
