@@ -274,7 +274,7 @@ public class Janela implements ActionListener {
             excCli.setVisible(false);
 
             ass.setVisible(true);
-            ass.inicia();
+            ass.iniciaAssinaturas();
             addAss.setVisible(false);
 
             rel.setVisible(false);

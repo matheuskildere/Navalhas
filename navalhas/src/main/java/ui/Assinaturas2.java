@@ -1,19 +1,14 @@
 package ui;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import cliente.Cliente;
 import cliente.ClienteDAO;
@@ -21,122 +16,123 @@ import servico.Servico;
 import servico.ServicoDAO;
 
 /**
- * Assinaturas
+ * Customer Screen
  */
-public class Assinaturas extends JPanel {
+public class Assinaturas2 extends JPanel implements ActionListener {
 
-    private ClienteDAO clienteDAO = new ClienteDAO();
-    private ServicoDAO servicoDAO = new ServicoDAO();
-    private List<Cliente> listaClientes;
-    protected Cliente clienteClicado;
-    
-    private AddAssinaturas addAssinaturas;
-    
-    private JTextField jPesquisa;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private JPanel description;
+    private JLabel customerIcon;
 
-    
-    private JPanel nomes;
-    private JScrollPane scrollFrame;
-    private JPanel historico;
-    private JPanel pCards;
-    private JPanel card;
-    
+    private JTextField tPesquisa;
     private JButton bPesquisa;
     private JButton bNome;
-    
-    private JLabel lProfilePicture;
+
     private JLabel lNome;
+    private JLabel lContador;
+
+    private JTextField tPesquisa2;
+
+    private JLabel line;
+
+    private JPanel historico;
+    private JPanel pCards;
+
+    private JLabel lProfilePicture;
     private JLabel lQtdServicos;
     private JLabel lQtdServicosGratis;
 
+    private final int WIDTH = 1366;
+    private final int HEIGHT = 768;
 
-    public Assinaturas(AddAssinaturas addAssinaturas) {
-        this.addAssinaturas = addAssinaturas;
-        iniciaAssinaturas();
+    private ClienteDAO clienteDAO = new ClienteDAO();
+    private ServicoDAO servicoDAO = new ServicoDAO();
+    private List<Cliente> listaClientes;//= clienteDAO.read();
+    private JPanel nomes = new JPanel();
+    private JScrollPane scrollFrame = new JScrollPane(nomes);
+    protected Cliente clienteClicado;// = listaClientes.get(0);
+
+    private JPanel card;
+    AddAssinaturas addAss;
+
+    public Assinaturas2(AddAssinaturas addAss) {
+        this.addAss = addAss;
+        assinaturas();
     }
-
-    protected void iniciaAssinaturas() {
-        removeAll();
+    private void assinaturas(){
+        lerCli();
         setBounds(45, 182, 1275, 460);
         setBackground(new Color(255, 255, 255));
         setLayout(null);
 
-        JPanel description = new JPanel();
+        description = new JPanel();
         description.setLayout(null);
         description.setBounds(0, 0, 175, 460);
         description.setBackground(new Color(234, 234, 234));
         add(description);
 
-        JLabel customerIcon = new JLabel();
+        customerIcon = new JLabel();
         customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-icon.png")));
         customerIcon.setBounds(65, 196, 50, 45);
         description.add(customerIcon);
 
-        jPesquisa = new JTextField("Pesquisa");
-        jPesquisa.setBounds(273,64, 384, 48);
-        jPesquisa.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
-        jPesquisa.setForeground(new Color(90, 90, 90));
-        jPesquisa.setBackground(new Color(252, 252, 252));
-        jPesquisa.setHorizontalAlignment(JTextField.CENTER);
-        jPesquisa.setBorder(new LineBorder(new Color(210, 210, 210)));
 
-        add(jPesquisa);
+        tPesquisa = new JTextField("");
+        tPesquisa.setBounds(WIDTH / 5, HEIGHT / 12, 384, 48);
+        tPesquisa.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
+        tPesquisa.setForeground(new Color(90, 90, 90));
+        tPesquisa.setBackground(new Color(252, 252, 252));
+        tPesquisa.setHorizontalAlignment(JTextField.CENTER);
+        tPesquisa.setBorder(new LineBorder(new Color(210, 210, 210)));
+        
+        add(tPesquisa);
 
         bPesquisa = new JButton("");
-        bPesquisa.setBounds(210 , 64, 64, 48);
+        bPesquisa.setBounds(WIDTH / 5 - WIDTH / 21, HEIGHT / 12, 65, 48);
         bPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/search-button.png")));
         bPesquisa.setBackground(new Color(234, 234, 234));
-        bPesquisa.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("ola "+ jPesquisa.getText());
-                acaoBpesquisa();
+        bPesquisa.addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                System.out.println("p2-"+tPesquisa2.getText());
+                
             }
         });
         add(bPesquisa);
 
-        nomes = new JPanel();
         nomes.setLayout(new BoxLayout(nomes, BoxLayout.Y_AXIS));
-        nomes.setBounds(208, 154, 449, 2000);
+        nomes.setBounds(WIDTH / 5 - WIDTH/21, HEIGHT / 5, 449, 2000);
+        //nomes.setLayout(new GridLayout(WIDTH / 5 - WIDTH/21, HEIGHT / 5, 449, 500));
         nomes.setBackground(new Color(255, 255, 255));
-
-        scrollFrame = new JScrollPane(nomes);
         scrollFrame.setBorder(null);
-        scrollFrame.setBackground(new Color(255, 255, 255));
         scrollFrame.getVerticalScrollBar().setBackground(new Color(255, 255, 255));
         scrollFrame.getVerticalScrollBar().setForeground(new Color(0, 0, 0));
         nomes.setAutoscrolls(true);
-        scrollFrame.setBounds(208, 154, 449, 305);
+        scrollFrame.setBounds(WIDTH / 5 - WIDTH/21, HEIGHT / 5, 449, 305);
+        
         add(scrollFrame);
 
-        JLabel line = new JLabel();
+        line = new JLabel();
         line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/division-line.png")));
-        line.setBounds(683, 77, 889, 328);
+        line.setBounds(WIDTH / 2, HEIGHT / 10, 889, 328);
         add(line);
-
         historico();
-
-        panelCard();
-
-        cards(clienteClicado);
-        
+        add(historico);
         nomesClientes();
-
+        cards(clienteClicado);
         repaint();
     }
-
-
     private void historico(){
         historico = new JPanel();
-        historico.removeAll();
         historico.setLayout(null);
-        historico.setBounds(564, 0, 683, 170);
+        historico.setBounds(WIDTH / 2 - 119, 0, WIDTH / 2, WIDTH / 4);
         historico.setBackground(new Color(255, 255, 255));
-        add(historico);
+        historico.removeAll();
         
-        lerCli();
         lProfilePicture = new JLabel();
-        lProfilePicture.setBounds(137, 43, 100, 100);
+        lProfilePicture.setBounds(WIDTH / 10, HEIGHT / 18, 100, 100);
         lProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/picture-customer.png")));
         if (!clienteClicado.getFoto().trim().equals("")){
             lProfilePicture.setIcon(new javax.swing.ImageIcon(clienteClicado.getFoto())); 
@@ -144,37 +140,35 @@ public class Assinaturas extends JPanel {
         historico.add(lProfilePicture);
 
         lNome = new JLabel(clienteClicado.getNome().trim());
-        lNome.setBounds(240, 43, 500, 30);
+        lNome.setBounds(WIDTH / 5, HEIGHT / 18, 500, 30);
         lNome.setFont(new Font("Helvetica Neue", Font.PLAIN, 25));
         lNome.setForeground(new Color(47, 47, 47));
         historico.add(lNome);
 
         lQtdServicos = new JLabel("Quantidade de servicos: "+ clienteClicado.getServicosTotal());
-        lQtdServicos.setBounds(240, 77, 500, 26);
+        lQtdServicos.setBounds(WIDTH / 5, HEIGHT / 10, 500, 26);
         lQtdServicos.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         lQtdServicos.setForeground(new Color(110, 110, 110));
         historico.add(lQtdServicos);
 
         lQtdServicosGratis = new JLabel("Quantidade de servicos gratis: "+ clienteClicado.getServicosGratis());
-        lQtdServicosGratis.setBounds(240, 96, 500, 26);
+        lQtdServicosGratis.setBounds(WIDTH / 5, HEIGHT / 8, 500, 26);
         lQtdServicosGratis.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         lQtdServicosGratis.setForeground(new Color(110, 110, 110));
         historico.add(lQtdServicosGratis);
 
-    }
-
-    private void panelCard(){
+        //
         pCards = new JPanel();
         pCards.setLayout(null);
-        pCards.setBounds(700, 170, 550, 320);
+        pCards.setBounds(700, HEIGHT / 4 - 20, 550, 320);
         pCards.setBackground(new Color(255, 255, 255));
         add(pCards);
-        
-        //card add
+
+
+        // Cards aqui
         card = new JPanel();
         card.setLayout(null);
         card.setBounds(0, 0, 100, 100);
-        pCards.add(card);
 
         JButton addButton = new JButton();
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/add-icon.png")));
@@ -186,17 +180,22 @@ public class Assinaturas extends JPanel {
         card.add(addButton);
         addButton.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                addAssinaturas.setCliente(clienteClicado);
+                addAss.setCliente(clienteClicado);
                 setVisible(false);
-                addAssinaturas.setVisible(true);
+                addAss.setVisible(true);
                 
             }
         });
+        
+        //Cards cards = new Cards(addAss, actionPerformed());
+        //historico.add(cards.cardAdd(this));
+        //cards(clienteClicado);
+        repaint();
     }
 
-    
     private void cards(Cliente clienteCard){
         pCards.removeAll();
+        //Cards cards = null;
         ArrayList<Servico> servicosDoCli = new ArrayList<>();
         int countX = 0;
         int countY = 0;
@@ -224,18 +223,71 @@ public class Assinaturas extends JPanel {
                 pCards.add(cards.cardConfirmado(servicosDoCli.get(servSizer - 1), countX, countY));
                 servSizer--;
             }
+            /*
+            for (Servico servicosServico : servicosDoCli) {
+                    if (countX >= 440) {
+                        countY = 120;
+                        countX = 0;
+                    }else{
+                        countX += 110;
+                    }
+                    Cards cards = new Cards();
+                    pCards.add(cards.cardConfirmado(servicosServico, countX, countY));
+                    
+            }
+            */
         }
         pCards.repaint();
+        
+            
     }
 
-    private void lerCli(){
-        listaClientes = clienteDAO.read();
-        if (listaClientes.size() >0) {
-            clienteClicado = listaClientes.get(0);
-        }else{
-            clienteClicado = new Cliente();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == bPesquisa) {
+            acaoBpesquisa();
+            System.out.println("p2-"+tPesquisa2.getText());
         }
     }
+    private void acaoBpesquisa(){
+        System.out.println("nome-"+tPesquisa.getText().trim());
+            List<Cliente> listaClientes = clienteDAO.read();
+            nomes.removeAll();
+            for (Cliente cliente : listaClientes) {
+                System.out.println(cliente.getNome().trim());
+                if (tPesquisa.getText().trim().equals(cliente.getNome().trim()) ) {
+                    System.out.println("achou");
+                    lNome.setText(cliente.getNome().trim());
+                    lQtdServicos.setText("Quantidade de servicos: "+ cliente.getServicos());
+                    lQtdServicosGratis.setText("Quantidade de servicos gratis: "+ cliente.getServicosGratis());
+                    lProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/picture-customer.png")));
+                    if (!cliente.getFoto().trim().equals("")){
+                        lProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/profile-picture.png"))); 
+                    }
+                }else{
+                    System.out.println("else");
+                    System.out.println("txt"+tPesquisa.getText().trim());
+                    if(tPesquisa.getText().trim() == ""){
+                        nomesClientes();
+                        System.out.println("nothing");
+                    }else{
+                        for (JButton buttonCli : buttoes()) {
+                            if (buttonCli.getName().contains(tPesquisa.getText().trim())) {
+                                
+                                nomes.removeAll();
+                                System.out.println("contains: "+buttonCli.getName());
+                                nomes.add(buttonCli); 
+                                repaint();
+                                nomes.repaint();
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+    }
+    
 
     protected void nomesClientes(){
         nomes.removeAll();
@@ -247,6 +299,7 @@ public class Assinaturas extends JPanel {
 
     public List<JButton> buttoes(){
         List<JButton> listaButtons = new ArrayList<>();
+        nomes.removeAll();
         int cont = 1; 
         int heightCount = 0;
         for (Cliente cliente : listaClientes) {
@@ -278,42 +331,24 @@ public class Assinaturas extends JPanel {
             heightCount +=30;
             cont++;
         }
+
+        System.out.println(heightCount);
         return listaButtons;
     }
-    private void acaoBpesquisa(){
-        List<Cliente> listaClientes = clienteDAO.read();
-        nomes.removeAll();
-        for (Cliente cliente : listaClientes) {
-            System.out.println(cliente.getNome().trim());
-            if (jPesquisa.getText().trim().equals(cliente.getNome().trim()) ) {
-                System.out.println("achou");
-                lNome.setText(cliente.getNome().trim());
-                lQtdServicos.setText("Quantidade de servicos: "+ cliente.getServicos());
-                lQtdServicosGratis.setText("Quantidade de servicos gratis: "+ cliente.getServicosGratis());
-                lProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/picture-customer.png")));
-                if (!cliente.getFoto().trim().equals("")){
-                    lProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/profile-picture.png"))); 
-                }
-            }else{
-                System.out.println("else");
-                System.out.println("txt"+jPesquisa.getText().trim());
-                if(jPesquisa.getText().trim().equals("")){
-                    nomesClientes();
-                    System.out.println("nothing");
-                }else{
-                    for (JButton buttonCli : buttoes()) {
-                        if (buttonCli.getName().contains(jPesquisa.getText().trim())) {
-                            
-                            nomes.removeAll();
-                            System.out.println("contains: "+buttonCli.getName());
-                            nomes.add(buttonCli); 
-                            nomes.repaint();
-                            repaint();
-                        }
-                    }
-                }
-                break;
-            }
+    protected void inicia(){
+        assinaturas();
+        //nomesClientes();
+        //historico();
+        //cards();
+        //tPesquisa.setText("Pesquisa");
+    }
+
+    private void lerCli(){
+        listaClientes = clienteDAO.read();
+        if (listaClientes.size() >0) {
+            clienteClicado = listaClientes.get(0);
+        }else{
+            clienteClicado = new Cliente();
         }
     }
 }
