@@ -173,7 +173,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
             }
             
             public void changedUpdate(DocumentEvent e) {} //usado em style document.
-            });
+        });
         add(tValorCorte);
 
         // Barba
@@ -259,6 +259,18 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         tValorSombrancelha.setHorizontalAlignment(JTextField.CENTER);
         tValorSombrancelha.setFont(new Font("Helvetica Neue", Font.PLAIN, 19));
         tValorSombrancelha.setEnabled(false);
+        tValorSombrancelha.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+            //faz alguma coisa quando um texto for inserido.
+            valor();
+            }
+            
+            public void removeUpdate(DocumentEvent e) {
+                        //faz alguma coisa quando um texto for removido.
+            }
+            
+            public void changedUpdate(DocumentEvent e) {} //usado em style document.
+        });
         add(tValorSombrancelha);
     
         // Coloracao
@@ -296,6 +308,18 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         tValorColoracao.setEnabled(false);
         tValorColoracao.setHorizontalAlignment(JTextField.CENTER);
         tValorColoracao.setFont(new Font("Helvetica Neue", Font.PLAIN, 19));
+        tValorColoracao.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+            //faz alguma coisa quando um texto for inserido.
+            valor();
+            }
+            
+            public void removeUpdate(DocumentEvent e) {
+                        //faz alguma coisa quando um texto for removido.
+            }
+            
+            public void changedUpdate(DocumentEvent e) {} //usado em style document.
+        });
         add(tValorColoracao);
 
         // Pigmentacao em barba
@@ -333,6 +357,18 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         tValorPigmentacao.setHorizontalAlignment(JTextField.CENTER);
         tValorPigmentacao.setFont(new Font("Helvetica Neue", Font.PLAIN, 19));
         tValorPigmentacao.setEnabled(false);
+        tValorPigmentacao.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+            //faz alguma coisa quando um texto for inserido.
+            valor();
+            }
+            
+            public void removeUpdate(DocumentEvent e) {
+                        //faz alguma coisa quando um texto for removido.
+            }
+            
+            public void changedUpdate(DocumentEvent e) {} //usado em style document.
+        });
         add(tValorPigmentacao);
 
         // Selagem
@@ -370,6 +406,18 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         tValorSelagem.setHorizontalAlignment(JTextField.CENTER);
         tValorSelagem.setFont(new Font("Helvetica Neue", Font.PLAIN, 19));
         tValorSelagem.setEnabled(false);
+        tValorSelagem.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+            //faz alguma coisa quando um texto for inserido.
+            valor();
+            }
+            
+            public void removeUpdate(DocumentEvent e) {
+                        //faz alguma coisa quando um texto for removido.
+            }
+            
+            public void changedUpdate(DocumentEvent e) {} //usado em style document.
+        });
         add(tValorSelagem);
 
 
@@ -408,6 +456,18 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         tValorRelaxamento.setHorizontalAlignment(JTextField.CENTER);
         tValorRelaxamento.setFont(new Font("Helvetica Neue", Font.PLAIN, 19));
         tValorRelaxamento.setEnabled(false);
+        tValorRelaxamento.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+            //faz alguma coisa quando um texto for inserido.
+            valor();
+            }
+            
+            public void removeUpdate(DocumentEvent e) {
+                        //faz alguma coisa quando um texto for removido.
+            }
+            
+            public void changedUpdate(DocumentEvent e) {} //usado em style document.
+        });
         add(tValorRelaxamento);
 
         // Luzes
@@ -445,6 +505,18 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         tValorLuzes.setHorizontalAlignment(JTextField.CENTER);
         tValorLuzes.setFont(new Font("Helvetica Neue", Font.PLAIN, 19));
         tValorLuzes.setEnabled(false);
+        tValorLuzes.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+            //faz alguma coisa quando um texto for inserido.
+            valor();
+            }
+            
+            public void removeUpdate(DocumentEvent e) {
+                        //faz alguma coisa quando um texto for removido.
+            }
+            
+            public void changedUpdate(DocumentEvent e) {} //usado em style document.
+        });
         add(tValorLuzes);
 
 
@@ -569,7 +641,12 @@ public class AddAssinaturas extends JPanel implements ActionListener {
             
             Servico novoServico = null;
             for (Servico servicoId : servicoDAO.read()) {
-                if (servicoId.getIdCli()== servico.getCliente().getId() && servicoId.getData().trim().equals(servico.getData().trim())) {
+                String dia = servicoId.getData().substring(8, 10);
+                String mes = servicoId.getData().substring(5, 7);
+                String ano = servicoId.getData().substring(0, 4);
+                
+                String dataPT = dia+"/"+mes+"/"+ano;
+                if (servicoId.getIdCli()== servico.getCliente().getId() && dataPT.trim().equals(servico.getData().trim())) {
                     novoServico = servicoId;
                 }
             }

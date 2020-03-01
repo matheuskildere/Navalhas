@@ -37,10 +37,10 @@ public class ClienteDAO {
             
             stmt.executeUpdate();
             
-            JOptionPane.showConfirmDialog(null, "SALVO COM SUCESSO");
+            JOptionPane.showMessageDialog(null, "SALVO COM SUCESSO");
         } catch (SQLException e) {
             System.err.println(e);
-            JOptionPane.showConfirmDialog(null, "ERROR AO SALVAR" );
+            JOptionPane.showMessageDialog(null, "ERROR AO SALVAR" );
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
@@ -97,10 +97,10 @@ public class ClienteDAO {
             
             stmt.executeUpdate();
             
-            JOptionPane.showConfirmDialog(null, "ATUALIZADO COM SUCESSO");
+            JOptionPane.showMessageDialog(null, "ATUALIZADO COM SUCESSO");
         } catch (SQLException e) {
             System.err.println(e);
-            JOptionPane.showConfirmDialog(null, "ERROR AO ATUALIZAR" );
+            JOptionPane.showMessageDialog(null, "ERROR AO ATUALIZAR" );
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
@@ -119,10 +119,10 @@ public class ClienteDAO {
             
             stmt.executeUpdate();
             
-            JOptionPane.showConfirmDialog(null, "EXCLUIDO COM SUCESSO");
+            JOptionPane.showMessageDialog(null, "EXCLUIDO COM SUCESSO");
         } catch (SQLException e) {
             System.err.println(e);
-            JOptionPane.showConfirmDialog(null, "ERROR AO EXCLUIR" );
+            JOptionPane.showMessageDialog(null, "ERROR AO EXCLUIR" );
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
@@ -148,10 +148,10 @@ public class ClienteDAO {
             
             stmt.executeUpdate();
             
-            JOptionPane.showConfirmDialog(null, "ATUALIZADO COM SUCESSO");
+            JOptionPane.showMessageDialog(null, "SERVIÇO REGISTRADO COM SUCESSO");
         } catch (SQLException e) {
             System.err.println(e);
-            JOptionPane.showConfirmDialog(null, "ERROR AO ATUALIZAR" );
+            JOptionPane.showMessageDialog(null, "ERROR AO ATUALIZAR" );
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }

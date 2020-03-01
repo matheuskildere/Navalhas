@@ -37,7 +37,8 @@ public class Janela implements ActionListener {
     public RelatoriosMensalBarbeiro relMenBarbeiro = new RelatoriosMensalBarbeiro();
     public RelatoriosMensal relMen = new RelatoriosMensal(relMenBarbeiro);
     public RelatoriosMes relMes = new RelatoriosMes(relMen);
-    public RelatoriosAnual relAnu = new RelatoriosAnual();
+    public RelatorioAnualBarbeiro relAnuBarbeiro = new RelatorioAnualBarbeiro();
+    public RelatoriosAnual relAnu = new RelatoriosAnual(relAnuBarbeiro);
     public Relatorios rel = new Relatorios(relDia, relSem, relMes, relAnu);
 
     private static JPanel panel;
@@ -77,6 +78,7 @@ public class Janela implements ActionListener {
         frame.getContentPane().add(relMenBarbeiro);
         frame.getContentPane().add(relMen);
         frame.getContentPane().add(relAnu);
+        frame.getContentPane().add(relAnuBarbeiro);
 
         cli.setVisible(false);
         addCli.setVisible(false);
@@ -96,6 +98,7 @@ public class Janela implements ActionListener {
         relMen.setVisible(false);
         relMenBarbeiro.setVisible(false);
         relAnu.setVisible(false);
+        relAnuBarbeiro.setVisible(false);
 
         panel();
         fundo();
@@ -252,6 +255,8 @@ public class Janela implements ActionListener {
             relSem.setVisible(false);
             relSemBarbeiro.setVisible(false);
             relMes.setVisible(false);
+            relMenBarbeiro.setVisible(false);
+            relAnuBarbeiro.setVisible(false);
             relMen.setVisible(false);
             relMenBarbeiro.setVisible(false);
             relAnu.setVisible(false);
@@ -278,6 +283,8 @@ public class Janela implements ActionListener {
             relSem.setVisible(false);
             relSemBarbeiro.setVisible(false);
             relMes.setVisible(false);
+            relMenBarbeiro.setVisible(false);
+            relAnuBarbeiro.setVisible(false);
             relMen.setVisible(false);
             relMenBarbeiro.setVisible(false);
             relAnu.setVisible(false);
@@ -302,6 +309,8 @@ public class Janela implements ActionListener {
             relDiaBarbeiro.setVisible(false);
             relSem.setVisible(false);
             relSemBarbeiro.setVisible(false);
+            relMenBarbeiro.setVisible(false);
+            relAnuBarbeiro.setVisible(false);
             relMes.setVisible(false);
             relMen.setVisible(false);
             relMenBarbeiro.setVisible(false);

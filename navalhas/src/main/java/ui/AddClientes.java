@@ -180,14 +180,18 @@ public class AddClientes extends JPanel implements ActionListener {
         if (e.getSource() == bConfirmar) {
 
             try {
-                Cliente novo_Cliente = new Cliente();
-                novo_Cliente.setNome(tNome.getText().trim());
-                novo_Cliente.setContato1(tDDDContato1.getText().trim() + " " + tContato1.getText());
-                novo_Cliente.setContato2(tDDDContato2.getText().trim() + " " + tContato2.getText());
-                novo_Cliente.setFoto(diretorio);
-                ClienteDAO clienteDAO = new ClienteDAO();
-                clienteDAO.create(novo_Cliente);
+                if (tNome.getText().trim().equals("") || tNome.getText().trim().equals(" ")) {
+                    throw new RuntimeException();
+                }else{
+                    Cliente novo_Cliente = new Cliente();
+                    novo_Cliente.setNome(tNome.getText().trim());
+                    novo_Cliente.setContato1(tDDDContato1.getText().trim() + " " + tContato1.getText());
+                    novo_Cliente.setContato2(tDDDContato2.getText().trim() + " " + tContato2.getText());
+                    novo_Cliente.setFoto(diretorio);
+                    ClienteDAO clienteDAO = new ClienteDAO();
+                    clienteDAO.create(novo_Cliente);
                 limpa();
+                }
                 // Clientes clientes = new Clientes(this, conCli, ediCli, excCli);
 
                 // setVisible(false);

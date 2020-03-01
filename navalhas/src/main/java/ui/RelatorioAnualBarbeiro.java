@@ -14,7 +14,7 @@ import relatorio.Relatorio;
 /**
  * Relatorios
  */
-public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener {
+public class RelatorioAnualBarbeiro extends JPanel implements ActionListener {
 
     private JPanel description;
     private JLabel customerIcon;
@@ -29,11 +29,11 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
     private int idBarbeiro = 0;
     private String nomeBarbeiro = "Hugo";
 
-    public RelatoriosSemanalBarbeiro() {
-        relatorioSemanalBarbeiro();
+    public RelatorioAnualBarbeiro() {
+        relatorioAnualBarbeiro();
     }
 
-    private void relatorioSemanalBarbeiro(){
+    protected void relatorioAnualBarbeiro(){
         removeAll();
 
         setBounds(45, 182, 1275, 460);
@@ -69,21 +69,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         label.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         add(label);
 
-        int dataInicio = Integer.parseInt(dataString("dd")) ;
-            int dataFinal = dataInicio - 7;
-            int cont = 0 ;
-            String data = "";
-            data = dataFinal +"/"+ dataString("MM/yyyy");
-            if (dataInicio - 7 < 1) {
-                for (int i = dataFinal; i <= 0; i++) {
-                    cont++;
-                }
-                dataFinal = 31 - cont;
-
-                int mesInicio = Integer.parseInt(dataString("MM"));
-                data = dataFinal +"/0"+ (mesInicio - 1) +"/"+dataString("yyyy");
-            }
-        Object[] corte = relatorioDAO.nServiBarb(1,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        Object[] corte = relatorioDAO.nServiBarb(1,idBarbeiro, dataString("yyyy"));
         lContador = new JLabel(""+corte[0]);
         lContador.setBounds(210, 90, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
@@ -104,7 +90,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Barba
 
-        Object[] barba = relatorioDAO.nServiBarb(0,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        Object[] barba = relatorioDAO.nServiBarb(0,idBarbeiro, dataString("yyyy"));
         lContador = new JLabel(""+barba[0]);
         lContador.setBounds(210, 135, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
@@ -125,7 +111,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Sombrancelha
 
-        Object[] somb = relatorioDAO.nServiBarb(7,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        Object[] somb = relatorioDAO.nServiBarb(7,idBarbeiro, dataString("yyyy"));
         lContador = new JLabel(""+somb[0]);
         lContador.setBounds(210, 180, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
@@ -146,7 +132,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Coloracao
 
-        Object[] colo = relatorioDAO.nServiBarb(2,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        Object[] colo = relatorioDAO.nServiBarb(2,idBarbeiro, dataString("yyyy"));
         lContador = new JLabel(""+colo[0]);
         lContador.setBounds(210, 225, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
@@ -167,7 +153,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Pigmentacao em barba
 
-        Object[] pig = relatorioDAO.nServiBarb(5,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        Object[] pig = relatorioDAO.nServiBarb(5,idBarbeiro, dataString("yyyy"));
         lContador = new JLabel(""+pig[0]);
         lContador.setBounds(210, 270, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
@@ -188,7 +174,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Selagem
 
-        Object[] sela = relatorioDAO.nServiBarb(6,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        Object[] sela = relatorioDAO.nServiBarb(6,idBarbeiro, dataString("yyyy"));
         lContador = new JLabel(""+sela[0]);
         lContador.setBounds(210, 315, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
@@ -209,7 +195,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Relaxamento
 
-        Object[] rela = relatorioDAO.nServiBarb(4,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        Object[] rela = relatorioDAO.nServiBarb(4,idBarbeiro, dataString("yyyy"));
         lContador = new JLabel(""+rela[0]);
         lContador.setBounds(210, 360, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
@@ -230,7 +216,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
 
         // Luzes
 
-        Object[] luz = relatorioDAO.nServiBarb(3,idBarbeiro, data, dataString("dd/MM/yyyy"));
+        Object[] luz = relatorioDAO.nServiBarb(3,idBarbeiro, dataString("yyyy"));
         lContador = new JLabel(""+luz[0]);
         lContador.setBounds(210, 405, 80, 24);
         lContador.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
@@ -281,7 +267,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         label.setForeground(new Color(47, 47, 47));
         label.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         add(label);
-        repaint();
+
     }
 
     public void actionPerformed(ActionEvent ae) {
@@ -299,7 +285,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         }else if(barbeiro == 3){
             nomeBarbeiro = "Sérgio";
         }
-        relatorioSemanalBarbeiro();
+        relatorioAnualBarbeiro();
     }
 
     private String dataString(String formato){

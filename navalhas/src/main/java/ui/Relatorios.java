@@ -21,9 +21,9 @@ public class Relatorios extends JPanel implements ActionListener {
     RelatoriosSemanal relSem;
     JPanel relMes;
     JPanel relMen;
-    JPanel relAnu;
+    RelatoriosAnual relAnu;
 
-    public Relatorios(RelatoriosDiario relDia, RelatoriosSemanal relSem, JPanel relMes, JPanel relAnu) {
+    public Relatorios(RelatoriosDiario relDia, RelatoriosSemanal relSem, JPanel relMes, RelatoriosAnual relAnu) {
         this.relDia = relDia;
         this.relSem = relSem;
         this.relMes = relMes;
@@ -141,6 +141,7 @@ public class Relatorios extends JPanel implements ActionListener {
         if (ae.getSource() == bAnual) {
 
             setVisible(false);
+            relAnu.relatorioAnual();
             relAnu.setVisible(true);
         }
 

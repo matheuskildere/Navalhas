@@ -27,6 +27,19 @@ public class Relatorio implements IRelatorio {
         PreparedStatement stmt = null;
         
         ResultSet rs = null;
+
+        
+        if (data.length() > 4 && data.length() <=7){
+            String mes = data.substring(0, 2);
+            String ano = data.substring(3, 7);
+            data = ano+"/"+mes;
+        }else if(data.length() > 7){
+            String dia = data.substring(0, 2);
+            String mes = data.substring(3, 5);
+            String ano = data.substring(6, 10);
+            data = ano+"/"+mes+"/"+dia;
+        }
+
         
         try {
             stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE paga = false AND data LIKE '%"+data+"%'");
@@ -51,6 +64,16 @@ public class Relatorio implements IRelatorio {
         PreparedStatement stmt = null;
         
         ResultSet rs = null;
+
+        String dia = data.substring(0, 2);
+        String mes = data.substring(3, 5);
+        String ano = data.substring(6, 10);
+        data = ano+"/"+mes+"/"+dia;
+
+        String dia2 = data2.substring(0, 2);
+        String mes2 = data2.substring(3, 5);
+        String ano2 = data2.substring(6, 10);
+        data2 = ano2+"/"+mes2+"/"+dia2;
         
         try {
             stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE paga = false AND data BETWEEN '"+data+"' AND '"+data2+"'");
@@ -78,6 +101,18 @@ public class Relatorio implements IRelatorio {
         
         ResultSet rs = null;
         
+        
+        if (data.length() > 4 && data.length() <=7){
+            String mes = data.substring(0, 2);
+            String ano = data.substring(3, 7);
+            data = ano+"/"+mes;
+        }else if(data.length() > 7){
+            String dia = data.substring(0, 2);
+            String mes = data.substring(3, 5);
+            String ano = data.substring(6, 10);
+            data = ano+"/"+mes+"/"+dia;
+        }
+
         try {
             stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE paga = true AND data LIKE '%"+data+"%'");
             rs = stmt.executeQuery();
@@ -102,6 +137,16 @@ public class Relatorio implements IRelatorio {
         PreparedStatement stmt = null;
         
         ResultSet rs = null;
+
+        String dia = data.substring(0, 2);
+        String mes = data.substring(3, 5);
+        String ano = data.substring(6, 10);
+        data = ano+"/"+mes+"/"+dia;
+
+        String dia2 = data2.substring(0, 2);
+        String mes2 = data2.substring(3, 5);
+        String ano2 = data2.substring(6, 10);
+        data2 = ano2+"/"+mes2+"/"+dia2;
         
         try {
             stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE paga = true AND data BETWEEN '"+data+"' AND '"+data2+"'");
@@ -129,6 +174,19 @@ public class Relatorio implements IRelatorio {
         PreparedStatement stmt = null;
 
         ResultSet rs = null;
+
+        
+        if (data.length() > 4 && data.length() <=7){
+            String mes = data.substring(0, 2);
+            String ano = data.substring(3, 7);
+            data = ano+"/"+mes;
+        }else if(data.length() > 7){
+            String dia = data.substring(0, 2);
+            String mes = data.substring(3, 5);
+            String ano = data.substring(6, 10);
+            data = ano+"/"+mes+"/"+dia;
+        }
+
         
         try {
             stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE data LIKE '%"+data+"%'");
@@ -154,6 +212,16 @@ public class Relatorio implements IRelatorio {
         PreparedStatement stmt = null;
 
         ResultSet rs = null;
+
+        String dia = data.substring(0, 2);
+        String mes = data.substring(3, 5);
+        String ano = data.substring(6, 10);
+        data = ano+"/"+mes+"/"+dia;
+
+        String dia2 = data2.substring(0, 2);
+        String mes2 = data2.substring(3, 5);
+        String ano2 = data2.substring(6, 10);
+        data2 = ano2+"/"+mes2+"/"+dia2;
         
         try {
             stmt = con.prepareStatement("SELECT SUM(valtotal) FROM servico WHERE data BETWEEN '"+data+"' AND '"+data2+"'");
@@ -184,6 +252,18 @@ public class Relatorio implements IRelatorio {
         PreparedStatement stmt = null;
         
         ResultSet rs = null;
+
+        if (data.length() > 4 && data.length() <=7){
+            String mes = data.substring(0, 2);
+            String ano = data.substring(3, 7);
+            data = ano+"/"+mes;
+        }else if(data.length() > 7){
+            String dia = data.substring(0, 2);
+            String mes = data.substring(3, 5);
+            String ano = data.substring(6, 10);
+            data = ano+"/"+mes+"/"+dia;
+        }
+
         
         try {
             
@@ -211,6 +291,17 @@ public class Relatorio implements IRelatorio {
         PreparedStatement stmt = null;
         
         ResultSet rs = null;
+
+        
+        String dia = data.substring(0, 2);
+        String mes = data.substring(3, 5);
+        String ano = data.substring(6, 10);
+        data = ano+"/"+mes+"/"+dia;
+
+        String dia2 = data2.substring(0, 2);
+        String mes2 = data2.substring(3, 5);
+        String ano2 = data2.substring(6, 10);
+        data2 = ano2+"/"+mes2+"/"+dia2;
         
         try {
             
@@ -239,6 +330,18 @@ public class Relatorio implements IRelatorio {
             PreparedStatement stmt = null;
             
             ResultSet rs = null;
+
+            if (data.length() > 4 && data.length() <=7){
+                String mes = data.substring(0, 2);
+                String ano = data.substring(3, 7);
+                data = ano+"/"+mes;
+            }else if(data.length() > 7){
+                String dia = data.substring(0, 2);
+                String mes = data.substring(3, 5);
+                String ano = data.substring(6, 10);
+                data = ano+"/"+mes+"/"+dia;
+            }
+
             
             try {
                 
@@ -267,6 +370,17 @@ public class Relatorio implements IRelatorio {
             PreparedStatement stmt = null;
             
             ResultSet rs = null;
+
+            
+            String dia = data.substring(0, 2);
+            String mes = data.substring(3, 5);
+            String ano = data.substring(6, 10);
+            data = ano+"/"+mes+"/"+dia;
+
+            String dia2 = data2.substring(0, 2);
+            String mes2 = data2.substring(3, 5);
+            String ano2 = data2.substring(6, 10);
+            data2 = ano2+"/"+mes2+"/"+dia2;
             
             try {
                 
@@ -295,6 +409,17 @@ public class Relatorio implements IRelatorio {
         PreparedStatement stmt = null;
         
         ResultSet rs = null;
+        if (data.length() > 4 && data.length() <=7){
+            String mes = data.substring(0, 2);
+            String ano = data.substring(3, 7);
+            data = ano+"/"+mes;
+        }else if(data.length() > 7){
+            String dia = data.substring(0, 2);
+            String mes = data.substring(3, 5);
+            String ano = data.substring(6, 10);
+            data = ano+"/"+mes+"/"+dia;
+        }
+
         
         try {
             
@@ -323,10 +448,22 @@ public class Relatorio implements IRelatorio {
         PreparedStatement stmt = null;
         
         ResultSet rs = null;
+
+        
+        String dia = data.substring(0, 2);
+        String mes = data.substring(3, 5);
+        String ano = data.substring(6, 10);
+        data = ano+"/"+mes+"/"+dia;
+
+        String dia2 = data2.substring(0, 2);
+        String mes2 = data2.substring(3, 5);
+        String ano2 = data2.substring(6, 10);
+        data2 = ano2+"/"+mes2+"/"+dia2;
+
         
         try {
             
-            stmt = con.prepareStatement("SELECT COUNT(*),SUM(valor) FROM servico_unico INNER JOIN servico ON (idtrab = " + idService+" AND servico.id = servico_unico.idserv AND servico.data BETWEEN '"+data+"' AND '"+data2+"')");//
+            stmt = con.prepareStatement("SELECT COUNT(*),SUM(valor) FROM servico_unico INNER JOIN servico ON (idtrab = " + idService+" AND servico.id = servico_unico.idserv AND servico.data BETWEEN ('"+data+"') AND ('"+data2+"'))");//
             rs = stmt.executeQuery();
             while (rs.next()) {
                 count = rs.getInt(1);
@@ -342,14 +479,5 @@ public class Relatorio implements IRelatorio {
         return ob; 
     }
 
-    
-    public static void main(String[] args) {
-        Relatorio r = new Relatorio();
-        System.out.println(r.nServicoBarbeiro(2, "12")[0]);
-        
-        System.out.println(r.nServicoBarbeiro(2, "25/12/2019")[1]);
-
-        System.out.println(r.somaValorTotal("/01/2020"));
-    }
     
 }

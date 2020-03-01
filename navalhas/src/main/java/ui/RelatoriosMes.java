@@ -25,9 +25,9 @@ public class RelatoriosMes extends JPanel implements ActionListener {
     private JButton bNovembro;
     private JButton bDezembro;
 
-    JPanel relMen;
+    RelatoriosMensal relMen;
 
-    public RelatoriosMes(JPanel relMen) {
+    public RelatoriosMes(RelatoriosMensal relMen) {
         this.relMen = relMen;
 
         removeAll();
@@ -258,8 +258,80 @@ public class RelatoriosMes extends JPanel implements ActionListener {
         if (ae.getSource() == bJaneiro) {
 
             setVisible(false);
+            relMen.mes("01");
             relMen.setVisible(true);
         }
+        if (ae.getSource() == bFevereiro) {
+
+            setVisible(false);
+            relMen.mes("02");
+            relMen.setVisible(true);
+        }
+
+        if (ae.getSource() == bMarco) {
+
+            setVisible(false);
+            relMen.mes("03");
+            relMen.setVisible(true);
+        }
+
+        if (ae.getSource() == bAbril) {
+
+            setVisible(false);
+            relMen.mes("04");
+            relMen.setVisible(true);
+        }
+
+        if (ae.getSource() == bMaio) {
+
+            setVisible(false);
+            relMen.mes("05");
+            relMen.setVisible(true);
+        }
+
+        if (ae.getSource() == bJunho) {
+
+            setVisible(false);
+            relMen.mes("06");
+            relMen.setVisible(true);
+        }
+        if (ae.getSource() == bJulho) {
+
+            setVisible(false);
+            relMen.mes("07");
+            relMen.setVisible(true);
+        }
+        if (ae.getSource() == bAgosto) {
+
+            setVisible(false);
+            relMen.mes("08");
+            relMen.setVisible(true);
+        }
+        if (ae.getSource() == bSetembro) {
+
+            setVisible(false);
+            relMen.mes("09");
+            relMen.setVisible(true);
+        }
+        if (ae.getSource() == bOutubro) {
+
+            setVisible(false);
+            relMen.mes("10");
+            relMen.setVisible(true);
+        }
+        if (ae.getSource() == bNovembro) {
+
+            setVisible(false);
+            relMen.mes("11");
+            relMen.setVisible(true);
+        }
+        if (ae.getSource() == bDezembro) {
+
+            setVisible(false);
+            relMen.mes("12");
+            relMen.setVisible(true);
+        }
+
 
     }
 

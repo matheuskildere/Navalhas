@@ -43,7 +43,13 @@ public class Cards extends JPanel implements ActionListener{
         add(dateIcon);
 
         String data = servico.getData().trim();
-        JLabel date = new JLabel(data);
+        String dia = data.substring(8, 10);
+        String mes = data.substring(5, 7);
+        String ano = data.substring(0, 4);
+
+        String dataPT = dia+"/"+mes+"/"+ano;
+
+        JLabel date = new JLabel(dataPT);
         date.setBounds(12, 60, 200, 25);
         date.setFont(new Font("Helvetica Neue", Font.ROMAN_BASELINE, 14));
         date.setForeground(new Color(0, 0, 0,90));

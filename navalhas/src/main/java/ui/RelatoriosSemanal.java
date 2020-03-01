@@ -75,15 +75,19 @@ public class RelatoriosSemanal extends JPanel implements ActionListener {
     
             // Corte
             int dataInicio = Integer.parseInt(dataString("dd")) ;
-            int dataFinal = dataInicio - 6;
+            int dataFinal = dataInicio - 7;
             int cont = 0 ;
-            if (dataInicio - 6 < 1) {
+            String data = "";
+            data = dataFinal +"/"+ dataString("MM/yyyy");
+            if (dataInicio - 7 < 1) {
                 for (int i = dataFinal; i <= 0; i++) {
                     cont++;
                 }
                 dataFinal = 31 - cont;
+
+                int mesInicio = Integer.parseInt(dataString("MM"));
+                data = dataFinal +"/0"+ (mesInicio - 1) +"/"+dataString("yyyy");
             }
-            String data = dataFinal +"/"+ dataString("MM/yyyy");
             Object[] corte = relatorioDAO.nServico(1, data, dataString("dd/MM/yyyy"));
             lContador = new JLabel(""+corte[0]);
             lContador.setBounds(210, 70, 50, 24);
@@ -494,15 +498,19 @@ public class RelatoriosSemanal extends JPanel implements ActionListener {
         }
         private int quantServicos(int idBarbeiro){
             int dataInicio = Integer.parseInt(dataString("dd")) ;
-            int dataFinal = dataInicio - 6;
+            int dataFinal = dataInicio - 7;
             int cont = 0 ;
-            if (dataInicio - 6 < 1) {
+            String data = "";
+            data = dataFinal +"/"+ dataString("MM/yyyy");
+            if (dataInicio - 7 < 1) {
                 for (int i = dataFinal; i <= 0; i++) {
                     cont++;
                 }
                 dataFinal = 31 - cont;
+
+                int mesInicio = Integer.parseInt(dataString("MM"));
+                data = dataFinal +"/0"+ (mesInicio - 1) +"/"+dataString("yyyy");
             }
-            String data = dataFinal +"/"+ dataString("MM/yyyy");
             Object[] corte = relatorioDAO.nServiBarb(1,idBarbeiro, data, dataString("dd/MM/yyyy"));
             Object[] barba = relatorioDAO.nServiBarb(0,idBarbeiro, data, dataString("dd/MM/yyyy"));
             Object[] somb = relatorioDAO.nServiBarb(7,idBarbeiro, data, dataString("dd/MM/yyyy"));
@@ -513,26 +521,6 @@ public class RelatoriosSemanal extends JPanel implements ActionListener {
             Object[] luz = relatorioDAO.nServiBarb(3,idBarbeiro, data, dataString("dd/MM/yyyy"));
             return (int) corte[0] +(int) barba[0] + (int)somb[0] + (int)colo[0] + (int)pig[0]+ (int)sela[0]+ (int)rela[0]+ (int)luz[0];
         }
-        private double valorServicos(int idBarbeiro){
-            int dataInicio = Integer.parseInt(dataString("dd")) ;
-            int dataFinal = dataInicio - 6;
-            int cont = 0 ;
-            if (dataInicio - 6 < 1) {
-                for (int i = dataFinal; i <= 0; i++) {
-                    cont++;
-                }
-                dataFinal = 31 - cont;
-            }
-            String data = dataFinal +"/"+ dataString("MM/yyyy");
-            Object[] corte = relatorioDAO.nServiBarb(1,idBarbeiro, data, dataString("dd/MM/yyyy"));
-            Object[] barba = relatorioDAO.nServiBarb(0,idBarbeiro, data, dataString("dd/MM/yyyy"));
-            Object[] somb = relatorioDAO.nServiBarb(7,idBarbeiro, data, dataString("dd/MM/yyyy"));
-            Object[] colo = relatorioDAO.nServiBarb(2,idBarbeiro, data, dataString("dd/MM/yyyy"));
-            Object[] pig = relatorioDAO.nServiBarb(5,idBarbeiro, data, dataString("dd/MM/yyyy"));
-            Object[] sela = relatorioDAO.nServiBarb(6,idBarbeiro, data, dataString("dd/MM/yyyy"));
-            Object[] rela = relatorioDAO.nServiBarb(4,idBarbeiro, data, dataString("dd/MM/yyyy"));
-            Object[] luz = relatorioDAO.nServiBarb(3,idBarbeiro, data, dataString("dd/MM/yyyy"));
-            return (double) corte[1] +(double) barba[1] + (double)somb[1] + (double)colo[1] + (double)pig[1]+ (double)sela[1]+ (double)rela[1]+ (double)luz[1];
-        }
+        
     }
     

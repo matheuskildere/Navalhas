@@ -34,6 +34,8 @@ public class Assinaturas extends JPanel implements ActionListener {
     private JLabel lNome;
     private JLabel lContador;
 
+    private JTextField tPesquisa2;
+
     private JLabel line;
 
     private JPanel historico;
@@ -77,6 +79,7 @@ public class Assinaturas extends JPanel implements ActionListener {
         customerIcon.setBounds(65, 196, 50, 45);
         description.add(customerIcon);
 
+
         tPesquisa = new JTextField("");
         tPesquisa.setBounds(WIDTH / 5, HEIGHT / 12, 384, 48);
         tPesquisa.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
@@ -93,7 +96,7 @@ public class Assinaturas extends JPanel implements ActionListener {
         bPesquisa.setBackground(new Color(234, 234, 234));
         bPesquisa.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                acaoBpesquisa();
+                System.out.println("p2-"+tPesquisa2.getText());
                 
             }
         });
@@ -239,10 +242,12 @@ public class Assinaturas extends JPanel implements ActionListener {
             
     }
 
-    public void actionPerformed(ActionEvent ae) {
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
-        if (ae.getSource() == bPesquisa) {
-            
+        if (e.getSource() == bPesquisa) {
+            acaoBpesquisa();
+            System.out.println("p2-"+tPesquisa2.getText());
         }
     }
     private void acaoBpesquisa(){

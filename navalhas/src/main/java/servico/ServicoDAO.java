@@ -25,18 +25,22 @@ public class ServicoDAO {
 
         try {
             stmt = con.prepareStatement("INSERT INTO servico (valtotal, idcli, idbar, paga ,data) VALUES (?,?,?,?,?)");
-
+            String data = serv.getData();
+            String dia = data.substring(0, 2);
+            String mes = data.substring(3, 5);
+            String ano = data.substring(6, 10);
+            String dataEN = ano+"/"+mes+"/"+dia;
             stmt.setDouble(1, serv.getValorTotal());
             stmt.setInt(2, serv.getCliente().getId());
             stmt.setInt(3, serv.getBarbeiro().getId());
             stmt.setBoolean(4, serv.isPagamento());
-            stmt.setString(5, serv.getData());
+            stmt.setString(5, dataEN);
             
             stmt.executeUpdate();
             
         } catch (SQLException e) {
             System.err.println(e);
-            JOptionPane.showConfirmDialog(null, "ERROR AO SALVAR" );
+            JOptionPane.showMessageDialog(null, "ERROR AO SALVAR" );
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }
