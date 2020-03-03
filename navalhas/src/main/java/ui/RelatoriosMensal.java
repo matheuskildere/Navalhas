@@ -16,6 +16,10 @@ import relatorio.Relatorio;
  */
 public class RelatoriosMensal extends JPanel implements ActionListener {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 8279451395859290558L;
     private JPanel description;
     private JLabel customerIcon;
 
@@ -52,7 +56,7 @@ public class RelatoriosMensal extends JPanel implements ActionListener {
         add(description);
 
         customerIcon = new JLabel();
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/chart-icon.png")));
+        customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/chart-icon.png"));
         customerIcon.setBounds(65, 196, 55, 55);
         description.add(customerIcon);
 
@@ -248,7 +252,7 @@ public class RelatoriosMensal extends JPanel implements ActionListener {
         //
 
         line = new JLabel();
-        line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/line1.png")));
+        line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/line1.png"));
         line.setBounds(700, 5, 889, 450);
         add(line);
 
@@ -266,7 +270,6 @@ public class RelatoriosMensal extends JPanel implements ActionListener {
 
         // Barbeiro 01
 
-        Object[] hugo = relatorioDAO.nServicoBarbeiro(0, dataCompleta);
         bBarbeiro1 = new JButton("Hugo");
         bBarbeiro1.setBounds(730, 225, 150, 24);
         bBarbeiro1.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
@@ -283,7 +286,6 @@ public class RelatoriosMensal extends JPanel implements ActionListener {
 
         // Barbeiro 02
 
-        Object[] mario = relatorioDAO.nServicoBarbeiro(1, dataCompleta);
         bBarbeiro2 = new JButton("Mário");
         bBarbeiro2.setBounds(730, 90, 150, 24);
         bBarbeiro2.setBackground(new Color(255, 255, 255));
@@ -300,7 +302,6 @@ public class RelatoriosMensal extends JPanel implements ActionListener {
 
         // Barbeiro 03
 
-        Object[] raimundo = relatorioDAO.nServicoBarbeiro(2, dataCompleta);
         bBarbeiro3 = new JButton("Raimundo");
         bBarbeiro3.setBounds(730, 135, 150, 24);
         bBarbeiro3.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
@@ -316,7 +317,6 @@ public class RelatoriosMensal extends JPanel implements ActionListener {
         add(lContador);
 
         // Barbeiro 04
-        Object[] sergio = relatorioDAO.nServicoBarbeiro(3, dataCompleta);
         
         bBarbeiro4 = new JButton("Sérgio");
         bBarbeiro4.setBackground(new Color(255, 255, 255));
@@ -335,7 +335,7 @@ public class RelatoriosMensal extends JPanel implements ActionListener {
         //
 
         line = new JLabel();
-        line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/line1.png")));
+        line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/line1.png"));
         line.setBounds(1000, 15, 2, 250);
         add(line);
 
@@ -354,7 +354,7 @@ public class RelatoriosMensal extends JPanel implements ActionListener {
         //
 
         line = new JLabel();
-        line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/horizontal-division-line.png")));
+        line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/horizontal-division-line.png"));
         line.setBounds(730, 280, 520, 2);
         add(line);
 

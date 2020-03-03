@@ -16,6 +16,10 @@ import relatorio.Relatorio;
  */
 public class RelatoriosSemanal extends JPanel implements ActionListener {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = -7273215319151435418L;
     private JPanel description;
     private JLabel customerIcon;
 
@@ -51,7 +55,7 @@ public class RelatoriosSemanal extends JPanel implements ActionListener {
             add(description);
     
             customerIcon = new JLabel();
-            customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/chart-icon.png")));
+            customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/chart-icon.png"));
             customerIcon.setBounds(65, 196, 55, 55);
             description.add(customerIcon);
     
@@ -257,7 +261,7 @@ public class RelatoriosSemanal extends JPanel implements ActionListener {
             //
     
             line = new JLabel();
-            line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/line1.png")));
+            line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/line1.png"));
             line.setBounds(600, 5, 889, 450);
             add(line);
     
@@ -403,7 +407,7 @@ public class RelatoriosSemanal extends JPanel implements ActionListener {
             //
     
             line = new JLabel();
-            line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/horizontal-division-line.png")));
+            line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/horizontal-division-line.png"));
             line.setBounds(600, 250, 889, 2);
             add(line);
     
@@ -414,7 +418,7 @@ public class RelatoriosSemanal extends JPanel implements ActionListener {
             add(label);
     
             label = new JLabel();
-            label.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/credit-card-icon.png")));
+            label.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/credit-card-icon.png"));
             label.setBounds(680, 330, 400, 55);
             add(label);
     
@@ -431,7 +435,7 @@ public class RelatoriosSemanal extends JPanel implements ActionListener {
             add(label);
     
             label = new JLabel();
-            label.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/money-icon.png")));
+            label.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/money-icon.png"));
             label.setBounds(880, 330, 400, 55);
             add(label);
     

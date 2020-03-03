@@ -135,14 +135,14 @@ public class Janela implements ActionListener {
 
     private void fundo() {
         fundo = new JLabel();
-        fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/background.png")));
+        fundo.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/background.png"));
         fundo.setBounds(0, 0, 1366, 768);
         frame.getContentPane().add(fundo);
     }
 
     private void logo() {
         logo = new JLabel("");
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/logo.png")));
+        logo.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/logo.png"));
         logo.setBounds(52, 5, 160, 160);
         frame.getContentPane().add(logo);
     }
@@ -154,7 +154,7 @@ public class Janela implements ActionListener {
         menu.setLayout(null);
 
         bClientes = new JButton("    Clientes");
-        bClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-icon.png")));
+        bClientes.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/customer-icon.png"));
         bClientes.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bClientes.setForeground(new Color(255, 255, 255));
         bClientes.setBounds(0, 0, 348, 56);
@@ -165,7 +165,7 @@ public class Janela implements ActionListener {
         menu.add(bClientes);
 
         bAssinaturas = new JButton("    Assinaturas");
-        bAssinaturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signature-icon.png")));
+        bAssinaturas.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signature-icon.png"));
         bAssinaturas.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bAssinaturas.setForeground(new Color(255, 255, 255));
         bAssinaturas.setBounds(348, 0, 348, 56);
@@ -176,7 +176,7 @@ public class Janela implements ActionListener {
         menu.add(bAssinaturas);
 
         bRelatorios = new JButton("   Relatórios");
-        bRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/report-icon.png")));
+        bRelatorios.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/report-icon.png"));
         bRelatorios.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bRelatorios.setForeground(new Color(255, 255, 255));
         bRelatorios.setBounds(696, 0, 348, 56);
@@ -190,7 +190,7 @@ public class Janela implements ActionListener {
 
     public void rodape() {
         whatsapp = new JLabel();
-        whatsapp.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/whatsapp-icon.png")));
+        whatsapp.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/whatsapp-icon.png"));
         whatsapp.setBounds(47, 695, 26, 26);
         frame.getContentPane().add(whatsapp);
 
@@ -207,14 +207,14 @@ public class Janela implements ActionListener {
         frame.getContentPane().add(whatsapp);
 
         instagram = new JLabel("   Barbearia.Navalhas");
-        instagram.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/instagram-icon.png")));
+        instagram.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/instagram-icon.png"));
         instagram.setBounds(496, 695, 220, 27);
         instagram.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         instagram.setForeground(new Color(255, 255, 255));
         frame.getContentPane().add(instagram);
 
         facebook = new JLabel("   @barbearianavalhasparauapebas");
-        facebook.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/facebook-icon.png")));
+        facebook.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/facebook-icon.png"));
         facebook.setBounds(1000, 695, 340, 26);
         facebook.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         facebook.setForeground(new Color(255, 255, 255));

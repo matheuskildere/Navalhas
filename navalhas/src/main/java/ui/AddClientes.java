@@ -18,6 +18,10 @@ import cliente.ClienteDAO;
  */
 public class AddClientes extends JPanel implements ActionListener {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 4205994451968294147L;
     private JPanel description;
     private JLabel customerIcon;
 
@@ -50,12 +54,12 @@ public class AddClientes extends JPanel implements ActionListener {
         add(description);
 
         customerIcon = new JLabel();
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-add1.png")));
+        customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/customer-add1.png"));
         customerIcon.setBounds(65, 196, 50, 45);
         description.add(customerIcon);
 
         bFoto = new JButton();
-        bFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/picture-customer.png")));
+        bFoto.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/picture-customer.png"));
         bFoto.setBounds(515, 20, 100, 100);
         bFoto.setContentAreaFilled(false);
         bFoto.setBorderPainted(false);
@@ -112,7 +116,7 @@ public class AddClientes extends JPanel implements ActionListener {
         add(biometria);
 
         bBiometria = new JButton();
-        bBiometria.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/digital-button.png")));
+        bBiometria.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/digital-button.png"));
         bBiometria.setBounds(780, 210, 180, 225);
         bBiometria.setContentAreaFilled(false);
         bBiometria.setBorderPainted(false);
@@ -121,7 +125,7 @@ public class AddClientes extends JPanel implements ActionListener {
         add(bBiometria);
 
         bCancelar = new JButton();
-        bCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/cancel-button.png")));
+        bCancelar.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/cancel-button.png"));
         bCancelar.setBounds(1080, 385, 58, 58);
         bCancelar.setContentAreaFilled(false);
         bCancelar.setBorderPainted(false);
@@ -130,7 +134,7 @@ public class AddClientes extends JPanel implements ActionListener {
         add(bCancelar);
 
         bConfirmar = new JButton();
-        bConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/confirm-button.png")));
+        bConfirmar.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/confirm-button.png"));
         bConfirmar.setBounds(1135, 385, 120, 60);
         bConfirmar.setContentAreaFilled(false);
         bConfirmar.setBorderPainted(false);

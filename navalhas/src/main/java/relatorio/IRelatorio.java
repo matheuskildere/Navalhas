@@ -1,10 +1,5 @@
 package relatorio;
 
-import java.util.ArrayList;
-
-import barbeiros.Barbeiro;
-import servico.Servico;
-
 /**
  * IServico
  */

@@ -5,8 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import cliente.Cliente;
-import cliente.ClienteDAO;
 import ui.Janela;
 
 /**

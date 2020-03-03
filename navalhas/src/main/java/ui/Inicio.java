@@ -7,6 +7,10 @@ import javax.swing.*;
  */
 public class Inicio extends JFrame {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = -189643783028011410L;
     Janela jan;
 
     public Inicio() {

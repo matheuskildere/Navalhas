@@ -25,6 +25,10 @@ import servico.ServicoDAO;
  */
 public class Assinaturas extends JPanel {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 7985355862242023300L;
     private ClienteDAO clienteDAO = new ClienteDAO();
     private ServicoDAO servicoDAO = new ServicoDAO();
     private List<Cliente> listaClientes;
@@ -68,7 +72,7 @@ public class Assinaturas extends JPanel {
         add(description);
 
         JLabel customerIcon = new JLabel();
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-icon.png")));
+        customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-icon.png"));
         customerIcon.setBounds(65, 196, 50, 45);
         description.add(customerIcon);
 
@@ -84,7 +88,7 @@ public class Assinaturas extends JPanel {
 
         bPesquisa = new JButton("");
         bPesquisa.setBounds(210 , 64, 64, 48);
-        bPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/search-button.png")));
+        bPesquisa.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/search-button.png"));
         bPesquisa.setBackground(new Color(234, 234, 234));
         bPesquisa.addActionListener(new ActionListener() {
             @Override
@@ -110,7 +114,7 @@ public class Assinaturas extends JPanel {
         add(scrollFrame);
 
         JLabel line = new JLabel();
-        line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/division-line.png")));
+        line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/division-line.png"));
         line.setBounds(683, 77, 889, 328);
         add(line);
 
@@ -137,26 +141,26 @@ public class Assinaturas extends JPanel {
         lerCli();
         lProfilePicture = new JLabel();
         lProfilePicture.setBounds(137, 43, 100, 100);
-        lProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/picture-customer.png")));
+        lProfilePicture.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/picture-customer.png"));
         if (!clienteClicado.getFoto().trim().equals("")){
             lProfilePicture.setIcon(new javax.swing.ImageIcon(clienteClicado.getFoto())); 
         }
         historico.add(lProfilePicture);
 
         lNome = new JLabel(clienteClicado.getNome().trim());
-        lNome.setBounds(240, 43, 500, 30);
+        lNome.setBounds(250, 43, 500, 30);
         lNome.setFont(new Font("Helvetica Neue", Font.PLAIN, 25));
         lNome.setForeground(new Color(47, 47, 47));
         historico.add(lNome);
 
         lQtdServicos = new JLabel("Quantidade de servicos: "+ clienteClicado.getServicosTotal());
-        lQtdServicos.setBounds(240, 77, 500, 26);
+        lQtdServicos.setBounds(250, 77, 500, 26);
         lQtdServicos.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         lQtdServicos.setForeground(new Color(110, 110, 110));
         historico.add(lQtdServicos);
 
         lQtdServicosGratis = new JLabel("Quantidade de servicos gratis: "+ clienteClicado.getServicosGratis());
-        lQtdServicosGratis.setBounds(240, 96, 500, 26);
+        lQtdServicosGratis.setBounds(250, 96, 500, 26);
         lQtdServicosGratis.setFont(new Font("Helvetica Neue", Font.PLAIN, 18));
         lQtdServicosGratis.setForeground(new Color(110, 110, 110));
         historico.add(lQtdServicosGratis);
@@ -177,7 +181,7 @@ public class Assinaturas extends JPanel {
         pCards.add(card);
 
         JButton addButton = new JButton();
-        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/add-icon.png")));
+        addButton.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/add-icon.png"));
         addButton.setBounds(0 , 0,100, 100);
         addButton.setBorderPainted(false);
         addButton.setFocusPainted(false);
@@ -264,7 +268,7 @@ public class Assinaturas extends JPanel {
                     lNome.setText(cliente.getNome().trim());
                     lQtdServicos.setText("Quantidade de servicos: "+ cliente.getServicos());
                     lQtdServicosGratis.setText("Quantidade de servicos gratis: "+ cliente.getServicosGratis());
-                    lProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/picture-customer.png")));
+                    lProfilePicture.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/picture-customer.png"));
                     if (!cliente.getFoto().trim().equals("")){
                         lProfilePicture.setIcon(new javax.swing.ImageIcon(cliente.getFoto())); 
                     }
@@ -290,9 +294,9 @@ public class Assinaturas extends JPanel {
                 lNome.setText(cliente.getNome().trim());
                 lQtdServicos.setText("Quantidade de servicos: "+ cliente.getServicos());
                 lQtdServicosGratis.setText("Quantidade de servicos gratis: "+ cliente.getServicosGratis());
-                lProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/picture-customer.png")));
+                lProfilePicture.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/picture-customer.png"));
                 if (!cliente.getFoto().trim().equals("")){
-                    lProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/profile-picture.png"))); 
+                    lProfilePicture.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/profile-picture.png")); 
                 }
             }else{
                 System.out.println("else");

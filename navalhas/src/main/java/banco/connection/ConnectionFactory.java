@@ -13,11 +13,11 @@ public class ConnectionFactory {
 
     private static final String DRIVER = "org.postgresql.Driver";
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/Navalhas";
+    private static final String URL = "jdbc:postgresql://database-navalhas-post.cnltqoj8bkox.us-east-2.rds.amazonaws.com:5432/navalhas";
 
     private static final String USER = "postgres";
 
-    private static final String PASS = "!engenheiromoderno1";
+    private static final String PASS = "!engenheiromoderno12";
 
     public static Connection getConnection(){
         try {

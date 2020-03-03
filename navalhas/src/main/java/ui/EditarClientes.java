@@ -19,6 +19,10 @@ import java.nio.file.Paths;
  */
 public class EditarClientes extends JPanel implements ActionListener {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 453293576351353281L;
     private JPanel description;
     private JLabel customerIcon;
 
@@ -59,7 +63,7 @@ public class EditarClientes extends JPanel implements ActionListener {
         add(description);
 
         customerIcon = new JLabel("");
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-edit.png")));
+        customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/customer-edit.png"));
         customerIcon.setBounds(65, 196, 50, 45);
         description.add(customerIcon);
 

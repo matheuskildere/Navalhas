@@ -24,6 +24,10 @@ import servico.servicoUnico.trabalho.Trabalho;
  */
 public class AddAssinaturas extends JPanel implements ActionListener {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = -2729096270135963831L;
     private JPanel description;
     private JLabel customerIcon;
 
@@ -92,13 +96,13 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         add(description);
 
         customerIcon = new JLabel();
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-icon.png")));
+        customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-icon.png"));
         customerIcon.setBounds(65, 196, 50, 45);
         description.add(customerIcon);
 
         lProfilePicture = new JLabel();
         lProfilePicture.setBounds(230, 5, 100, 100);
-        lProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/picture-customer.png")));
+        lProfilePicture.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/picture-customer.png"));
         if (!cliente.getFoto().trim().equals("")){
             lProfilePicture.setIcon(new javax.swing.ImageIcon(cliente.getFoto())); 
         }add(lProfilePicture);
@@ -118,7 +122,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         add(lData);
 
         tabela = new JLabel();
-        tabela.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-table.png")));
+        tabela.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-table.png"));
         tabela.setBounds(230, 110, 450, 350);
         add(tabela);
 
@@ -131,7 +135,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         // Corte
 
         bAddIcon1 = new JButton();
-        bAddIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+        bAddIcon1.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
         bAddIcon1.setBounds(230, 130, 22,22);
         bAddIcon1.setContentAreaFilled(false);
         bAddIcon1.setBorderPainted(false);
@@ -139,10 +143,10 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         bAddIcon1.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (bAddIcon1.getIcon().toString().contains("signatures-add-icon.png")) {
-                    bAddIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-remove-icon.png")));
+                    bAddIcon1.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-remove-icon.png"));
                     tValorCorte.setEnabled(true);
                 }else {
-                    bAddIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+                    bAddIcon1.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
                     tValorCorte.setEnabled(false);
                 }
             }
@@ -179,7 +183,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         // Barba
 
         bAddIcon2 = new JButton();
-        bAddIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+        bAddIcon2.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
         bAddIcon2.setBounds(230, 170, 22, 22);
         bAddIcon2.setContentAreaFilled(false);
         bAddIcon2.setBorderPainted(false);
@@ -187,10 +191,10 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         bAddIcon2.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (bAddIcon2.getIcon().toString().contains("signatures-add-icon.png")) {
-                    bAddIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-remove-icon.png")));
+                    bAddIcon2.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-remove-icon.png"));
                     tValorBarba.setEnabled(true);
                 }else {
-                    bAddIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+                    bAddIcon2.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
                     tValorBarba.setEnabled(false);
                 }
             }
@@ -227,7 +231,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         // Sombrancelha
 
         bAddIcon3 = new JButton();
-        bAddIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+        bAddIcon3.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
         bAddIcon3.setBounds(230, 213, 22, 22);
         bAddIcon3.setContentAreaFilled(false);
         bAddIcon3.setBorderPainted(false);
@@ -236,10 +240,10 @@ public class AddAssinaturas extends JPanel implements ActionListener {
             public void actionPerformed(ActionEvent e){
                 if (bAddIcon3.getIcon().toString().contains("signatures-add-icon.png")) {
                     tValorSombrancelha.setEnabled(true);
-                    bAddIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-remove-icon.png")));
+                    bAddIcon3.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-remove-icon.png"));
                 }else {
                     tValorSombrancelha.setEnabled(false);
-                    bAddIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+                    bAddIcon3.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
                 }
             }
         });
@@ -276,7 +280,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         // Coloracao
 
         bAddIcon4 = new JButton();
-        bAddIcon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+        bAddIcon4.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
         bAddIcon4.setBounds(230, 254, 22, 22);
         bAddIcon4.setContentAreaFilled(false);
         bAddIcon4.setBorderPainted(false);
@@ -284,10 +288,10 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         bAddIcon4.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (bAddIcon4.getIcon().toString().contains("signatures-add-icon.png")) {
-                    bAddIcon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-remove-icon.png")));
+                    bAddIcon4.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-remove-icon.png"));
                     tValorColoracao.setEnabled(true);
                 }else {
-                    bAddIcon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+                    bAddIcon4.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
                     tValorColoracao.setEnabled(false);
                 }
             }
@@ -325,7 +329,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         // Pigmentacao em barba
 
         bAddIcon5 = new JButton();
-        bAddIcon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+        bAddIcon5.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
         bAddIcon5.setBounds(230, 295, 22, 22);
         bAddIcon5.setContentAreaFilled(false);
         bAddIcon5.setBorderPainted(false);
@@ -334,10 +338,10 @@ public class AddAssinaturas extends JPanel implements ActionListener {
             public void actionPerformed(ActionEvent e){
                 if (bAddIcon5.getIcon().toString().contains("signatures-add-icon.png")) {
                     tValorPigmentacao.setEnabled(true);
-                    bAddIcon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-remove-icon.png")));
+                    bAddIcon5.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-remove-icon.png"));
                 }else {
                     tValorPigmentacao.setEnabled(false);
-                    bAddIcon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+                    bAddIcon5.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
                 }
             }
         });
@@ -374,7 +378,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         // Selagem
 
         bAddIcon6 = new JButton();
-        bAddIcon6.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+        bAddIcon6.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
         bAddIcon6.setBounds(230, 335, 22, 22);
         bAddIcon6.setContentAreaFilled(false);
         bAddIcon6.setBorderPainted(false);
@@ -382,10 +386,10 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         bAddIcon6.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (bAddIcon6.getIcon().toString().contains("signatures-add-icon.png")) {
-                    bAddIcon6.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-remove-icon.png")));
+                    bAddIcon6.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-remove-icon.png"));
                     tValorSelagem.setEnabled(true);
                 }else {
-                    bAddIcon6.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+                    bAddIcon6.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
                     tValorSelagem.setEnabled(false);
                 }
             }
@@ -424,7 +428,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         // Relaxamento
 
         bAddIcon7 = new JButton();
-        bAddIcon7.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+        bAddIcon7.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
         bAddIcon7.setBounds(230, 378, 22, 22);
         bAddIcon7.setContentAreaFilled(false);
         bAddIcon7.setBorderPainted(false);
@@ -432,10 +436,10 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         bAddIcon7.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (bAddIcon7.getIcon().toString().contains("signatures-add-icon.png")) {
-                    bAddIcon7.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-remove-icon.png")));
+                    bAddIcon7.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-remove-icon.png"));
                     tValorRelaxamento.setEnabled(true);
                 }else {
-                    bAddIcon7.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+                    bAddIcon7.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
                     tValorRelaxamento.setEnabled(false);
                 }
             }
@@ -473,7 +477,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         // Luzes
 
         bAddIcon8 = new JButton();
-        bAddIcon8.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+        bAddIcon8.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
         bAddIcon8.setBounds(230, 420, 22, 22);
         bAddIcon8.setContentAreaFilled(false);
         bAddIcon8.setBorderPainted(false);
@@ -481,10 +485,10 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         bAddIcon8.addActionListener( new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (bAddIcon8.getIcon().toString().contains("signatures-add-icon.png")) {
-                    bAddIcon8.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-remove-icon.png")));
+                    bAddIcon8.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-remove-icon.png"));
                     tValorLuzes.setEnabled(true);
                 }else {
-                    bAddIcon8.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+                    bAddIcon8.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
                     tValorLuzes.setEnabled(false);
                 }
             }
@@ -601,7 +605,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         add(lValorTotal);
 
         bCancelar = new JButton();
-        bCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/cancel-button.png")));
+        bCancelar.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/cancel-button.png"));
         bCancelar.setBounds(1080, 385, 58, 58);
         bCancelar.setContentAreaFilled(false);
         bCancelar.setBorderPainted(false);
@@ -610,7 +614,7 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         add(bCancelar);
 
         bConfirmar = new JButton();
-        bConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/confirm-button.png")));
+        bConfirmar.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/confirm-button.png"));
         bConfirmar.setBounds(1135, 385, 120, 60);
         bConfirmar.setContentAreaFilled(false);
         bConfirmar.setBorderPainted(false);
@@ -625,9 +629,9 @@ public class AddAssinaturas extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == bAddIcon){
             if (bAddIcon.getIcon().toString().contains("signatures-add-icon.png")) {
-                bAddIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-remove-icon.png")));
+                bAddIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-remove-icon.png"));
             }else {
-                bAddIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+                bAddIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
             }
         }
 
@@ -754,14 +758,14 @@ public class AddAssinaturas extends JPanel implements ActionListener {
         cartao.setEnabled(true);
 
         
-        bAddIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
-        bAddIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
-        bAddIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
-        bAddIcon4.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
-        bAddIcon5.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
-        bAddIcon6.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
-        bAddIcon7.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
-        bAddIcon8.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/signatures-add-icon.png")));
+        bAddIcon1.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
+        bAddIcon2.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
+        bAddIcon3.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
+        bAddIcon4.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
+        bAddIcon5.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
+        bAddIcon6.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
+        bAddIcon7.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
+        bAddIcon8.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/signatures-add-icon.png"));
 
     }
     double valor = 0;

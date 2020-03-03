@@ -4,21 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
 import banco.connection.ConnectionFactory;
-import barbeiros.Barbeiro;
-import servico.Servico;
-import servico.ServicoDAO;
-import servico.servicoUnico.trabalho.Trabalho;
 
 /**
  * Relatorio
  */
 public class Relatorio implements IRelatorio {
-    private ServicoDAO dao_servico = new ServicoDAO();
+    //private ServicoDAO dao_servico = new ServicoDAO();
 
     @Override
     public double somaValorCartao(String data) {

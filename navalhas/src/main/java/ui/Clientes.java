@@ -11,6 +11,10 @@ import javax.swing.*;
 public class Clientes extends JPanel implements ActionListener {
     
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = -4657005931050868533L;
     private JPanel description;
     private JLabel customerIcon;
 
@@ -45,12 +49,12 @@ public class Clientes extends JPanel implements ActionListener {
         add(description);
 
         customerIcon = new JLabel();
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-users.png")));
+        customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/customer-users.png"));
         customerIcon.setBounds(65, 50, 45, 42);
         description.add(customerIcon);
 
         bAddCliente = new JButton("\nAdicionar");
-        bAddCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-add.png")));
+        bAddCliente.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/customer-add.png"));
         bAddCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bAddCliente.setForeground(new Color(0, 0, 0));
         bAddCliente.setBounds(220, 50, 300, 40);
@@ -61,7 +65,7 @@ public class Clientes extends JPanel implements ActionListener {
         add(bAddCliente);
 
         bConsultarCliente = new JButton("\nConsultar");
-        bConsultarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-search.png")));
+        bConsultarCliente.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/customer-search.png"));
         bConsultarCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bConsultarCliente.setForeground(new Color(0, 0, 0));
         bConsultarCliente.setBounds(470, 50, 300, 40);
@@ -72,7 +76,7 @@ public class Clientes extends JPanel implements ActionListener {
         add(bConsultarCliente);
 
         bEditarCliente = new JButton("\nEditar");
-        bEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-edit.png")));
+        bEditarCliente.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/customer-edit.png"));
         bEditarCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bEditarCliente.setForeground(new Color(0, 0, 0));
         bEditarCliente.setBounds(720, 50, 300, 40);
@@ -83,7 +87,7 @@ public class Clientes extends JPanel implements ActionListener {
         add(bEditarCliente);
 
         bExcluirCliente = new JButton("\nExcluir");
-        bExcluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/customer-delete.png")));
+        bExcluirCliente.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/customer-delete.png"));
         bExcluirCliente.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         bExcluirCliente.setForeground(new Color(0, 0, 0));
         bExcluirCliente.setBounds(970, 50, 300, 40);

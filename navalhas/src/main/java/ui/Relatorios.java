@@ -9,6 +9,10 @@ import javax.swing.*;
  */
 public class Relatorios extends JPanel implements ActionListener {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 8446776308536840410L;
     private JPanel description;
     private JLabel customerIcon;
 
@@ -42,12 +46,12 @@ public class Relatorios extends JPanel implements ActionListener {
         add(description);
 
         customerIcon = new JLabel();
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/chart-icon.png")));
+        customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/chart-icon.png"));
         customerIcon.setBounds(65, 196, 55, 55);
         description.add(customerIcon);
 
         bDiario = new JButton();
-        bDiario.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/circle-button.png")));
+        bDiario.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/circle-button.png"));
         bDiario.setBounds(250, 170, 205, 80);
         bDiario.setBackground(new Color(0, 0, 0));
         bDiario.setBorderPainted(false);
@@ -64,7 +68,7 @@ public class Relatorios extends JPanel implements ActionListener {
         bDiario.add(diario);
 
         bSemanal = new JButton();
-        bSemanal.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/circle-button.png")));
+        bSemanal.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/circle-button.png"));
         bSemanal.setBounds(500, 170, 205, 80);
         bSemanal.setBackground(new Color(0, 0, 0));
         bSemanal.setBorderPainted(false);
@@ -81,7 +85,7 @@ public class Relatorios extends JPanel implements ActionListener {
         bSemanal.add(lSemanal);
 
         bMensal = new JButton();
-        bMensal.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/circle-button.png")));
+        bMensal.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/circle-button.png"));
         bMensal.setBounds(750, 170, 205, 80);
         bMensal.setBackground(new Color(0, 0, 0));
         bMensal.setBorderPainted(false);
@@ -98,7 +102,7 @@ public class Relatorios extends JPanel implements ActionListener {
         bMensal.add(lMensal);
 
         bAnual = new JButton();
-        bAnual.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/circle-button.png")));
+        bAnual.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/circle-button.png"));
         bAnual.setBounds(1000, 170, 205, 80);
         bAnual.setBackground(new Color(0, 0, 0));
         bAnual.setBorderPainted(false);

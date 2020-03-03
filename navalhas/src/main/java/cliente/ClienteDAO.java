@@ -10,8 +10,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import banco.connection.ConnectionFactory;
-import cliente.Cliente;
-import servico.Servico;
 /**
  * ClienteDAO
  */

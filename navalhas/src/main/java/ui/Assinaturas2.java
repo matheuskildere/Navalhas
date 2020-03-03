@@ -7,8 +7,6 @@ import java.util.List;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 import cliente.Cliente;
 import cliente.ClienteDAO;
@@ -32,7 +30,6 @@ public class Assinaturas2 extends JPanel implements ActionListener {
     private JButton bNome;
 
     private JLabel lNome;
-    private JLabel lContador;
 
     private JTextField tPesquisa2;
 

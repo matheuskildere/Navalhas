@@ -16,6 +16,10 @@ import relatorio.Relatorio;
  */
 public class RelatoriosDiarioBarbeiro extends JPanel implements ActionListener {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 4580431073008888696L;
     private JPanel description;
     private JLabel customerIcon;
 
@@ -25,7 +29,6 @@ public class RelatoriosDiarioBarbeiro extends JPanel implements ActionListener {
     private JLabel lValor;
     private JLabel label;
 
-    private JLabel bBarbeiro;
     private Relatorio relatorioDAO = new Relatorio();
     private int idBarbeiro = 0;
     private String nomeBarbeiro = "Hugo";
@@ -47,7 +50,7 @@ public class RelatoriosDiarioBarbeiro extends JPanel implements ActionListener {
         add(description);
 
         customerIcon = new JLabel();
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/chart-icon.png")));
+        customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/chart-icon.png"));
         customerIcon.setBounds(65, 196, 55, 55);
         description.add(customerIcon);
 
@@ -238,7 +241,7 @@ public class RelatoriosDiarioBarbeiro extends JPanel implements ActionListener {
         //
 
         line = new JLabel();
-        line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/line1.png")));
+        line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/line1.png"));
         line.setBounds(600, 5, 889, 450);
         add(line);
 

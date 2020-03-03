@@ -16,6 +16,10 @@ import relatorio.Relatorio;
  */
 public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = -5248502861430214716L;
     private JPanel description;
     private JLabel customerIcon;
 
@@ -47,7 +51,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         add(description);
 
         customerIcon = new JLabel();
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/chart-icon.png")));
+        customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/chart-icon.png"));
         customerIcon.setBounds(65, 196, 55, 55);
         description.add(customerIcon);
 
@@ -252,7 +256,7 @@ public class RelatoriosSemanalBarbeiro extends JPanel implements ActionListener 
         //
 
         line = new JLabel();
-        line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/line1.png")));
+        line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/line1.png"));
         line.setBounds(600, 5, 889, 450);
         add(line);
 

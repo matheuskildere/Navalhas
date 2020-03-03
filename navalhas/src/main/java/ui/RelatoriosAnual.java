@@ -16,6 +16,10 @@ import relatorio.Relatorio;
  */
 public class RelatoriosAnual extends JPanel implements ActionListener {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1802220463650909920L;
     private JPanel description;
     private JLabel customerIcon;
 
@@ -52,7 +56,7 @@ public class RelatoriosAnual extends JPanel implements ActionListener {
         add(description);
 
         customerIcon = new JLabel();
-        customerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/chart-icon.png")));
+        customerIcon.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/chart-icon.png"));
         customerIcon.setBounds(65, 196, 55, 55);
         description.add(customerIcon);
 
@@ -244,7 +248,7 @@ public class RelatoriosAnual extends JPanel implements ActionListener {
         //
 
         line = new JLabel();
-        line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/line1.png")));
+        line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/line1.png"));
         line.setBounds(700, 5, 889, 450);
         add(line);
 
@@ -310,7 +314,6 @@ public class RelatoriosAnual extends JPanel implements ActionListener {
 
         // Barbeiro 04
 
-        Object[] sergio = relatorioDAO.nServicoBarbeiro(3, dataString("yyyy"));
             
         bBarbeiro4 = new JButton("Sérgio");
         bBarbeiro4.setBounds(730, 180, 130, 24);
@@ -329,7 +332,7 @@ public class RelatoriosAnual extends JPanel implements ActionListener {
         //
 
         line = new JLabel();
-        line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/line1.png")));
+        line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/line1.png"));
         line.setBounds(1000, 15, 2, 250);
         add(line);
 
@@ -348,7 +351,7 @@ public class RelatoriosAnual extends JPanel implements ActionListener {
         //
 
         line = new JLabel();
-        line.setIcon(new javax.swing.ImageIcon(getClass().getResource("icons/horizontal-division-line.png")));
+        line.setIcon(new javax.swing.ImageIcon("./src/main/java/ui/icons/horizontal-division-line.png"));
         line.setBounds(730, 280, 520, 2);
         add(line);
 

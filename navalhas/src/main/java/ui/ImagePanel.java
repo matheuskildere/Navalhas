@@ -7,11 +7,15 @@ import javax.swing.*;
 
 public class ImagePanel extends JPanel {
  
+    /**
+     *
+     */
+    private static final long serialVersionUID = -7781412684407441183L;
     /*
-     * Podiamos usar qualquer uma das classes abaixo mas para simplificar
-     * vamos usar um objecto do tipo Image que obtemos através de um ImageIcon
-     * que tem métodos mais simples para carregar imagens, embora não permite a
-     * mesma optimização que, por exemplo, um BufferedImage.
+     * Podiamos usar qualquer uma das classes abaixo mas para simplificar vamos usar
+     * um objecto do tipo Image que obtemos através de um ImageIcon que tem métodos
+     * mais simples para carregar imagens, embora não permite a mesma optimização
+     * que, por exemplo, um BufferedImage.
      *
      * Image é uma classe abstracta.
      *
