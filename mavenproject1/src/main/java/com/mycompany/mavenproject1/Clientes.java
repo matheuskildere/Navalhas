@@ -5,16 +5,20 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * Customer Screen
  */
 
 public class Clientes extends JPanel implements ActionListener {
-    
 
     /**
      *
@@ -33,7 +37,6 @@ public class Clientes extends JPanel implements ActionListener {
     JPanel ediCli;
     JPanel excCli;
 
-   
     public Clientes(JPanel addCli, JPanel conCli, JPanel ediCli, JPanel excCli) {
         this.addCli = addCli;
         this.conCli = conCli;

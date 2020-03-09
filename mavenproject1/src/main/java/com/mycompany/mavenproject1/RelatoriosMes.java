@@ -5,9 +5,14 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * Relatorios
@@ -340,7 +345,6 @@ public class RelatoriosMes extends JPanel implements ActionListener {
             relMen.mes("12");
             relMen.setVisible(true);
         }
-
 
     }
 

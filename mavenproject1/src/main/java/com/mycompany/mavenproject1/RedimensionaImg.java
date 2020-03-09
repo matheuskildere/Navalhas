@@ -5,7 +5,7 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.awt.*;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
@@ -56,6 +56,6 @@ public class RedimensionaImg {
             System.out.println("NÃ£o deu !");
             e.printStackTrace();
         }
-}
+    }
 
 }

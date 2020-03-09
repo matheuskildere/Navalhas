@@ -8,14 +8,14 @@ package com.mycompany.mavenproject1;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
 
 /**
  * Classe que inicia o programa e cria a estrutura basica (Logo, menu e rodape)
@@ -64,7 +64,7 @@ public class Janela implements ActionListener {
     public int height;
 
     public Janela() {
-        
+
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension d = tk.getScreenSize();
         width = (int) d.getWidth();
@@ -136,7 +136,7 @@ public class Janela implements ActionListener {
         panel.setLayout(null);
         frame.getContentPane().add(panel);
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); //-- hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); // -- hh:mm");
 
         message = new JLabel("Bem Vindo ao Sistema da Barbearia Navalhas\n " + dateFormat.format(new Date()));
         message.setBounds(420, 230, 600, 25);
@@ -238,7 +238,6 @@ public class Janela implements ActionListener {
         frame.getContentPane().add(rodape);
     }
 
-
     // Metodo para a correta mudanca de paineis
     public static void panelInicio(JPanel j) {
         frame.getContentPane().add(j);
@@ -329,5 +328,5 @@ public class Janela implements ActionListener {
         }
 
     }
-    
+
 }
