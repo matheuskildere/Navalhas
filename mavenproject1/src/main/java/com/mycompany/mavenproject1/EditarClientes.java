@@ -5,19 +5,27 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import cliente.Cliente;
 import cliente.ClienteDAO;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.awt.event.*;
+
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 
 /**
  * ExcluirClientes
@@ -45,13 +53,13 @@ public class EditarClientes extends JPanel implements ActionListener {
     private JButton bEnviar;
     private JButton bCancelar;
     private JButton bConfirmar;
-    
+
     private final int WIDTH = 1366;
     private final int HEIGHT = 768;
     private ClienteDAO clienteDAO = new ClienteDAO();
     private String diretorio = "";
 
-    public EditarClientes(){
+    public EditarClientes() {
         editarClientes();
     }
 
@@ -125,9 +133,10 @@ public class EditarClientes extends JPanel implements ActionListener {
 
         bFoto = new JButton();
         bFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/icons/picture-customer.png")));
-        if (!cliente.getFoto().trim().equals("")){
-            bFoto.setIcon(new javax.swing.ImageIcon(cliente.getFoto())); 
-        }bFoto.setBounds(605, 20, 100, 100);
+        if (!cliente.getFoto().trim().equals("")) {
+            bFoto.setIcon(new javax.swing.ImageIcon(cliente.getFoto()));
+        }
+        bFoto.setBounds(605, 20, 100, 100);
         bFoto.setContentAreaFilled(false);
         bFoto.setBorderPainted(false);
         bFoto.setFocusable(false);
@@ -153,25 +162,25 @@ public class EditarClientes extends JPanel implements ActionListener {
         contatos.setForeground(new Color(131, 131, 131));
         add(contatos);
 
-        tDDDContato1 = new JTextField(cliente.getContato1().substring(0,2));
+        tDDDContato1 = new JTextField(cliente.getContato1().substring(0, 2));
         tDDDContato1.setBounds(500, 320, 65, 50);
         tDDDContato1.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         tDDDContato1.setForeground(new Color(47, 47, 47));
         add(tDDDContato1);
 
-        tContato1 = new JTextField(cliente.getContato1().substring(3,12));
+        tContato1 = new JTextField(cliente.getContato1().substring(3, 12));
         tContato1.setBounds(580, 320, 240, 50);
         tContato1.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         tContato1.setForeground(new Color(47, 47, 47));
         add(tContato1);
 
-        tDDDContato2 = new JTextField(cliente.getContato2().substring(0,2));
+        tDDDContato2 = new JTextField(cliente.getContato2().substring(0, 2));
         tDDDContato2.setBounds(500, 385, 65, 50);
         tDDDContato2.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         tDDDContato2.setForeground(new Color(47, 47, 47));
         add(tDDDContato2);
 
-        tContato2 = new JTextField(cliente.getContato2().substring(3,12));
+        tContato2 = new JTextField(cliente.getContato2().substring(3, 12));
         tContato2.setBounds(580, 385, 240, 50);
         tContato2.setFont(new Font("Helvetica Neue", Font.PLAIN, 23));
         tContato2.setForeground(new Color(47, 47, 47));
@@ -201,30 +210,28 @@ public class EditarClientes extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == bEnviar) {
-            String nomePesquisado =tConsultaNome.getText().trim();
+            String nomePesquisado = tConsultaNome.getText().trim();
             List<Cliente> listaClientes = clienteDAO.read();
             Cliente clientePesquisado = null;
-            
+
             for (Cliente cliente : listaClientes) {
                 String nomeCliente = cliente.getNome().trim();
-                
+
                 if (nomePesquisado.equalsIgnoreCase(nomeCliente)) {
                     clientePesquisado = cliente;
                     resultadoConsulta(clientePesquisado);
-                }   
+                }
             }
 
             if (clientePesquisado != null) {
                 System.out.println(clientePesquisado.getContato1());
-            }else{
+            } else {
                 System.out.println("Cliente nao encontrado");
             }
-		}
+        }
 
-				
-
-		if (e.getSource() == bLimpar) {
-			tConsultaNome.setText("");
+        if (e.getSource() == bLimpar) {
+            tConsultaNome.setText("");
         }
         if (e.getSource() == bCancelar) {
             removeAll();
@@ -237,11 +244,11 @@ public class EditarClientes extends JPanel implements ActionListener {
             updateCliente.setNome(tNome.getText().trim());
             if (!diretorio.equals("")) {
                 updateCliente.setFoto(diretorio);
-            }else{
+            } else {
                 updateCliente.setFoto(bFoto.getIcon().toString());
             }
-            updateCliente.setContato1(tDDDContato1.getText().trim()+" "+tContato1.getText().trim());
-            updateCliente.setContato2(tDDDContato2.getText().trim()+" "+tContato2.getText().trim());
+            updateCliente.setContato1(tDDDContato1.getText().trim() + " " + tContato1.getText().trim());
+            updateCliente.setContato2(tDDDContato2.getText().trim() + " " + tContato2.getText().trim());
             clienteDAO.update(updateCliente);
         }
 
@@ -263,14 +270,15 @@ public class EditarClientes extends JPanel implements ActionListener {
                     bFoto.setIcon(new javax.swing.ImageIcon(diretorio));
                     repaint();
                 }
-            }else{
+            } else {
                 System.out.println("primeiro digite um nome");
             }
         }
     }
-    private String fileCopy(JFileChooser fc, String nome){
-        Path source=Paths.get(fc.getSelectedFile().toString());
-        Path destination=Paths.get("./photos/"+nome+".png");
+
+    private String fileCopy(JFileChooser fc, String nome) {
+        Path source = Paths.get(fc.getSelectedFile().toString());
+        Path destination = Paths.get("./photos/" + nome + ".png");
         if (destination.toFile().exists()) {
             System.out.println("eai");
             destination.toFile().delete();

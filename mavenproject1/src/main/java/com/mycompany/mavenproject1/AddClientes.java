@@ -5,16 +5,22 @@
  */
 package com.mycompany.mavenproject1;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.awt.*;
-import java.awt.event.*;
 import java.nio.file.Files;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import cliente.Cliente;
 import cliente.ClienteDAO;
@@ -150,7 +156,7 @@ public class AddClientes extends JPanel implements ActionListener {
 
     }
 
-    private void limpa(){
+    private void limpa() {
         bFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/icons/picture-customer.png")));
         tNome.setText("");
         tDDDContato1.setText("");
@@ -158,9 +164,10 @@ public class AddClientes extends JPanel implements ActionListener {
         tDDDContato2.setText("");
         tContato2.setText("");
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == bCancelar){
+        if (e.getSource() == bCancelar) {
             limpa();
         }
 
@@ -182,7 +189,7 @@ public class AddClientes extends JPanel implements ActionListener {
                     bFoto.setIcon(new javax.swing.ImageIcon(diretorio));
                     repaint();
                 }
-            }else{
+            } else {
                 System.out.println("primeiro digite um nome");
             }
         }
@@ -192,7 +199,7 @@ public class AddClientes extends JPanel implements ActionListener {
             try {
                 if (tNome.getText().trim().equals("") || tNome.getText().trim().equals(" ")) {
                     throw new RuntimeException();
-                }else{
+                } else {
                     Cliente novo_Cliente = new Cliente();
                     novo_Cliente.setNome(tNome.getText().trim());
                     novo_Cliente.setContato1(tDDDContato1.getText().trim() + " " + tContato1.getText());
@@ -200,7 +207,7 @@ public class AddClientes extends JPanel implements ActionListener {
                     novo_Cliente.setFoto(diretorio);
                     ClienteDAO clienteDAO = new ClienteDAO();
                     clienteDAO.create(novo_Cliente);
-                limpa();
+                    limpa();
                 }
                 // Clientes clientes = new Clientes(this, conCli, ediCli, excCli);
 
@@ -213,9 +220,9 @@ public class AddClientes extends JPanel implements ActionListener {
 
     }
 
-    private String fileCopy(JFileChooser fc, String nome){
-        Path source=Paths.get(fc.getSelectedFile().toString());
-        Path destination=Paths.get("./photos/"+nome+".png");
+    private String fileCopy(JFileChooser fc, String nome) {
+        Path source = Paths.get(fc.getSelectedFile().toString());
+        Path destination = Paths.get("./photos/" + nome + ".png");
         if (destination.toFile().exists()) {
             System.out.println("eai");
             destination.toFile().delete();

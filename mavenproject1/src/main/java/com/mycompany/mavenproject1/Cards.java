@@ -5,15 +5,18 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import servico.Servico;
 
 /**
  * cards
  */
-public class Cards extends JPanel{
+public class Cards extends JPanel {
 
     /**
      *
@@ -24,15 +27,15 @@ public class Cards extends JPanel{
 
     JPanel addAss;
 
-    protected JPanel cardConfirmado(Servico servico, int countX,int countY) {
+    protected JPanel cardConfirmado(Servico servico, int countX, int countY) {
 
         setLayout(null);
         setBackground(new Color(245, 245, 245));
-        setBounds(0+ countX, 0 + countY, 100, 100);
+        setBounds(0 + countX, 0 + countY, 100, 100);
 
         JLabel statusIcon = new JLabel();
         statusIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/icons/confirm-icon.png")));
-        statusIcon.setBounds(70,-33,100,100);
+        statusIcon.setBounds(70, -33, 100, 100);
         add(statusIcon);
 
         JLabel dateIcon = new JLabel();
@@ -45,12 +48,12 @@ public class Cards extends JPanel{
         String mes = data.substring(5, 7);
         String ano = data.substring(0, 4);
 
-        String dataPT = dia+"/"+mes+"/"+ano;
+        String dataPT = dia + "/" + mes + "/" + ano;
 
         JLabel date = new JLabel(dataPT);
         date.setBounds(12, 60, 200, 25);
         date.setFont(new Font("Helvetica Neue", Font.ROMAN_BASELINE, 14));
-        date.setForeground(new Color(0, 0, 0,90));
+        date.setForeground(new Color(0, 0, 0, 90));
         add(date);
 
         return this;

@@ -5,11 +5,17 @@
  */
 package com.mycompany.mavenproject1;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import cliente.Cliente;
 import cliente.ClienteDAO;
@@ -36,7 +42,6 @@ public class ExcluirClientes extends JPanel implements ActionListener {
     private ClienteDAO clienteDAO = new ClienteDAO();
     private final int WIDTH = 1366;
     private final int HEIGHT = 768;
-    
 
     ExcluirClientes() {
 
@@ -122,13 +127,11 @@ public class ExcluirClientes extends JPanel implements ActionListener {
         nome.setForeground(new Color(131, 131, 131));
         add(nome);
 
-       
         label = new JLabel(" deseja mesmo continuar ? ");
         label.setBounds(710, 385, 280, 50);
         label.setFont(new Font("Helvetica Neue", Font.PLAIN, 21));
         label.setForeground(new Color(47, 47, 47));
         add(label);
-
 
         JButton bCancelar = new JButton();
         bCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/icons/cancel-button.png")));
