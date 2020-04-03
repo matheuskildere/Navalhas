@@ -1,7 +1,7 @@
 
 # Barbearia Navalhas
 
-Este projeto tem a intensão de colabora com o sistema de gerenciamento da  **Barbearia Navalhas**.
+Este projeto tem a intenção de colaborar com o sistema de gerenciamento da  **Barbearia Navalhas**.
 
 ## Tecnologias Utilizadas:
 - **Java**
@@ -14,8 +14,8 @@ Para utilizar esse sistema em sua maquina em versão de teste, você irá precis
 - Java
 - IDE/Editor de texto de sua escolha (VSCode, Eclipse, Netbeans etc).
 
-Antes de tudo você devera criar uma base de dados na sua maquina usando PostgreSQL, para facilitar deixamos todos os scripts SQL para criação das tabelas e inserção dos dados necessários em um arquivo que você encontrará no seguinte link: [Scripts SQL](https://github.com/matheuskildere/Navalhas/blob/master/Readme/bd.txt).
-Faça um clone deste repositório e abra em sua IDE ou em seu Editor de texto, em seguida execute a class Navalhas.java
+Antes de tudo você deverá criar uma base de dados na sua máquina usando PostgreSQL, para facilitar deixamos todos os scripts SQL para criação das tabelas e inserção dos dados necessários em um arquivo que você encontrará no seguinte link: [Scripts SQL](https://github.com/matheuskildere/Navalhas/blob/master/Readme/bd.txt).
+Faça um clone deste repositório e abra em sua IDE ou em seu Editor de texto, em seguida execute a classe Navalhas.java
 
 ## Sistema de Gerenciamento
 
