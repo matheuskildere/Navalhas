@@ -1,5 +1,7 @@
 //SQL TABELA: BARBEIRO 
 
+-- Table: public.barbeiro
+
 -- DROP TABLE public.barbeiro;
 
 CREATE TABLE public.barbeiro
@@ -16,7 +18,7 @@ ALTER TABLE public.barbeiro
 
 //SQL TABELA: CLIENTE
 
--- Table: public.barbeiro
+-- Table: public.cliente
 
 -- DROP TABLE public.cliente;
 
@@ -118,7 +120,7 @@ ALTER TABLE public.trabalho
     OWNER to postgres;
     
     
-// DADOS TABELA: SERVICO_UNICO
+// DADOS TABELA: TRABALHO
 
 id  nome
 0   Barba
